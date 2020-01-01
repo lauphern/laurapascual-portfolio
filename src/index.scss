@@ -21,7 +21,7 @@ body {
   top: 0;
   left: 0;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   align-items: center;
   font-family: "Heebo", "Roboto", "Helvetica", "Arial", "sans-serif";
   font-weight: 400;
@@ -30,6 +30,7 @@ body {
   p {
     color: var(--accent);
     text-align: right;
+    margin-right: 45vw;
 
     span {
       color: white;
