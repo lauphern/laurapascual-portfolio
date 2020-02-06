@@ -29,7 +29,7 @@ const theme = createMuiTheme({
     // fontFamily: ["BioRhyme", "serif"].join(","),
     fontFamily: ["Source Code Pro", "monospace"].join(","),
     body1: {
-      fontWeight: 400,
+      fontWeight: 400
       // lineHeight: "2.5rem"
     },
     h1: {
@@ -121,20 +121,32 @@ function App() {
     <div className="App">
       <div className="hover-container"></div>
       <ThemeProvider theme={theme}>
-        <Container className={`${classes.mainContainer} ${classes.layout}`} disableGutters>
+        <Container
+          className={`${classes.mainContainer} ${classes.layout}`}
+          disableGutters
+        >
           <Grid
             className={classes.layout}
             container
             alignContent="center"
             justify="space-between"
           >
-            <Grid item xs={12} sm={6} className={classes.leftPanel} container justify="center">
+            <Grid
+              item
+              xs={12}
+              sm={6}
+              className={classes.leftPanel}
+              container
+              justify="center"
+            >
               <Typography variant="h1">
                 <span className={classes.firstName}>Laura</span>
                 <br />
                 Pascual
               </Typography>
-              <Typography variant="h2">Full-stack developer with a focus on front-end.</Typography>
+              <Typography variant="h2">
+                Full-stack developer with a focus on front-end.
+              </Typography>
               <Typography variant="body1">
                 Currently looking for freelance jobs:&nbsp;
                 <Link
@@ -166,13 +178,27 @@ function App() {
               </Typography>
               <div className="leftPanel-bg"></div>
             </Grid>
-            <Grid item container xs={12} sm={6} alignContent="center" justify="flex-end">
+            <Grid
+              item
+              container
+              xs={12}
+              sm={6}
+              alignContent="center"
+              justify="flex-end"
+            >
               <ButtonGroup orientation="vertical" fullWidth>
                 <Button
                   variant="text"
                   className={`${classes.btn} ${classes.pointer}`}
                 >
-                  Textures -&nbsp;<span className={classes.capitalize}>Material-UI demo</span>
+                  Time 4 Time 2.0
+                </Button>
+                <Button
+                  variant="text"
+                  className={`${classes.btn} ${classes.pointer}`}
+                >
+                  Textures -&nbsp;
+                  <span className={classes.capitalize}>Material-UI demo</span>
                 </Button>
                 <Button
                   variant="text"
