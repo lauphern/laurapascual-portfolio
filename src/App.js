@@ -9,7 +9,10 @@ import {
   Typography,
   ButtonGroup,
   Button,
-  Link
+  Link,
+  Grid,
+  Tooltip,
+  Fade
 } from "@material-ui/core";
 import "./App.scss";
 
@@ -17,7 +20,8 @@ const theme = createMuiTheme({
   overrides: {
     MuiButton: {
       text: {
-        fontWeight: 300
+        fontWeight: 300,
+        fontSize: "2rem"
       }
     }
   },
@@ -25,32 +29,75 @@ const theme = createMuiTheme({
     // fontFamily: ["BioRhyme", "serif"].join(","),
     fontFamily: ["Source Code Pro", "monospace"].join(","),
     body1: {
-      fontWeight: 300
+      fontWeight: 400,
+      // lineHeight: "2.5rem"
     },
     h1: {
       fontFamily: ["Heebo", "Roboto", "Helvetica", "Arial", "sans-serif"].join(
         ","
       ),
-      fontWeight: 900
+      fontWeight: 900,
+      fontSize: "4rem",
+      letterSpacing: "-0.08rem",
+      lineHeight: "6rem",
+      marginBottom: "6rem"
+    },
+    h2: {
+      fontSize: "2rem"
     }
   }
 });
 
 const useStyles = makeStyles(theme => ({
+  layout: {
+    height: "100vh",
+    width: "100vw"
+  },
   mainContainer: {
     position: "absolute",
     pointerEvents: "none"
   },
-  firstName: {
-    textTransform: "uppercase"
+  leftPanel: {
+    // zIndex: -2,
+    // background: "#bbc4c7",
+    color: "white",
+    height: "100vh",
+    position: "relative",
+    padding: "0 5vw",
+    top: 0,
+    left: 0,
+    flexDirection: "column"
   },
-  btn: {
+  firstName: {
+    textTransform: "uppercase",
+    letterSpacing: "0.18rem"
+  },
+  link: {
+    transition: "0.1s",
+    color: "#b5f9ff",
+
     "&:hover": {
-      fontWeight: 400
+      color: "yellow"
     }
   },
+  btn: {
+    transition: "0.1s",
+
+    "&:hover": {
+      fontWeight: 400,
+      lineHeight: 3
+    }
+  },
+  btnDisabled: {
+    color: "#878787"
+  },
+  capitalize: {
+    textTransform: "none"
+  },
   pointer: {
-    pointerEvents: "all"
+    pointerEvents: "all",
+    zIndex: 100,
+    position: "relative"
   }
 }));
 
@@ -74,54 +121,88 @@ function App() {
     <div className="App">
       <div className="hover-container"></div>
       <ThemeProvider theme={theme}>
-        <Container className={classes.mainContainer}>
-          <Typography variant="h1">
-            <span className={classes.firstName}>Laura</span> Pascual
-          </Typography>
-          <Typography variant="body1">Little intro.</Typography>
-          <Typography variant="body1">
-            Looking for jobs as a freelance:{" "}
-            <Link
-              className={classes.pointer}
-              href="mailto:laura.pascual.h@hotmail.com"
-            >
-              email
-            </Link>{" "}
-          </Typography>
-          <Typography variant="body1">
-            <Link
-              className={classes.pointer}
-              href="https://github.com/lauphern"
-              target="_blank"
-              rel="noopener"
-            >
-              Github
-            </Link>
-          </Typography>
-          <Typography variant="body1">
-            <Link
-              className={classes.pointer}
-              href="https://www.linkedin.com/in/laura-pascual-hernandez/?locale=en_US"
-              target="_blank"
-              rel="noopener"
-            >
-              Linkedin
-            </Link>
-          </Typography>
-          <ButtonGroup>
-            <Button variant="text" className={`${classes.btn} ${classes.pointer}`}>
-              Textures - MaterialUI demo
-            </Button>
-            <Button variant="text" className={`${classes.btn} ${classes.pointer}`}>
-              SVG animations
-            </Button>
-            <Button variant="text" className={`${classes.btn} ${classes.pointer}`}>
-              Three.js demo
-            </Button>
-            <Button variant="text" className={`${classes.btn} ${classes.pointer}`}>
-              App
-            </Button>
-          </ButtonGroup>
+        <Container className={`${classes.mainContainer} ${classes.layout}`} disableGutters>
+          <Grid
+            className={classes.layout}
+            container
+            alignContent="center"
+            justify="space-between"
+          >
+            <Grid item xs={12} sm={6} className={classes.leftPanel} container justify="center">
+              <Typography variant="h1">
+                <span className={classes.firstName}>Laura</span>
+                <br />
+                Pascual
+              </Typography>
+              <Typography variant="h2">Full-stack developer with a focus on front-end.</Typography>
+              <Typography variant="body1">
+                Currently looking for freelance jobs:&nbsp;
+                <Link
+                  className={`${classes.pointer} ${classes.link}`}
+                  href="mailto:laura.pascual.h@hotmail.com"
+                >
+                  email
+                </Link>{" "}
+              </Typography>
+              <Typography variant="body1">
+                <Link
+                  className={`${classes.pointer} ${classes.link}`}
+                  href="https://github.com/lauphern"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Github
+                </Link>
+              </Typography>
+              <Typography variant="body1">
+                <Link
+                  className={`${classes.pointer} ${classes.link}`}
+                  href="https://www.linkedin.com/in/laura-pascual-hernandez/?locale=en_US"
+                  target="_blank"
+                  rel="noopener"
+                >
+                  Linkedin
+                </Link>
+              </Typography>
+              <div className="leftPanel-bg"></div>
+            </Grid>
+            <Grid item container xs={12} sm={6} alignContent="center" justify="flex-end">
+              <ButtonGroup orientation="vertical" fullWidth>
+                <Button
+                  variant="text"
+                  className={`${classes.btn} ${classes.pointer}`}
+                >
+                  Textures -&nbsp;<span className={classes.capitalize}>Material-UI demo</span>
+                </Button>
+                <Button
+                  variant="text"
+                  className={`${classes.btn} ${classes.pointer}`}
+                >
+                  SVG animations
+                </Button>
+                <Button
+                  variant="text"
+                  className={`${classes.btn} ${classes.pointer}`}
+                >
+                  Three.js&nbsp;<span className={classes.capitalize}>demo</span>
+                </Button>
+                <Tooltip
+                  title="#TBA"
+                  TransitionComponent={Fade}
+                  TransitionProps={{ timeout: 600 }}
+                  arrow
+                >
+                  {/* TODO create disabled class */}
+                  <Button
+                    variant="text"
+                    className={`${classes.btn} ${classes.pointer} ${classes.btnDisabled}`}
+                  >
+                    React Native App
+                  </Button>
+                </Tooltip>
+              </ButtonGroup>
+            </Grid>
+          </Grid>
         </Container>
       </ThemeProvider>
     </div>
