@@ -148,12 +148,11 @@ function App() {
                 Full-stack developer with a focus on front-end.
               </Typography>
               <Typography variant="body1">
-                Currently looking for freelance jobs:&nbsp;
                 <Link
                   className={`${classes.pointer} ${classes.link}`}
                   href="mailto:laura.pascual.h@hotmail.com"
                 >
-                  email
+                  Email
                 </Link>{" "}
               </Typography>
               <Typography variant="body1">
@@ -190,12 +189,16 @@ function App() {
                 <Button
                   variant="text"
                   className={`${classes.btn} ${classes.pointer}`}
+                  href="https://time4time-demo.netlify.com/"
+                  target="_blank"
                 >
                   Time 4 Time 2.0
                 </Button>
                 <Button
                   variant="text"
                   className={`${classes.btn} ${classes.pointer}`}
+                  href="https://textures-muidemo.netlify.com/"
+                  target="_blank"
                 >
                   Textures -&nbsp;
                   <span className={classes.capitalize}>Material-UI demo</span>
@@ -203,12 +206,16 @@ function App() {
                 <Button
                   variant="text"
                   className={`${classes.btn} ${classes.pointer}`}
+                  href="https://svg-css-animations.netlify.com/"
+                  target="_blank"
                 >
-                  SVG animations
+                  SVG & CSS animations
                 </Button>
                 <Button
                   variant="text"
                   className={`${classes.btn} ${classes.pointer}`}
+                  href="https://where-is-home.netlify.com/"
+                  target="_blank"
                 >
                   Three.js&nbsp;<span className={classes.capitalize}>demo</span>
                 </Button>
