@@ -145,7 +145,7 @@ function App() {
                 Pascual
               </Typography>
               <Typography variant="h2">
-                Full-stack developer with a focus on front-end.
+                Full-stack developer
               </Typography>
               <Typography variant="body1">
                 <Link
