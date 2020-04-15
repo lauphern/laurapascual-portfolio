@@ -4,6 +4,7 @@ import {
   ThemeProvider,
   makeStyles,
 } from "@material-ui/core/styles";
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import {
   Container,
   Typography,
@@ -50,7 +51,7 @@ const theme = createMuiTheme({
 
 const useStyles = makeStyles((theme) => ({
   layout: {
-    height: "100vh",
+    minHeight: "100vh",
     width: "100vw",
   },
   mainContainer: {
@@ -141,6 +142,7 @@ function App() {
   useEffect(() => {
     cursorEffect();
   });
+  const matches = useMediaQuery('(max-width:600px)');
   return (
     <div className="App">
       <div className="hover-container"></div>
