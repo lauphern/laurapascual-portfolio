@@ -4,7 +4,7 @@ import {
   ThemeProvider,
   makeStyles,
 } from "@material-ui/core/styles";
-import useMediaQuery from '@material-ui/core/useMediaQuery';
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import {
   Container,
   Typography,
@@ -102,25 +102,29 @@ const useStyles = makeStyles((theme) => ({
   },
   languageSwitch: {
     position: "absolute",
-    top: "20px"
+    top: "20px",
   },
   languageBtn: {
     fontWeight: 900,
   },
   languageBtnActive: {
     color: "yellow",
-    backgroundColor: "rgba(0, 0, 0, 0.04)"
-  }
+    backgroundColor: "rgba(0, 0, 0, 0.04)",
+  },
+  h1Mobile: {
+    fontSize: "4rem",
+    lineHeight: "3.5rem",
+  },
+  h2Mobile: {
+    fontSize: "1.75rem",
+  },
 }));
 
-
-function cursorEffect() {
-  document.querySelector(".hover-container").onmousemove = (e) => {
-    const x = e.pageX - e.target.offsetLeft;
-    const y = e.pageY - e.target.offsetTop;
-    e.target.style.setProperty("--x", `${x}px`);
-    e.target.style.setProperty("--y", `${y}px`);
-  };
+function _cursorEffect(e) {
+  const x = e.pageX - e.target.offsetLeft;
+  const y = e.pageY - e.target.offsetTop;
+  e.target.style.setProperty("--x", `${x}px`);
+  e.target.style.setProperty("--y", `${y}px`);
 }
 
 const translations = {
@@ -137,12 +141,24 @@ const translations = {
 };
 
 function App() {
-  const [lang, setLang] = useState("es")
+  const [lang, setLang] = useState("es");
   const classes = useStyles();
+
+  const isItSmallDevice = useMediaQuery("(max-width:320px)");
+
+  let isItSmallerThanLaptop = useMediaQuery("(max-width:1199px)");
+
   useEffect(() => {
-    cursorEffect();
+    if (!isItSmallerThanLaptop)
+      document
+        .querySelector(".hover-container")
+        .addEventListener("mousemove", _cursorEffect);
+    else
+      document
+        .querySelector(".hover-container")
+        .removeEventListener("mousemove", _cursorEffect);
   });
-  const matches = useMediaQuery('(max-width:600px)');
+
   return (
     <div className="App">
       <div className="hover-container"></div>
@@ -170,15 +186,37 @@ function App() {
                 size="small"
                 className={classes.languageSwitch}
               >
-                <Button onClick={()=>setLang("en")} className={`${classes.pointer} ${classes.link} ${classes.languageBtn} ${lang === "en" && classes.languageBtnActive}`}>EN</Button>
-                <Button onClick={()=>setLang("es")} className={`${classes.pointer} ${classes.link} ${classes.languageBtn} ${lang === "es" && classes.languageBtnActive}`}>ES</Button>
+                <Button
+                  onClick={() => setLang("en")}
+                  className={`${classes.pointer} ${classes.link} ${
+                    classes.languageBtn
+                  } ${lang === "en" && classes.languageBtnActive}`}
+                >
+                  EN
+                </Button>
+                <Button
+                  onClick={() => setLang("es")}
+                  className={`${classes.pointer} ${classes.link} ${
+                    classes.languageBtn
+                  } ${lang === "es" && classes.languageBtnActive}`}
+                >
+                  ES
+                </Button>
               </ButtonGroup>
-              <Typography variant="h1">
+              <Typography
+                variant="h1"
+                className={isItSmallDevice && classes.h1Mobile}
+              >
                 <span className={classes.firstName}>Laura</span>
                 <br />
                 Pascual
               </Typography>
-              <Typography variant="h2">{translations[lang].subtitle}</Typography>
+              <Typography
+                variant="h2"
+                className={isItSmallDevice && classes.h2Mobile}
+              >
+                {translations[lang].subtitle}
+              </Typography>
               <Typography variant="body1">
                 <Link
                   className={`${classes.pointer} ${classes.link}`}
