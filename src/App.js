@@ -10,9 +10,7 @@ import {
   ButtonGroup,
   Button,
   Link,
-  Grid,
-  Tooltip,
-  Fade
+  Grid
 } from "@material-ui/core";
 import "./App.scss";
 
@@ -29,21 +27,23 @@ const theme = createMuiTheme({
     // fontFamily: ["BioRhyme", "serif"].join(","),
     fontFamily: ["Source Code Pro", "monospace"].join(","),
     body1: {
-      fontWeight: 400
+      fontWeight: 600,
+      // fontSize: "1.25rem"
       // lineHeight: "2.5rem"
     },
     h1: {
       fontFamily: ["Heebo", "Roboto", "Helvetica", "Arial", "sans-serif"].join(
         ","
       ),
-      fontWeight: 900,
-      fontSize: "4rem",
-      letterSpacing: "-0.08rem",
-      lineHeight: "6rem",
-      marginBottom: "6rem"
+      fontWeight: 400,
+      fontSize: "6rem",
+      letterSpacing: "-0.265rem",
+      lineHeight: "5rem",
+      // marginBottom: "3rem"
     },
     h2: {
-      fontSize: "2rem"
+      fontSize: "2rem",
+      fontWeight: 300
     }
   }
 });
@@ -219,20 +219,6 @@ function App() {
                 >
                   Three.js&nbsp;<span className={classes.capitalize}>demo</span>
                 </Button>
-                <Tooltip
-                  title="#TBA"
-                  TransitionComponent={Fade}
-                  TransitionProps={{ timeout: 600 }}
-                  arrow
-                >
-                  {/* TODO create disabled class */}
-                  <Button
-                    variant="text"
-                    className={`${classes.btn} ${classes.pointer} ${classes.btnDisabled}`}
-                  >
-                    React Native App
-                  </Button>
-                </Tooltip>
               </ButtonGroup>
             </Grid>
           </Grid>
