@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import {
   createMuiTheme,
   ThemeProvider,
-  makeStyles
+  makeStyles,
 } from "@material-ui/core/styles";
 import {
   Container,
@@ -10,7 +10,7 @@ import {
   ButtonGroup,
   Button,
   Link,
-  Grid
+  Grid,
 } from "@material-ui/core";
 import "./App.scss";
 
@@ -19,9 +19,9 @@ const theme = createMuiTheme({
     MuiButton: {
       text: {
         fontWeight: 300,
-        fontSize: "2rem"
-      }
-    }
+        fontSize: "2rem",
+      },
+    },
   },
   typography: {
     // fontFamily: ["BioRhyme", "serif"].join(","),
@@ -43,19 +43,19 @@ const theme = createMuiTheme({
     },
     h2: {
       fontSize: "2rem",
-      fontWeight: 300
-    }
-  }
+      fontWeight: 300,
+    },
+  },
 });
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   layout: {
     height: "100vh",
-    width: "100vw"
+    width: "100vw",
   },
   mainContainer: {
     position: "absolute",
-    pointerEvents: "none"
+    pointerEvents: "none",
   },
   leftPanel: {
     // zIndex: -2,
@@ -66,51 +66,64 @@ const useStyles = makeStyles(theme => ({
     padding: "0 5vw",
     top: 0,
     left: 0,
-    flexDirection: "column"
+    flexDirection: "column",
   },
   firstName: {
     textTransform: "uppercase",
-    letterSpacing: "0.18rem"
+    letterSpacing: "0.18rem",
   },
   link: {
     transition: "0.1s",
     color: "#b5f9ff",
 
     "&:hover": {
-      color: "yellow"
-    }
+      color: "yellow",
+    },
   },
   btn: {
     transition: "0.1s",
 
     "&:hover": {
       fontWeight: 400,
-      lineHeight: 3
-    }
+      lineHeight: 3,
+    },
   },
   btnDisabled: {
-    color: "#878787"
+    color: "#878787",
   },
   capitalize: {
-    textTransform: "none"
+    textTransform: "none",
   },
   pointer: {
     pointerEvents: "all",
     zIndex: 100,
-    position: "relative"
-  }
+    position: "relative",
+  },
 }));
 
 // '&:hover'
 
 function cursorEffect() {
-  document.querySelector(".hover-container").onmousemove = e => {
+  document.querySelector(".hover-container").onmousemove = (e) => {
     const x = e.pageX - e.target.offsetLeft;
     const y = e.pageY - e.target.offsetTop;
     e.target.style.setProperty("--x", `${x}px`);
     e.target.style.setProperty("--y", `${y}px`);
   };
 }
+
+const translations = {
+  en: {
+    subtitle: "Full-stack developer",
+    linkedin:
+      "https://www.linkedin.com/in/laura-pascual-hernandez/?locale=en_US",
+  },
+  es: {
+    subtitle: "Desarrolladora Full-stack",
+    linkedin:
+      "https://www.linkedin.com/in/laura-pascual-hernandez/?locale=es_ES",
+  },
+};
 
 function App() {
   const classes = useStyles();
@@ -144,9 +157,7 @@ function App() {
                 <br />
                 Pascual
               </Typography>
-              <Typography variant="h2">
-                Full-stack developer
-              </Typography>
+              <Typography variant="h2">{translations.es.subtitle}</Typography>
               <Typography variant="body1">
                 <Link
                   className={`${classes.pointer} ${classes.link}`}
@@ -168,7 +179,7 @@ function App() {
               <Typography variant="body1">
                 <Link
                   className={`${classes.pointer} ${classes.link}`}
-                  href="https://www.linkedin.com/in/laura-pascual-hernandez/?locale=en_US"
+                  href={translations.es.linkedin}
                   target="_blank"
                   rel="noopener"
                 >
