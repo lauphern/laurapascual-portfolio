@@ -13,6 +13,7 @@ import {
   Link,
   Grid,
 } from "@material-ui/core";
+import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import "./App.scss";
 
 const theme = createMuiTheme({
@@ -118,6 +119,27 @@ const useStyles = makeStyles((theme) => ({
   h2Mobile: {
     fontSize: "1.75rem",
   },
+  btnGroupMobile: {
+    "& > *": {
+      fontSize: "1.5rem",
+    }
+  },
+  btnMobile: {
+    borderBottom: "1px solid #bbc4c7 !important",
+  },
+  stacksMobile: {
+    minWidth: "100%",
+    height: "100vh"
+  },
+  expandMoreIcon: {
+    alignSelf: "center",
+    position: "absolute",
+    bottom: 0,
+    color: "white",
+    "& > *": {
+      fontSize: "4rem"
+    }
+  }
 }));
 
 function _cursorEffect(e) {
@@ -145,8 +167,9 @@ function App() {
   const classes = useStyles();
 
   const isItSmallDevice = useMediaQuery("(max-width:320px)");
-
-  let isItSmallerThanLaptop = useMediaQuery("(max-width:1199px)");
+  const isItSmallTablet = useMediaQuery("(max-width:834px)");
+  const isItTablet = useMediaQuery("(max-width:1100px)");
+  const isItSmallerThanLaptop = useMediaQuery("(max-width:1199px)");
 
   useEffect(() => {
     if (!isItSmallerThanLaptop)
@@ -177,7 +200,7 @@ function App() {
               item
               xs={12}
               sm={6}
-              className={classes.leftPanel}
+              className={`${classes.leftPanel} ${isItSmallTablet && classes.stacksMobile}`}
               container
               justify="center"
             >
@@ -245,6 +268,7 @@ function App() {
                   Linkedin
                 </Link>
               </Typography>
+              {isItSmallTablet && <Link href="#bottom-panel" className={`${classes.pointer} ${classes.expandMoreIcon}`}><ExpandMoreIcon/></Link>}
               <div className="leftPanel-bg"></div>
             </Grid>
             <Grid
@@ -252,13 +276,15 @@ function App() {
               container
               xs={12}
               sm={6}
+              className={isItSmallTablet && classes.stacksMobile}
               alignContent="center"
               justify="flex-end"
+              id="bottom-panel"
             >
-              <ButtonGroup orientation="vertical" fullWidth>
+              <ButtonGroup orientation="vertical" fullWidth className={`${isItTablet && classes.btnGroupMobile}`}>
                 <Button
                   variant="text"
-                  className={`${classes.btn} ${classes.pointer}`}
+                  className={`${classes.btn} ${classes.pointer} ${isItSmallTablet && classes.btnMobile}`}
                   href="https://time4time-demo.netlify.com/"
                   target="_blank"
                 >
@@ -266,7 +292,7 @@ function App() {
                 </Button>
                 <Button
                   variant="text"
-                  className={`${classes.btn} ${classes.pointer}`}
+                  className={`${classes.btn} ${classes.pointer} ${isItSmallTablet && classes.btnMobile}`}
                   href="https://textures-muidemo.netlify.com/"
                   target="_blank"
                 >
@@ -275,7 +301,7 @@ function App() {
                 </Button>
                 <Button
                   variant="text"
-                  className={`${classes.btn} ${classes.pointer}`}
+                  className={`${classes.btn} ${classes.pointer} ${isItSmallTablet && classes.btnMobile}`}
                   href="https://svg-css-animations.netlify.com/"
                   target="_blank"
                 >
