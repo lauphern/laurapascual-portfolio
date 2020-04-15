@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   createMuiTheme,
   ThemeProvider,
@@ -99,9 +99,19 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 100,
     position: "relative",
   },
+  languageSwitch: {
+    position: "absolute",
+    top: "20px"
+  },
+  languageBtn: {
+    fontWeight: 900,
+  },
+  languageBtnActive: {
+    color: "yellow",
+    backgroundColor: "rgba(0, 0, 0, 0.04)"
+  }
 }));
 
-// '&:hover'
 
 function cursorEffect() {
   document.querySelector(".hover-container").onmousemove = (e) => {
@@ -126,6 +136,7 @@ const translations = {
 };
 
 function App() {
+  const [lang, setLang] = useState("es")
   const classes = useStyles();
   useEffect(() => {
     cursorEffect();
@@ -152,12 +163,20 @@ function App() {
               container
               justify="center"
             >
+              <ButtonGroup
+                variant="text"
+                size="small"
+                className={classes.languageSwitch}
+              >
+                <Button onClick={()=>setLang("en")} className={`${classes.pointer} ${classes.link} ${classes.languageBtn} ${lang === "en" && classes.languageBtnActive}`}>EN</Button>
+                <Button onClick={()=>setLang("es")} className={`${classes.pointer} ${classes.link} ${classes.languageBtn} ${lang === "es" && classes.languageBtnActive}`}>ES</Button>
+              </ButtonGroup>
               <Typography variant="h1">
                 <span className={classes.firstName}>Laura</span>
                 <br />
                 Pascual
               </Typography>
-              <Typography variant="h2">{translations.es.subtitle}</Typography>
+              <Typography variant="h2">{translations[lang].subtitle}</Typography>
               <Typography variant="body1">
                 <Link
                   className={`${classes.pointer} ${classes.link}`}
@@ -179,7 +198,7 @@ function App() {
               <Typography variant="body1">
                 <Link
                   className={`${classes.pointer} ${classes.link}`}
-                  href={translations.es.linkedin}
+                  href={translations[lang].linkedin}
                   target="_blank"
                   rel="noopener"
                 >
