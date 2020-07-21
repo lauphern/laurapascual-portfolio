@@ -1,19 +1,8 @@
 import React, { useState, useEffect } from "react";
-import {
-  createMuiTheme,
-  ThemeProvider,
-  makeStyles,
-} from "@material-ui/core/styles";
+import { createMuiTheme, ThemeProvider, makeStyles } from "@material-ui/core/styles";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import {
-  Container,
-  Typography,
-  ButtonGroup,
-  Button,
-  Link,
-  Grid,
-} from "@material-ui/core";
-import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import { Container, Typography, ButtonGroup, Button, Link, Grid } from "@material-ui/core";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import "./App.scss";
 
 const theme = createMuiTheme({
@@ -34,9 +23,7 @@ const theme = createMuiTheme({
       // lineHeight: "2.5rem"
     },
     h1: {
-      fontFamily: ["Heebo", "Roboto", "Helvetica", "Arial", "sans-serif"].join(
-        ","
-      ),
+      fontFamily: ["Heebo", "Roboto", "Helvetica", "Arial", "sans-serif"].join(","),
       fontWeight: 400,
       fontSize: "6rem",
       letterSpacing: "-0.265rem",
@@ -50,7 +37,7 @@ const theme = createMuiTheme({
   },
 });
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   layout: {
     minHeight: "100vh",
     width: "100vw",
@@ -122,14 +109,14 @@ const useStyles = makeStyles((theme) => ({
   btnGroupMobile: {
     "& > *": {
       fontSize: "1.5rem",
-    }
+    },
   },
   btnMobile: {
     borderBottom: "1px solid #bbc4c7 !important",
   },
   stacksMobile: {
     minWidth: "100%",
-    height: "100vh"
+    height: "100vh",
   },
   expandMoreIcon: {
     alignSelf: "center",
@@ -137,9 +124,9 @@ const useStyles = makeStyles((theme) => ({
     bottom: 0,
     color: "white",
     "& > *": {
-      fontSize: "4rem"
-    }
-  }
+      fontSize: "4rem",
+    },
+  },
 }));
 
 function _cursorEffect(e) {
@@ -152,13 +139,11 @@ function _cursorEffect(e) {
 const translations = {
   en: {
     subtitle: "Full-stack developer",
-    linkedin:
-      "https://www.linkedin.com/in/laura-pascual-hernandez/?locale=en_US",
+    linkedin: "https://www.linkedin.com/in/laura-pascual-hernandez/?locale=en_US",
   },
   es: {
     subtitle: "Desarrolladora Full-stack",
-    linkedin:
-      "https://www.linkedin.com/in/laura-pascual-hernandez/?locale=es_ES",
+    linkedin: "https://www.linkedin.com/in/laura-pascual-hernandez/?locale=es_ES",
   },
 };
 
@@ -173,29 +158,16 @@ function App() {
 
   useEffect(() => {
     if (!isItSmallerThanLaptop)
-      document
-        .querySelector(".hover-container")
-        .addEventListener("mousemove", _cursorEffect);
-    else
-      document
-        .querySelector(".hover-container")
-        .removeEventListener("mousemove", _cursorEffect);
+      document.querySelector(".hover-container").addEventListener("mousemove", _cursorEffect);
+    else document.querySelector(".hover-container").removeEventListener("mousemove", _cursorEffect);
   });
 
   return (
     <div className="App">
       <div className="hover-container"></div>
       <ThemeProvider theme={theme}>
-        <Container
-          className={`${classes.mainContainer} ${classes.layout}`}
-          disableGutters
-        >
-          <Grid
-            className={classes.layout}
-            container
-            alignContent="center"
-            justify="space-between"
-          >
+        <Container className={`${classes.mainContainer} ${classes.layout}`} disableGutters>
+          <Grid className={classes.layout} container alignContent="center" justify="space-between">
             <Grid
               item
               xs={12}
@@ -204,40 +176,30 @@ function App() {
               container
               justify="center"
             >
-              <ButtonGroup
-                variant="text"
-                size="small"
-                className={classes.languageSwitch}
-              >
+              <ButtonGroup variant="text" size="small" className={classes.languageSwitch}>
                 <Button
                   onClick={() => setLang("en")}
-                  className={`${classes.pointer} ${classes.link} ${
-                    classes.languageBtn
-                  } ${lang === "en" && classes.languageBtnActive}`}
+                  className={`${classes.pointer} ${classes.link} ${classes.languageBtn} ${
+                    lang === "en" && classes.languageBtnActive
+                  }`}
                 >
                   EN
                 </Button>
                 <Button
                   onClick={() => setLang("es")}
-                  className={`${classes.pointer} ${classes.link} ${
-                    classes.languageBtn
-                  } ${lang === "es" && classes.languageBtnActive}`}
+                  className={`${classes.pointer} ${classes.link} ${classes.languageBtn} ${
+                    lang === "es" && classes.languageBtnActive
+                  }`}
                 >
                   ES
                 </Button>
               </ButtonGroup>
-              <Typography
-                variant="h1"
-                className={isItSmallDevice && classes.h1Mobile}
-              >
+              <Typography variant="h1" className={isItSmallDevice && classes.h1Mobile}>
                 <span className={classes.firstName}>Laura</span>
                 <br />
                 Pascual
               </Typography>
-              <Typography
-                variant="h2"
-                className={isItSmallDevice && classes.h2Mobile}
-              >
+              <Typography variant="h2" className={isItSmallDevice && classes.h2Mobile}>
                 {translations[lang].subtitle}
               </Typography>
               <Typography variant="body1">
@@ -268,7 +230,14 @@ function App() {
                   Linkedin
                 </Link>
               </Typography>
-              {isItSmallTablet && <Link href="#bottom-panel" className={`${classes.pointer} ${classes.expandMoreIcon}`}><ExpandMoreIcon/></Link>}
+              {isItSmallTablet && (
+                <Link
+                  href="#bottom-panel"
+                  className={`${classes.pointer} ${classes.expandMoreIcon}`}
+                >
+                  <ExpandMoreIcon />
+                </Link>
+              )}
               <div className="leftPanel-bg"></div>
             </Grid>
             <Grid
@@ -281,10 +250,26 @@ function App() {
               justify="flex-end"
               id="bottom-panel"
             >
-              <ButtonGroup orientation="vertical" fullWidth className={`${isItTablet && classes.btnGroupMobile}`}>
+              <ButtonGroup
+                orientation="vertical"
+                fullWidth
+                className={`${isItTablet && classes.btnGroupMobile}`}
+              >
                 <Button
                   variant="text"
-                  className={`${classes.btn} ${classes.pointer} ${isItSmallTablet && classes.btnMobile}`}
+                  className={`${classes.btn} ${classes.pointer} ${
+                    isItSmallTablet && classes.btnMobile
+                  }`}
+                  href="https://cristina-escritora.vercel.app/"
+                  target="_blank"
+                >
+                  Frontity site
+                </Button>
+                <Button
+                  variant="text"
+                  className={`${classes.btn} ${classes.pointer} ${
+                    isItSmallTablet && classes.btnMobile
+                  }`}
                   href="https://time4time-demo.netlify.com/"
                   target="_blank"
                 >
@@ -292,7 +277,9 @@ function App() {
                 </Button>
                 <Button
                   variant="text"
-                  className={`${classes.btn} ${classes.pointer} ${isItSmallTablet && classes.btnMobile}`}
+                  className={`${classes.btn} ${classes.pointer} ${
+                    isItSmallTablet && classes.btnMobile
+                  }`}
                   href="https://textures-muidemo.netlify.com/"
                   target="_blank"
                 >
@@ -301,7 +288,9 @@ function App() {
                 </Button>
                 <Button
                   variant="text"
-                  className={`${classes.btn} ${classes.pointer} ${isItSmallTablet && classes.btnMobile}`}
+                  className={`${classes.btn} ${classes.pointer} ${
+                    isItSmallTablet && classes.btnMobile
+                  }`}
                   href="https://svg-css-animations.netlify.com/"
                   target="_blank"
                 >
