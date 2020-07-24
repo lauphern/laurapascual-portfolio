@@ -1,12 +1,11 @@
-import React, { useState } from 'react';
-import { Typography, ButtonGroup, Button, Link, Grid, Chip } from "@material-ui/core";
+import React, { useState } from "react";
+import { Typography, ButtonGroup, Button, Link, Grid, Chip, Box } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
 import { useBioStyles } from "../style/useStyles";
 
 import { translations } from "../data/translations";
 import { hardSkills } from "../data/hardSkills";
-
 
 const Bio = props => {
   const [lang, setLang] = useState("es");
@@ -47,6 +46,15 @@ const Bio = props => {
       <Typography variant="h2" className={props.isItSmallDevice && classes.h2Mobile}>
         {translations[lang].subtitle}
       </Typography>
+      <Box className={classes.skillsContainer}>
+        {hardSkills.map(skillName => (
+          <Chip
+            label={skillName}
+            size="small"
+            className={`${classes.hardSkill} ${classes.link} ${classes.pointer}`}
+          />
+        ))}
+      </Box>
       <Typography variant="body1">
         <Link
           className={`${classes.pointer} ${classes.link}`}
@@ -85,4 +93,4 @@ const Bio = props => {
   );
 };
 
-export default Bio
+export default Bio;

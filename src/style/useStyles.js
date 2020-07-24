@@ -16,14 +16,16 @@ export const useBioStyles = makeStyles(() => ({
     color: "white",
     height: "100vh",
     position: "relative",
-    padding: "0 5vw",
+    padding: "4em 5vw",
     top: 0,
     left: 0,
     flexDirection: "column",
+    flexWrap: "nowrap"
   },
   stacksMobile: {
     minWidth: "100%",
-    height: "100vh",
+    minHeight: "100vh",
+    height: "100%"
   },
   languageSwitch: {
     position: "absolute",
@@ -69,6 +71,16 @@ export const useBioStyles = makeStyles(() => ({
       fontSize: "4rem",
     },
   },
+  skillsContainer: {
+    margin: "1em 0",
+    maxWidth: "90vw",
+  },
+  hardSkill: {
+    backgroundColor: "rgba(0, 0, 0, 0.04)",
+    color: "#b5f9ff",
+    borderColor: "#b5f9ff",
+    margin: "0 5px 5px 0",
+  }
 }));
 
 export const useLinksStyles = makeStyles(() => ({
