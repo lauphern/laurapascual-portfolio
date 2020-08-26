@@ -4,6 +4,8 @@ import useMediaQuery from "@material-ui/core/useMediaQuery";
 import { Container, Grid } from "@material-ui/core";
 import "./App.scss";
 
+import { Switch, Route } from "react-router-dom";
+import Resume from "./pages/Resume";
 import Bio from "./components/Bio";
 import Links from "./components/Links";
 
@@ -27,14 +29,26 @@ function App() {
 
   return (
     <div className="App">
-      <div className="hover-container"></div>
       <ThemeProvider theme={theme}>
-        <Container className={`${classes.mainContainer} ${classes.layout}`} disableGutters>
-          <Grid className={classes.layout} container alignContent="center" justify="space-between">
-            <Bio isItSmallDevice={isItSmallDevice} isItSmallTablet={isItSmallTablet} />
-            <Links isItSmallTablet={isItSmallTablet} isItTablet={isItTablet} />
-          </Grid>
-        </Container>
+        <Switch>
+          <Route exact path="/">
+            <div className="hover-container"></div>
+            <Container className={`${classes.mainContainer} ${classes.layout}`} disableGutters>
+              <Grid
+                className={classes.layout}
+                container
+                alignContent="center"
+                justify="space-between"
+              >
+                <Bio isItSmallDevice={isItSmallDevice} isItSmallTablet={isItSmallTablet} />
+                <Links isItSmallTablet={isItSmallTablet} isItTablet={isItTablet} />
+              </Grid>
+            </Container>
+          </Route>
+          <Route path="/resume">
+            <Resume />
+          </Route>
+        </Switch>
       </ThemeProvider>
     </div>
   );
