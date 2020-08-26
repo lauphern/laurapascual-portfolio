@@ -119,7 +119,6 @@ const Bio = props => {
           <ExpandMoreIcon />
         </Link>
       )}
-      <div className="leftPanel-bg"></div>
     </Grid>
   );
 };
