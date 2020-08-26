@@ -134,6 +134,8 @@ export const useLinksStyles = makeStyles(() => ({
     "&:hover": {
       fontWeight: 400,
       lineHeight: 3,
+      backgroundColor: "#623CEA",
+      color: "white",
     },
   },
   btnDisabled: {
