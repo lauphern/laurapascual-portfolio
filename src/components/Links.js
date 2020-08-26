@@ -13,7 +13,7 @@ const Links = props => {
       container
       xs={12}
       sm={6}
-      className={props.isItSmallTablet && classes.stacksMobile}
+      className={`${classes.rightPanel} ${props.isItSmallTablet && classes.stacksMobile}`}
       alignContent="center"
       justify="flex-end"
       id="bottom-panel"

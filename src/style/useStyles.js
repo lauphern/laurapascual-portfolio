@@ -128,6 +128,9 @@ export const useBioStyles = makeStyles(() => ({
 }));
 
 export const useLinksStyles = makeStyles(() => ({
+  rightPanel: {
+    backgroundColor: "white",
+  },
   btn: {
     transition: "0.1s",
 
@@ -161,4 +164,11 @@ export const useLinksStyles = makeStyles(() => ({
     minWidth: "100%",
     height: "100vh",
   },
+}));
+
+
+export const useResumeStyles = makeStyles(() => ({
+  resumeContainer: {
+    background: "yellow"
+  }
 }));

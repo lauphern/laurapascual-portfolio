@@ -2,6 +2,14 @@ html {
 	scroll-behavior: smooth;
 }
 
+body {
+	background-color: #B0BABF;
+	// background-color: #E9ECED;
+	// background-color: #d2d8da;
+	// background-color: #bbc4c7;
+	// background-color: #a6afb3;
+}
+
 .hover-container {
   position: absolute;
   top: 0;
@@ -9,20 +17,6 @@ html {
   min-height: 100vh;
   min-width: 100vw;
   z-index: -1;
-}
-
-.leftPanel-bg {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	left: 0;
-	// background-color: #E9ECED;
-	// background-color: #d2d8da;
-	// background-color: #bbc4c7;
-	// background-color: #a6afb3;
-	background-color: #B0BABF;
-	z-index: -2;
 }
 
 
