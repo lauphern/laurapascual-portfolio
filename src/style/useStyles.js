@@ -186,14 +186,14 @@ export const useResumeStyles = makeStyles(() => ({
   },
   resumeContainer: {
     background: "white",
-    padding: "2.5rem 5rem 0",
+    padding: "5rem 5rem 0",
     width: "70vw",
     marginTop: "2.5rem",
     boxSizing: "border-box",
     height: "calc(70vh - 2.5rem)",
     overflow: "scroll",
-    // position: "absolute",
-    // bottom: 0,
+    position: "relative",
+    bottom: 0,
     borderRadius: "0.5rem 0.5rem 0 0",
     boxShadow: "0px 50px 10px 3px rgba(0, 0, 0, 0.2)",
   }
