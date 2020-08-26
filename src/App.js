@@ -9,7 +9,6 @@ import Resume from "./pages/Resume";
 import { theme } from "./style/theme";
 
 function App() {
-
   return (
     <div className="App">
       <ThemeProvider theme={theme}>

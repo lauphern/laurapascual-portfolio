@@ -28,7 +28,7 @@ export const theme = createMuiTheme({
     },
     h2: {
       fontSize: "2rem",
-      fontWeight: 300,
+      fontWeight: 400,
     },
   },
 });
