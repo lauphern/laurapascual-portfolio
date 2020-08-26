@@ -15,6 +15,7 @@ export const useAppStyles = makeStyles(() => ({
     color: "#623CEA",
     transition: "0.1s",
     boxShadow: "2px 2px 3px 0px rgba(0, 0, 0, 0.2)",
+    backgroundColor: "rgba(255,255,255, 0.15)",
 
     "&:hover": {
       borderColor: "#FEFE33",
@@ -61,11 +62,15 @@ export const useBioStyles = makeStyles(() => ({
     },
   },
   languageBtn: {
-    fontWeight: 900,
+    fontWeight: 400,
+
+    "&:hover": {
+      backgroundColor: "rgba(255,255,255, 0.15)",
+    }
   },
   languageBtnActive: {
     color: "#FEFE33",
-    backgroundColor: "rgba(0, 0, 0, 0.04)",
+    backgroundColor: "rgba(255,255,255, 0.15)",
   },
   h1Mobile: {
     fontSize: "4rem",
@@ -78,6 +83,9 @@ export const useBioStyles = makeStyles(() => ({
   h2Mobile: {
     fontSize: "1.75rem",
   },
+  type: {
+    animation: "typeFlicker 1s step-end infinite",
+  },
   expandMoreIcon: {
     alignSelf: "center",
     position: "absolute",
@@ -88,14 +96,15 @@ export const useBioStyles = makeStyles(() => ({
     },
   },
   skillsContainer: {
-    // margin: "1rem 0 calc(1rem - 5px) 0",
     maxWidth: "90vw",
   },
   hardSkill: {
-    backgroundColor: "rgba(0, 0, 0, 0.04)",
-    color: "#623CEA",
-    borderColor: "#623CEA",
+    backgroundColor: "rgba(255,255,255, 0.15)",
+    color: "white",
+    // color: "#623CEA",
     margin: "0 5px 5px 0",
+    // fontWeight: 600,
+    // fontSize: "0.9rem",
   },
   horizontalDivider: {
     width: "inherit",
@@ -117,9 +126,6 @@ export const useBioStyles = makeStyles(() => ({
     height: "2rem"
   },
 }));
-
-//#b5f9f-f
-//623CE-A
 
 export const useLinksStyles = makeStyles(() => ({
   btn: {
@@ -147,7 +153,7 @@ export const useLinksStyles = makeStyles(() => ({
     },
   },
   btnMobile: {
-    borderBottom: "1px solid #E9ECED !important",
+    borderBottom: "1px solid #bbc4c7 !important",
   },
   stacksMobile: {
     minWidth: "100%",

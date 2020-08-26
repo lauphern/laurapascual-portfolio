@@ -15,6 +15,8 @@ import {
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import DescriptionSharpIcon from "@material-ui/icons/DescriptionSharp";
 
+import Typewriter from "../components/Typewriter";
+
 import { useAppStyles } from "../style/useStyles";
 import { useBioStyles } from "../style/useStyles";
 
@@ -22,6 +24,8 @@ import { translations } from "../data/translations";
 import { hardSkills } from "../data/hardSkills";
 
 const Bio = props => {
+  //TODO
+  //auto (i18n)
   const [lang, setLang] = useState("es");
   const bioClasses = useBioStyles();
   const appClasses = useAppStyles();
@@ -53,15 +57,10 @@ const Bio = props => {
           ES
         </Button>
       </ButtonGroup>
-      <Typography variant="h1" className={props.isItSmallDevice && bioClasses.h1Mobile}>
-        <span className={bioClasses.firstName}>Laura</span>
-        <br />
-        Pascual
-      </Typography>
+      <Typewriter isItSmallDevice={props.isItSmallDevice}/>
       <Typography variant="h2" className={props.isItSmallDevice && bioClasses.h2Mobile}>
         {translations[lang].subtitle}
       </Typography>
-      {/* <Divider variant="fullWidth" className={bioClasses.horizontalDivider} /> */}
       <Container className={bioClasses.socialContainer} disableGutters>
         <Tooltip title={translations[lang].cvTooltip} arrow>
           <Button
@@ -74,7 +73,7 @@ const Bio = props => {
             <DescriptionSharpIcon /> {translations[lang].cv}
           </Button>
         </Tooltip>
-        <Divider orientation="vertical" flexItem className={bioClasses.verticalDivider}/>
+        <Divider orientation="vertical" flexItem className={bioClasses.verticalDivider} />
         <Typography variant="body1">
           <Link
             className={`${bioClasses.pointer} ${bioClasses.link}`}
@@ -83,7 +82,7 @@ const Bio = props => {
             Email
           </Link>{" "}
         </Typography>
-        <Divider orientation="vertical" flexItem className={bioClasses.verticalDivider}/>
+        <Divider orientation="vertical" flexItem className={bioClasses.verticalDivider} />
         <Typography variant="body1">
           <Link
             className={`${bioClasses.pointer} ${bioClasses.link}`}
@@ -94,7 +93,7 @@ const Bio = props => {
             Github
           </Link>
         </Typography>
-        <Divider orientation="vertical" flexItem className={bioClasses.verticalDivider}/>
+        <Divider orientation="vertical" flexItem className={bioClasses.verticalDivider} />
         <Typography variant="body1">
           <Link
             className={`${bioClasses.pointer} ${bioClasses.link}`}
@@ -106,7 +105,6 @@ const Bio = props => {
           </Link>
         </Typography>
       </Container>
-      {/* <Divider variant="fullWidth" className={bioClasses.horizontalDivider} /> */}
       <Box className={bioClasses.skillsContainer}>
         {hardSkills.map(skillName => (
           <Chip

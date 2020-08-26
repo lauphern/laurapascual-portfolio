@@ -18,11 +18,23 @@ html {
 	top: 0;
 	left: 0;
 	// background-color: #E9ECED;
-	background-color: #d2d8da;
+	// background-color: #d2d8da;
 	// background-color: #bbc4c7;
 	// background-color: #a6afb3;
+	background-color: #B0BABF;
 	z-index: -2;
 }
+
+
+@keyframes typeFlicker {
+  0% {
+		color: #623CEA;
+	}
+  50% {
+		color: white;
+	}
+}
+
 
 @media (min-device-width: 1200px) {
 	.hover-container {
