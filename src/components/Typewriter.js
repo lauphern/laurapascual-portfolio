@@ -35,7 +35,7 @@ const Typewriter = props => {
   }, [name, lastName]);
 
   return (
-    <Typography variant="h1" className={props.isItSmallDevice && bioClasses.h1Mobile}>
+    <Typography variant="h1" align="left" className={props.isItSmallDevice && bioClasses.h1Mobile}>
       <span className={bioClasses.firstName}>{name}{i < fullName["0"].length && <Type />}</span>
       <br />
       {lastName ? lastName : <span>&nbsp;</span>}

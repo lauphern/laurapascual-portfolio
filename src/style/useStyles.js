@@ -168,8 +168,31 @@ export const useLinksStyles = makeStyles(() => ({
 
 
 export const useResumeStyles = makeStyles(() => ({
+  headerContainer: {
+    width: "100vw",
+    display: "flex",
+    alignItems: "center",
+    flexDirection: "column",
+    paddingTop: "2.5rem",
+    maxHeight: "30vh",
+    boxSizing: "border-box",
+    color: "white",
+  },
+  headerText: {
+    display: "flex",
+    alignItems: "flex-start",
+    flexDirection: "column",
+    width: "max-content",
+  },
   resumeContainer: {
     background: "white",
+    paddingTop: "2.5rem",
+    marginTop: "2.5rem",
+    boxSizing: "border-box",
+    height: "calc(70vh - 2.5rem)",
+    overflow: "scroll",
+    // position: "absolute",
+    // bottom: 0,
     borderRadius: "0.5rem 0.5rem 0 0",
     boxShadow: "0px 50px 10px 3px rgba(0, 0, 0, 0.2)",
   }

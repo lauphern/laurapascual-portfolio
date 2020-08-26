@@ -3,6 +3,8 @@ import { Container } from "@material-ui/core";
 import SwaggerUI from "swagger-ui-react";
 import "swagger-ui-react/swagger-ui.css";
 
+import Header from "../components/Header";
+
 import { useResumeStyles } from "../style/useStyles";
 
 //TODO
@@ -14,9 +16,17 @@ const Resume = props => {
   const classes = useResumeStyles();
 
   return (
-    <Container className={classes.resumeContainer}>
-      <SwaggerUI url="https://resume-api.vercel.app/definition.yaml" />
-    </Container>
+    <>
+      {/* TODO the lang prop is only temporary */}
+      <Container className={classes.headerContainer} disableGutters>
+        <Container className={classes.headerText} disableGutters>
+          <Header lang="es" />
+        </Container>
+      </Container>
+      <Container className={classes.resumeContainer}>
+        <SwaggerUI url="https://resume-api.vercel.app/definition.yaml" />
+      </Container>
+    </>
   );
 };
 
