@@ -53,6 +53,7 @@ const Bio = props => {
       <Divider variant="fullWidth" className={bioClasses.divider}/>
       <Tooltip title={translations[lang].cvTooltip} arrow>
         <Button
+          variant="outlined"
           className={`${bioClasses.pointer} ${appClasses.routerBtn}`}
           component={RouterLink}
           to="/resume"

@@ -10,10 +10,17 @@ export const useAppStyles = makeStyles(() => ({
     pointerEvents: "none",
   },
   routerBtn: {
-    backgroundColor: "#b5f9ff",
+    border: "2px solid #623CEA",
+    fontWeight: 600,
+    color: "#623CEA",
+    transition: "0.1s",
+    boxShadow: "2px 2px 3px 0px rgba(0, 0, 0, 0.2)",
 
     "&:hover": {
-      backgroundColor: "yellow",
+      borderColor: "#FEFE33",
+      color: "#FEFE33",
+      backgroundColor: "inherit",
+      boxShadow: "inset 1px 1px 3px rgba(0, 0, 0, 0.2)",
     },
   }
 }));
@@ -46,10 +53,10 @@ export const useBioStyles = makeStyles(() => ({
   },
   link: {
     transition: "0.1s",
-    color: "#b5f9ff",
+    color: "#623CEA",
 
     "&:hover": {
-      color: "yellow",
+      color: "#FEFE33",
       textDecoration: "none",
     },
   },
@@ -57,7 +64,7 @@ export const useBioStyles = makeStyles(() => ({
     fontWeight: 900,
   },
   languageBtnActive: {
-    color: "yellow",
+    color: "#FEFE33",
     backgroundColor: "rgba(0, 0, 0, 0.04)",
   },
   h1Mobile: {
@@ -86,8 +93,8 @@ export const useBioStyles = makeStyles(() => ({
   },
   hardSkill: {
     backgroundColor: "rgba(0, 0, 0, 0.04)",
-    color: "#b5f9ff",
-    borderColor: "#b5f9ff",
+    color: "#623CEA",
+    borderColor: "#623CEA",
     margin: "0 5px 5px 0",
   },
   divider: {
@@ -95,6 +102,9 @@ export const useBioStyles = makeStyles(() => ({
     margin: "1rem 0",
   }
 }));
+
+//#b5f9f-f
+//623CE-A
 
 export const useLinksStyles = makeStyles(() => ({
   btn: {
@@ -122,7 +132,7 @@ export const useLinksStyles = makeStyles(() => ({
     },
   },
   btnMobile: {
-    borderBottom: "1px solid #bbc4c7 !important",
+    borderBottom: "1px solid #E9ECED !important",
   },
   stacksMobile: {
     minWidth: "100%",
