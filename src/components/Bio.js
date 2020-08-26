@@ -1,6 +1,17 @@
 import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
-import { Typography, ButtonGroup, Button, Link, Grid, Chip, Box, Tooltip, Divider } from "@material-ui/core";
+import {
+  Container,
+  Typography,
+  ButtonGroup,
+  Button,
+  Link,
+  Grid,
+  Chip,
+  Box,
+  Tooltip,
+  Divider,
+} from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import DescriptionSharpIcon from "@material-ui/icons/DescriptionSharp";
 
@@ -50,18 +61,52 @@ const Bio = props => {
       <Typography variant="h2" className={props.isItSmallDevice && bioClasses.h2Mobile}>
         {translations[lang].subtitle}
       </Typography>
-      <Divider variant="fullWidth" className={bioClasses.divider}/>
-      <Tooltip title={translations[lang].cvTooltip} arrow>
-        <Button
-          variant="outlined"
-          className={`${bioClasses.pointer} ${appClasses.routerBtn}`}
-          component={RouterLink}
-          to="/resume"
-          size="small"
-        >
-          <DescriptionSharpIcon /> {translations[lang].cv}
-        </Button>
-      </Tooltip>
+      {/* <Divider variant="fullWidth" className={bioClasses.horizontalDivider} /> */}
+      <Container className={bioClasses.socialContainer} disableGutters>
+        <Tooltip title={translations[lang].cvTooltip} arrow>
+          <Button
+            variant="outlined"
+            className={`${bioClasses.pointer} ${appClasses.routerBtn}`}
+            component={RouterLink}
+            to="/resume"
+            size="small"
+          >
+            <DescriptionSharpIcon /> {translations[lang].cv}
+          </Button>
+        </Tooltip>
+        <Divider orientation="vertical" flexItem className={bioClasses.verticalDivider}/>
+        <Typography variant="body1">
+          <Link
+            className={`${bioClasses.pointer} ${bioClasses.link}`}
+            href="mailto:laura.pascual.h@hotmail.com"
+          >
+            Email
+          </Link>{" "}
+        </Typography>
+        <Divider orientation="vertical" flexItem className={bioClasses.verticalDivider}/>
+        <Typography variant="body1">
+          <Link
+            className={`${bioClasses.pointer} ${bioClasses.link}`}
+            href="https://github.com/lauphern"
+            target="_blank"
+            rel="noopener"
+          >
+            Github
+          </Link>
+        </Typography>
+        <Divider orientation="vertical" flexItem className={bioClasses.verticalDivider}/>
+        <Typography variant="body1">
+          <Link
+            className={`${bioClasses.pointer} ${bioClasses.link}`}
+            href={translations[lang].linkedin}
+            target="_blank"
+            rel="noopener"
+          >
+            Linkedin
+          </Link>
+        </Typography>
+      </Container>
+      {/* <Divider variant="fullWidth" className={bioClasses.horizontalDivider} /> */}
       <Box className={bioClasses.skillsContainer}>
         {hardSkills.map(skillName => (
           <Chip
@@ -71,34 +116,6 @@ const Bio = props => {
           />
         ))}
       </Box>
-      <Typography variant="body1">
-        <Link
-          className={`${bioClasses.pointer} ${bioClasses.link}`}
-          href="mailto:laura.pascual.h@hotmail.com"
-        >
-          Email
-        </Link>{" "}
-      </Typography>
-      <Typography variant="body1">
-        <Link
-          className={`${bioClasses.pointer} ${bioClasses.link}`}
-          href="https://github.com/lauphern"
-          target="_blank"
-          rel="noopener"
-        >
-          Github
-        </Link>
-      </Typography>
-      <Typography variant="body1">
-        <Link
-          className={`${bioClasses.pointer} ${bioClasses.link}`}
-          href={translations[lang].linkedin}
-          target="_blank"
-          rel="noopener"
-        >
-          Linkedin
-        </Link>
-      </Typography>
       {props.isItSmallTablet && (
         <Link href="#bottom-panel" className={`${bioClasses.pointer} ${bioClasses.expandMoreIcon}`}>
           <ExpandMoreIcon />

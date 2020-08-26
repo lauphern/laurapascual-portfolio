@@ -88,7 +88,7 @@ export const useBioStyles = makeStyles(() => ({
     },
   },
   skillsContainer: {
-    margin: "1rem 0 calc(1rem - 5px) 0",
+    // margin: "1rem 0 calc(1rem - 5px) 0",
     maxWidth: "90vw",
   },
   hardSkill: {
@@ -97,10 +97,25 @@ export const useBioStyles = makeStyles(() => ({
     borderColor: "#623CEA",
     margin: "0 5px 5px 0",
   },
-  divider: {
+  horizontalDivider: {
     width: "inherit",
     margin: "1rem 0",
-  }
+  },
+  socialContainer: {
+    display: "inline-flex",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    alignItems: "center",
+    margin: "2rem 0",
+
+    "& > *": {
+      margin: "0.5rem 0"
+    }
+  },
+  verticalDivider: {
+    margin: "0 1rem",
+    height: "2rem"
+  },
 }));
 
 //#b5f9f-f
