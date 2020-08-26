@@ -9,10 +9,18 @@ export const useAppStyles = makeStyles(() => ({
     position: "absolute",
     pointerEvents: "none",
   },
+  routerBtn: {
+    backgroundColor: "#b5f9ff",
+
+    "&:hover": {
+      backgroundColor: "yellow",
+    },
+  }
 }));
 
 export const useBioStyles = makeStyles(() => ({
   leftPanel: {
+    alignItems: "flex-start",
     color: "white",
     height: "100vh",
     position: "relative",
@@ -42,6 +50,7 @@ export const useBioStyles = makeStyles(() => ({
 
     "&:hover": {
       color: "yellow",
+      textDecoration: "none",
     },
   },
   languageBtn: {
@@ -72,7 +81,7 @@ export const useBioStyles = makeStyles(() => ({
     },
   },
   skillsContainer: {
-    margin: "1em 0",
+    margin: "1rem 0 calc(1rem - 5px) 0",
     maxWidth: "90vw",
   },
   hardSkill: {
@@ -80,6 +89,10 @@ export const useBioStyles = makeStyles(() => ({
     color: "#b5f9ff",
     borderColor: "#b5f9ff",
     margin: "0 5px 5px 0",
+  },
+  divider: {
+    width: "inherit",
+    margin: "1rem 0",
   }
 }));
 

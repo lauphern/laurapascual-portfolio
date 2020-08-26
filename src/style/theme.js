@@ -8,6 +8,11 @@ export const theme = createMuiTheme({
         fontSize: "2rem",
       },
     },
+    MuiTooltip: {
+      tooltip: {
+        fontSize: "0.8125rem",
+      }
+    }
   },
   typography: {
     fontFamily: ["Source Code Pro", "monospace"].join(","),

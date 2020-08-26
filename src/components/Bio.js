@@ -1,7 +1,10 @@
 import React, { useState } from "react";
-import { Typography, ButtonGroup, Button, Link, Grid, Chip, Box } from "@material-ui/core";
+import { Link as RouterLink } from "react-router-dom";
+import { Typography, ButtonGroup, Button, Link, Grid, Chip, Box, Tooltip, Divider } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+import DescriptionSharpIcon from "@material-ui/icons/DescriptionSharp";
 
+import { useAppStyles } from "../style/useStyles";
 import { useBioStyles } from "../style/useStyles";
 
 import { translations } from "../data/translations";
@@ -9,55 +12,67 @@ import { hardSkills } from "../data/hardSkills";
 
 const Bio = props => {
   const [lang, setLang] = useState("es");
-  const classes = useBioStyles();
+  const bioClasses = useBioStyles();
+  const appClasses = useAppStyles();
 
   return (
     <Grid
       item
       xs={12}
       sm={6}
-      className={`${classes.leftPanel} ${props.isItSmallTablet && classes.stacksMobile}`}
+      className={`${bioClasses.leftPanel} ${props.isItSmallTablet && bioClasses.stacksMobile}`}
       container
       justify="center"
     >
-      <ButtonGroup variant="text" size="small" className={classes.languageSwitch}>
+      <ButtonGroup variant="text" size="small" className={bioClasses.languageSwitch}>
         <Button
           onClick={() => setLang("en")}
-          className={`${classes.pointer} ${classes.link} ${classes.languageBtn} ${
-            lang === "en" && classes.languageBtnActive
+          className={`${bioClasses.pointer} ${bioClasses.link} ${bioClasses.languageBtn} ${
+            lang === "en" && bioClasses.languageBtnActive
           }`}
         >
           EN
         </Button>
         <Button
           onClick={() => setLang("es")}
-          className={`${classes.pointer} ${classes.link} ${classes.languageBtn} ${
-            lang === "es" && classes.languageBtnActive
+          className={`${bioClasses.pointer} ${bioClasses.link} ${bioClasses.languageBtn} ${
+            lang === "es" && bioClasses.languageBtnActive
           }`}
         >
           ES
         </Button>
       </ButtonGroup>
-      <Typography variant="h1" className={props.isItSmallDevice && classes.h1Mobile}>
-        <span className={classes.firstName}>Laura</span>
+      <Typography variant="h1" className={props.isItSmallDevice && bioClasses.h1Mobile}>
+        <span className={bioClasses.firstName}>Laura</span>
         <br />
         Pascual
       </Typography>
-      <Typography variant="h2" className={props.isItSmallDevice && classes.h2Mobile}>
+      <Typography variant="h2" className={props.isItSmallDevice && bioClasses.h2Mobile}>
         {translations[lang].subtitle}
       </Typography>
-      <Box className={classes.skillsContainer}>
+      <Divider variant="fullWidth" className={bioClasses.divider}/>
+      <Tooltip title={translations[lang].cvTooltip} arrow>
+        <Button
+          className={`${bioClasses.pointer} ${appClasses.routerBtn}`}
+          component={RouterLink}
+          to="/resume"
+          size="small"
+        >
+          <DescriptionSharpIcon /> {translations[lang].cv}
+        </Button>
+      </Tooltip>
+      <Box className={bioClasses.skillsContainer}>
         {hardSkills.map(skillName => (
           <Chip
             label={skillName}
             size="small"
-            className={`${classes.hardSkill} ${classes.link} ${classes.pointer}`}
+            className={`${bioClasses.hardSkill} ${bioClasses.link} ${bioClasses.pointer}`}
           />
         ))}
       </Box>
       <Typography variant="body1">
         <Link
-          className={`${classes.pointer} ${classes.link}`}
+          className={`${bioClasses.pointer} ${bioClasses.link}`}
           href="mailto:laura.pascual.h@hotmail.com"
         >
           Email
@@ -65,7 +80,7 @@ const Bio = props => {
       </Typography>
       <Typography variant="body1">
         <Link
-          className={`${classes.pointer} ${classes.link}`}
+          className={`${bioClasses.pointer} ${bioClasses.link}`}
           href="https://github.com/lauphern"
           target="_blank"
           rel="noopener"
@@ -75,7 +90,7 @@ const Bio = props => {
       </Typography>
       <Typography variant="body1">
         <Link
-          className={`${classes.pointer} ${classes.link}`}
+          className={`${bioClasses.pointer} ${bioClasses.link}`}
           href={translations[lang].linkedin}
           target="_blank"
           rel="noopener"
@@ -84,7 +99,7 @@ const Bio = props => {
         </Link>
       </Typography>
       {props.isItSmallTablet && (
-        <Link href="#bottom-panel" className={`${classes.pointer} ${classes.expandMoreIcon}`}>
+        <Link href="#bottom-panel" className={`${bioClasses.pointer} ${bioClasses.expandMoreIcon}`}>
           <ExpandMoreIcon />
         </Link>
       )}
