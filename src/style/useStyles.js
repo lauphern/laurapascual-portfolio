@@ -169,6 +169,8 @@ export const useLinksStyles = makeStyles(() => ({
 
 export const useResumeStyles = makeStyles(() => ({
   resumeContainer: {
-    background: "yellow"
+    background: "white",
+    borderRadius: "0.5rem 0.5rem 0 0",
+    boxShadow: "0px 50px 10px 3px rgba(0, 0, 0, 0.2)",
   }
 }));

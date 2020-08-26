@@ -15,7 +15,7 @@ import {
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import DescriptionSharpIcon from "@material-ui/icons/DescriptionSharp";
 
-import Typewriter from "../components/Typewriter";
+import Header from "../components/Header";
 
 import { useAppStyles } from "../style/useStyles";
 import { useBioStyles } from "../style/useStyles";
@@ -57,10 +57,7 @@ const Bio = props => {
           ES
         </Button>
       </ButtonGroup>
-      <Typewriter isItSmallDevice={props.isItSmallDevice}/>
-      <Typography variant="h2" className={props.isItSmallDevice && bioClasses.h2Mobile}>
-        {translations[lang].subtitle}
-      </Typography>
+      <Header lang={lang}/>
       <Container className={bioClasses.socialContainer} disableGutters>
         <Tooltip title={translations[lang].cvTooltip} arrow>
           <Button
