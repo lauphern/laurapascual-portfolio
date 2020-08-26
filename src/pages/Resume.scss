@@ -1,0 +1,39 @@
+.swagger-ui {
+
+  .info {
+    margin-top: 0;
+
+    .title {
+      color: #623CEA;
+    }
+  }
+
+  .opblock.opblock-get {
+    border-color: #623CEA;
+    background-color: rgba(98, 60, 234, 0.1);
+
+    .opblock-summary {
+      border-color: #623CEA;
+
+      &-method {
+        background-color: #623CEA;
+      }
+    }
+
+    .tab-header {
+      .tab-item.active {
+        h4 {
+          span:after {
+            background-color: #FEFE33;
+          }
+        }
+      }
+    }
+  }
+
+  .btn.execute {
+    background-color: #FEFE33;
+    border-color: #FEFE33;
+    color: #3b4151
+  }
+}

@@ -186,7 +186,8 @@ export const useResumeStyles = makeStyles(() => ({
   },
   resumeContainer: {
     background: "white",
-    paddingTop: "2.5rem",
+    padding: "2.5rem 5rem 0",
+    width: "70vw",
     marginTop: "2.5rem",
     boxSizing: "border-box",
     height: "calc(70vh - 2.5rem)",

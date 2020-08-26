@@ -5,6 +5,7 @@ import "swagger-ui-react/swagger-ui.css";
 
 import Header from "../components/Header";
 
+import "./Resume.scss";
 import { useResumeStyles } from "../style/useStyles";
 
 //TODO
