@@ -4,6 +4,7 @@ export const useAppStyles = makeStyles(() => ({
   layout: {
     minHeight: "100vh",
     width: "100vw",
+    flexWrap: "nowrap",
   },
   mainContainer: {
     position: "absolute",
@@ -28,6 +29,7 @@ export const useAppStyles = makeStyles(() => ({
 
 export const useBioStyles = makeStyles(() => ({
   leftPanel: {
+    minWidth: "50vw",
     alignItems: "flex-start",
     color: "white",
     height: "100vh",
@@ -130,6 +132,8 @@ export const useBioStyles = makeStyles(() => ({
 export const useLinksStyles = makeStyles(() => ({
   rightPanel: {
     backgroundColor: "white",
+    minWidth: "50vw",
+    height: "100vh"
   },
   btn: {
     transition: "0.1s",
@@ -158,7 +162,7 @@ export const useLinksStyles = makeStyles(() => ({
     },
   },
   btnMobile: {
-    borderBottom: "1px solid #bbc4c7 !important",
+    borderBottom: "1px solid #404a4f !important",
   },
   stacksMobile: {
     minWidth: "100%",
