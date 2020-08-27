@@ -4,19 +4,19 @@
     margin-top: 0;
 
     .title {
-      color: #623CEA;
+      color: var(--primary);
     }
   }
 
   .opblock.opblock-get {
-    border-color: #623CEA;
+    border-color: var(--primary);
     background-color: rgba(98, 60, 234, 0.1);
 
     .opblock-summary {
-      border-color: #623CEA;
+      border-color: var(--primary);
 
       &-method {
-        background-color: #623CEA;
+        background-color: var(--primary);
       }
     }
 
@@ -24,7 +24,7 @@
       .tab-item.active {
         h4 {
           span:after {
-            background-color: #FEFE33;
+            background-color: var(--secondary);
           }
         }
       }
@@ -32,8 +32,8 @@
   }
 
   .btn.execute {
-    background-color: #FEFE33;
-    border-color: #FEFE33;
+    background-color: var(--secondary);
+    border-color: var(--secondary);
     color: #3b4151
   }
 }

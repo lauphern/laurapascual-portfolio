@@ -11,16 +11,16 @@ export const useAppStyles = makeStyles(() => ({
     pointerEvents: "none",
   },
   routerBtn: {
-    border: "2px solid #623CEA",
+    border: "2px solid var(--primary)",
     fontWeight: 600,
-    color: "#623CEA",
+    color: "var(--primary)",
     transition: "0.1s",
     boxShadow: "2px 2px 3px 0px rgba(0, 0, 0, 0.2)",
     backgroundColor: "rgba(255,255,255, 0.15)",
 
     "&:hover": {
-      borderColor: "#FEFE33",
-      color: "#FEFE33",
+      borderColor: "var(--secondary)",
+      color: "var(--secondary)",
       backgroundColor: "inherit",
       boxShadow: "inset 1px 1px 3px rgba(0, 0, 0, 0.2)",
     },
@@ -56,10 +56,10 @@ export const useBioStyles = makeStyles(() => ({
   },
   link: {
     transition: "0.1s",
-    color: "#623CEA",
+    color: "var(--primary)",
 
     "&:hover": {
-      color: "#FEFE33",
+      color: "var(--secondary)",
       textDecoration: "none",
     },
   },
@@ -71,7 +71,7 @@ export const useBioStyles = makeStyles(() => ({
     }
   },
   languageBtnActive: {
-    color: "#FEFE33",
+    color: "var(--secondary)",
     backgroundColor: "rgba(255,255,255, 0.15)",
   },
   h1Mobile: {
@@ -103,7 +103,7 @@ export const useBioStyles = makeStyles(() => ({
   hardSkill: {
     backgroundColor: "rgba(255,255,255, 0.15)",
     color: "white",
-    // color: "#623CEA",
+    // color: "var(--primary)",
     margin: "0 5px 5px 0",
     // fontWeight: 600,
     // fontSize: "0.9rem",
@@ -141,7 +141,7 @@ export const useLinksStyles = makeStyles(() => ({
     "&:hover": {
       fontWeight: 400,
       lineHeight: 3,
-      backgroundColor: "#623CEA",
+      backgroundColor: "var(--primary)",
       color: "white",
     },
   },
@@ -162,7 +162,7 @@ export const useLinksStyles = makeStyles(() => ({
     },
   },
   btnMobile: {
-    borderBottom: "1px solid #404a4f !important",
+    borderBottom: "1px solid var(--bg-color) !important",
   },
   stacksMobile: {
     minWidth: "100%",
