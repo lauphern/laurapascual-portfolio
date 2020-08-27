@@ -26,11 +26,15 @@ const Resume = props => {
   // const [items, set] = useState([...])
   const [show, set] = useState(true);
   const headerTransition = useTransition(show, null, {
+    unique: true,
+    reset: true,
     from: { transform: "translate3d(0,-200px,0)", opacity: 0 },
     enter: { transform: "translate3d(0,0px,0)", opacity: 1 },
     leave: { transform: "translate3d(0,-200px,0)", opacity: 0 },
   });
   const resumeTransition = useTransition(show, null, {
+    unique: true,
+    reset: true,
     from: { transform: "translate3d(0,200px,0)", opacity: 0 },
     enter: { transform: "translate3d(0,0px,0)", opacity: 1 },
     leave: { transform: "translate3d(0,200px,0)", opacity: 0 },

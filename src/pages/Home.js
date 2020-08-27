@@ -20,15 +20,17 @@ const Home = props => {
   const [show, set] = useState(true);
   const leftPanelTransition = useTransition(show, null, {
     unique: true,
-    from: { transform: "translate3d(-500px,0,0)" },
-    enter: { transform: "translate3d(0,0px,0)" },
-    leave: { transform: "translate3d(-500px,0,0)" },
+    reset: true,
+    from: { transform: "translate3d(-500px,0,0)", opacity: 0 },
+    enter: { transform: "translate3d(0,0px,0)", opacity: 1 },
+    leave: { transform: "translate3d(-500px,0,0)", opacity: 0 },
   });
   const rightPanelTransition = useTransition(show, null, {
     unique: true,
-    from: { transform: "translate3d(500px,0,0)" },
-    enter: { transform: "translate3d(0,0px,0)" },
-    leave: { transform: "translate3d(500px,0,0)" },
+    reset: true,
+    from: { transform: "translate3d(500px,0,0)", opacity: 0 },
+    enter: { transform: "translate3d(0,0px,0)", opacity: 1 },
+    leave: { transform: "translate3d(500px,0,0)", opacity: 0 },
   });
 
   useEffect(() => {
