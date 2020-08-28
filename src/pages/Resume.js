@@ -4,6 +4,7 @@ import { useTransition, animated } from "react-spring";
 import { Container, ButtonGroup, Button } from "@material-ui/core";
 import KeyboardReturnSharpIcon from "@material-ui/icons/KeyboardReturnSharp";
 import SwaggerUI from "swagger-ui-react";
+// https://github.com/swagger-api/swagger-ui/blob/master/docs/customization/custom-layout.md
 import "swagger-ui-react/swagger-ui.css";
 import { Document, Page, pdfjs } from "react-pdf";
 
@@ -48,12 +49,12 @@ const Resume = props => {
 
   useEffect(() => {
     fetch("https://lauphern-resume-server.glitch.me/api/v1/download")
-    .then(response => response.blob())
-    .then(blob => {
-      const url = window.URL.createObjectURL(new Blob([blob], { type: 'application/pdf' }));
-      setFileUrl(url);
-    })
-  }, [])
+      .then(response => response.blob())
+      .then(blob => {
+        const url = window.URL.createObjectURL(new Blob([blob], { type: "application/pdf" }));
+        setFileUrl(url);
+      });
+  }, []);
 
   return (
     <>
@@ -125,7 +126,10 @@ const Resume = props => {
                 Download
               </a>
               <Container className={resumeClasses.resumeContainer}>
-                <SwaggerUI url="https://resume-api.vercel.app/definition.yaml" />
+                <SwaggerUI
+                  url="https://resume-api.vercel.app/definition.yaml"
+                  defaultModelsExpandDepth={2}
+                />
               </Container>
             </animated.div>
           )
