@@ -27,7 +27,6 @@ body {
   z-index: -1;
 }
 
-
 @keyframes typeFlicker {
   0% {
 		color: var(--primary);
@@ -36,7 +35,6 @@ body {
 		color: white;
 	}
 }
-
 
 @media (min-device-width: 1200px) {
 	.hover-container {
