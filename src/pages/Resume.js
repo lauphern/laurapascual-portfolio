@@ -126,8 +126,10 @@ const Resume = props => {
                 Download
               </a>
               <Container className={resumeClasses.resumeContainer}>
+              <img src={"http://validator.swagger.io/validator?url=https://resume-api.vercel.app/definition.yaml"} alt="Validation badge"></img>
                 <SwaggerUI
                   url="https://resume-api.vercel.app/definition.yaml"
+                  validatorUrl="https://validator.swagger.io"
                   defaultModelsExpandDepth={2}
                 />
               </Container>
