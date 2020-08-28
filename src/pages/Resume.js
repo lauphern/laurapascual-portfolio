@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { useTransition, animated } from "react-spring";
 import { Container, ButtonGroup, Button } from "@material-ui/core";
@@ -40,10 +40,20 @@ const Resume = props => {
 
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
+  const [fileUrl, setFileUrl] = useState("");
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
   }
+
+  useEffect(() => {
+    fetch("https://lauphern-resume-server.glitch.me/api/v1/download")
+    .then(response => response.blob())
+    .then(blob => {
+      const url = window.URL.createObjectURL(new Blob([blob], { type: 'application/pdf' }));
+      setFileUrl(url);
+    })
+  }, [])
 
   return (
     <>
@@ -78,6 +88,7 @@ const Resume = props => {
                 file={{ url: "https://lauphern-resume-server.glitch.me/api/v1/download" }}
                 onLoadSuccess={onDocumentLoadSuccess}
                 onLoadError={console.error}
+                // TODO loader
                 loading={<div>Please wait!</div>}
                 noData={<div>No pdf found</div>}
               >
@@ -98,6 +109,21 @@ const Resume = props => {
               <p>
                 Page {pageNumber} of {numPages}
               </p>
+              <a
+                rel="noopener noreferrer"
+                target="_blank"
+                href="https://lauphern-resume-server.glitch.me/api/v1/download"
+              >
+                Full screen
+              </a>
+              <a
+                rel="noopener noreferrer"
+                target="_blank"
+                href={fileUrl}
+                download="Resume_LauraPascual.pdf"
+              >
+                Download
+              </a>
               <Container className={resumeClasses.resumeContainer}>
                 <SwaggerUI url="https://resume-api.vercel.app/definition.yaml" />
               </Container>
