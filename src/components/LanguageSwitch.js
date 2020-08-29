@@ -24,7 +24,7 @@ const LanguageSwitch = props => {
         <Button
           onClick={() => changeLanguage("en")}
           className={`${bioClasses.pointer} ${bioClasses.link} ${bioClasses.languageBtn} ${
-            getLanguage() === "en" && bioClasses.languageBtnActive
+            getLanguage().includes("en") && bioClasses.languageBtnActive
           }`}
         >
           EN
@@ -32,7 +32,7 @@ const LanguageSwitch = props => {
         <Button
           onClick={() => changeLanguage("es")}
           className={`${bioClasses.pointer} ${bioClasses.link} ${bioClasses.languageBtn} ${
-            getLanguage() === "es" && bioClasses.languageBtnActive
+            getLanguage().includes("es") && bioClasses.languageBtnActive
           }`}
         >
           ES
