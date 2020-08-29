@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { useTransition, animated } from "react-spring";
-import { Container, ButtonGroup, Button } from "@material-ui/core";
+import { Container, ButtonGroup, Button, Typography } from "@material-ui/core";
 import KeyboardReturnSharpIcon from "@material-ui/icons/KeyboardReturnSharp";
 import SwaggerUI from "swagger-ui-react";
 import "swagger-ui-react/swagger-ui.css";
@@ -23,7 +23,6 @@ const Resume = props => {
   const resumeClasses = useResumeStyles();
   const appClasses = useAppStyles();
 
-  // const [items, set] = useState([...])
   const [show, set] = useState(true);
   const headerTransition = useTransition(show, null, {
     unique: true,
@@ -86,6 +85,8 @@ const Resume = props => {
           item && (
             <animated.div key={key} style={props}>
               <Container className={resumeClasses.resumeContainer}>
+                <Typography variant="h3">{t("pdf.title")}</Typography>
+                <Typography variant="h4">{t("pdf.subtitle")}</Typography>
                 <Document
                   file={{ url: "https://lauphern-resume-server.glitch.me/api/v1/download" }}
                   onLoadSuccess={onDocumentLoadSuccess}

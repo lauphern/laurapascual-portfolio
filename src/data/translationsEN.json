@@ -5,6 +5,8 @@
   "linkedin": "https://www.linkedin.com/in/laura-pascual-hernandez/?locale=en_US",
   "home": "Home",
   "pdf": {
+    "title": "Check out and download my Résumé",
+    "subtitle": "You can read the JSON data from the API in a pdf file",
     "previous": "Previous page",
     "next": "Next page",
     "key": "Page {{pageNumber}} of {{numPages}}",
