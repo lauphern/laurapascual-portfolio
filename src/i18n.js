@@ -14,8 +14,6 @@ const resources = {
   }
 };
 
-//TODO check that it recognizes the language
-//maybe I should use strings like us-en es-es too
 i18n
   // detect user language
   // learn more: https://github.com/i18next/i18next-browser-languageDetector
@@ -37,10 +35,9 @@ i18n
     },
 
     detection: {
-      //TODO maybe cache the language the person chooses?
       excludeCacheFor: ['cimode'],
       caches: ['localStorage'],
-      order: ['navigator', 'querystring', 'htmlTag', 'cookie', 'localStorage', 'sessionStorage'],
+      order: ['navigator', 'querystring', 'localStorage', 'sessionStorage', 'htmlTag', 'cookie'],
     },
   });
 
