@@ -59,7 +59,6 @@ const Resume = props => {
 
   return (
     <>
-      {/* TODO the lang prop is only temporary */}
       <Container className={resumeClasses.headerContainer} disableGutters>
         <LanguageSwitch />
         {headerTransition.map(
@@ -95,47 +94,49 @@ const Resume = props => {
                   loading={<div>Please wait!</div>}
                   noData={<div>No pdf found</div>}
                 >
-                  {/* TODO translations */}
                   <ButtonGroup variant="contained">
                     <Button
                       disabled={pageNumber === 1}
                       onClick={() => setPageNumber(pageNumber - 1)}
                     >
-                      Previous page
+                      {t("pdf.previous")}
                     </Button>
                     <Button
                       disabled={pageNumber === numPages}
                       onClick={() => setPageNumber(pageNumber + 1)}
                     >
-                      Next page
+                      {t("pdf.next")}
                     </Button>
                   </ButtonGroup>
                   <Page pageNumber={pageNumber} />
                 </Document>
-                <p>
-                  Page {pageNumber} of {numPages}
-                </p>
-                <a
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  href="https://lauphern-resume-server.glitch.me/api/v1/download"
-                >
-                  Full screen
-                </a>
-                <a
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  href={fileUrl}
-                  download="Resume_LauraPascual.pdf"
-                >
-                  Download
-                </a>
+                {numPages && <>
+                  <p>
+                    {t("pdf.key", {pageNumber, numPages})}
+                  </p>
+                  <a
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    href="https://lauphern-resume-server.glitch.me/api/v1/download"
+                  >
+                    {t("pdf.full")}
+                  </a>
+                  <a
+                    rel="noopener noreferrer"
+                    target="_blank"
+                    href={fileUrl}
+                    download="Resume_LauraPascual.pdf"
+                  >
+                    {t("pdf.download")}
+                  </a>
+                </>}
                 <img
                   src={
                     "http://validator.swagger.io/validator?url=https://resume-api.vercel.app/definition.yaml"
                   }
                   alt="Validation badge"
                 ></img>
+                {/* TODO do custom layout */}
                 <SwaggerUI
                   url="https://resume-api.vercel.app/definition.yaml"
                   validatorUrl="https://validator.swagger.io"

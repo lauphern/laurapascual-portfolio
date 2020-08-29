@@ -3,5 +3,12 @@
   "cv": "Résumé",
   "cvTooltip": "Check out my résumé via my REST API",
   "linkedin": "https://www.linkedin.com/in/laura-pascual-hernandez/?locale=en_US",
-  "home": "Home"
+  "home": "Home",
+  "pdf": {
+    "previous": "Previous page",
+    "next": "Next page",
+    "key": "Page {{pageNumber}} of {{numPages}}",
+    "full": "Full screen mode",
+    "download": "Download"
+  }
 }
