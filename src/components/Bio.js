@@ -14,19 +14,25 @@ import {
 } from "@material-ui/core";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import DescriptionSharpIcon from "@material-ui/icons/DescriptionSharp";
+import { useTranslation } from 'react-i18next';
 
 import Header from "../components/Header";
 
 import { useAppStyles } from "../style/useStyles";
 import { useBioStyles } from "../style/useStyles";
 
-import { translations } from "../data/translations";
 import { hardSkills } from "../data/hardSkills";
 
 const Bio = props => {
-  //TODO
-  //auto (i18n)
-  const [lang, setLang] = useState("es");
+
+  const { t, i18n } = useTranslation();
+
+  const changeLanguage = lng => {
+    i18n.changeLanguage(lng);
+  };
+
+  const getLanguage = () => i18n.language || window.localStorage.i18nextLng || '';
+
   const bioClasses = useBioStyles();
   const appClasses = useAppStyles();
 
@@ -41,25 +47,25 @@ const Bio = props => {
     >
       <ButtonGroup variant="text" size="small" className={bioClasses.languageSwitch}>
         <Button
-          onClick={() => setLang("en")}
+          onClick={() => changeLanguage("en")}
           className={`${bioClasses.pointer} ${bioClasses.link} ${bioClasses.languageBtn} ${
-            lang === "en" && bioClasses.languageBtnActive
+            getLanguage() === "en" && bioClasses.languageBtnActive
           }`}
         >
           EN
         </Button>
         <Button
-          onClick={() => setLang("es")}
+          onClick={() => changeLanguage("es")}
           className={`${bioClasses.pointer} ${bioClasses.link} ${bioClasses.languageBtn} ${
-            lang === "es" && bioClasses.languageBtnActive
+            getLanguage() === "es" && bioClasses.languageBtnActive
           }`}
         >
           ES
         </Button>
       </ButtonGroup>
-      <Header lang={lang}/>
+      <Header />
       <Container className={bioClasses.socialContainer} disableGutters>
-        <Tooltip title={translations[lang].cvTooltip} arrow>
+        <Tooltip title={t("cvTooltip")} arrow>
           <Button
             variant="outlined"
             className={`${bioClasses.pointer} ${appClasses.routerBtn}`}
@@ -67,7 +73,7 @@ const Bio = props => {
             to="/resume"
             size="small"
           >
-            <DescriptionSharpIcon /> {translations[lang].cv}
+            <DescriptionSharpIcon /> {t("cv")}
           </Button>
         </Tooltip>
         <Divider orientation="vertical" flexItem className={bioClasses.verticalDivider} />
@@ -94,7 +100,7 @@ const Bio = props => {
         <Typography variant="body1">
           <Link
             className={`${bioClasses.pointer} ${bioClasses.link}`}
-            href={translations[lang].linkedin}
+            href={t("linkedin")}
             target="_blank"
             rel="noopener"
           >

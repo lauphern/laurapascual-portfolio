@@ -4,9 +4,10 @@ import { useTransition, animated } from "react-spring";
 import { Container, ButtonGroup, Button } from "@material-ui/core";
 import KeyboardReturnSharpIcon from "@material-ui/icons/KeyboardReturnSharp";
 import SwaggerUI from "swagger-ui-react";
-// https://github.com/swagger-api/swagger-ui/blob/master/docs/customization/custom-layout.md
 import "swagger-ui-react/swagger-ui.css";
 import { Document, Page, pdfjs } from "react-pdf";
+import { useTranslation } from 'react-i18next';
+
 
 import Header from "../components/Header";
 
@@ -19,6 +20,9 @@ import { useResumeStyles } from "../style/useStyles";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const Resume = props => {
+
+  const { t, i18n } = useTranslation();
+
   const resumeClasses = useResumeStyles();
   const appClasses = useAppStyles();
 
@@ -65,7 +69,7 @@ const Resume = props => {
             item && (
               <animated.div key={key} style={props}>
                 <Container className={resumeClasses.headerText} disableGutters>
-                  <Header lang="es" />
+                  <Header />
                   <Button
                     variant="outlined"
                     className={`${appClasses.routerBtn}`}
@@ -73,8 +77,7 @@ const Resume = props => {
                     to="/"
                     size="small"
                   >
-                    {/* TODO the lang prop is only temporary */}
-                    <KeyboardReturnSharpIcon /> {translations["es"].home}
+                    <KeyboardReturnSharpIcon /> {t("home")}
                   </Button>
                 </Container>
               </animated.div>
