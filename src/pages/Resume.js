@@ -8,10 +8,8 @@ import "swagger-ui-react/swagger-ui.css";
 import { Document, Page, pdfjs } from "react-pdf";
 import { useTranslation } from 'react-i18next';
 
-
+import LanguageSwitch from "../components/LanguageSwitch";
 import Header from "../components/Header";
-
-import { translations } from "../data/translations";
 
 import "./Resume.scss";
 import { useAppStyles } from "../style/useStyles";
@@ -64,6 +62,7 @@ const Resume = props => {
     <>
       {/* TODO the lang prop is only temporary */}
       <Container className={resumeClasses.headerContainer} disableGutters>
+        <LanguageSwitch />
         {headerTransition.map(
           ({ item, props, key }) =>
             item && (
