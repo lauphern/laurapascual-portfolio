@@ -16,6 +16,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import DescriptionSharpIcon from "@material-ui/icons/DescriptionSharp";
 import { useTranslation } from 'react-i18next';
 
+import LanguageSwitch from "../components/LanguageSwitch";
 import Header from "../components/Header";
 
 import { useAppStyles } from "../style/useStyles";
@@ -26,12 +27,6 @@ import { hardSkills } from "../data/hardSkills";
 const Bio = props => {
 
   const { t, i18n } = useTranslation();
-
-  const changeLanguage = lng => {
-    i18n.changeLanguage(lng);
-  };
-
-  const getLanguage = () => i18n.language || window.localStorage.i18nextLng || '';
 
   const bioClasses = useBioStyles();
   const appClasses = useAppStyles();
@@ -45,24 +40,7 @@ const Bio = props => {
       container
       justify="center"
     >
-      <ButtonGroup variant="text" size="small" className={bioClasses.languageSwitch}>
-        <Button
-          onClick={() => changeLanguage("en")}
-          className={`${bioClasses.pointer} ${bioClasses.link} ${bioClasses.languageBtn} ${
-            getLanguage() === "en" && bioClasses.languageBtnActive
-          }`}
-        >
-          EN
-        </Button>
-        <Button
-          onClick={() => changeLanguage("es")}
-          className={`${bioClasses.pointer} ${bioClasses.link} ${bioClasses.languageBtn} ${
-            getLanguage() === "es" && bioClasses.languageBtnActive
-          }`}
-        >
-          ES
-        </Button>
-      </ButtonGroup>
+      <LanguageSwitch />
       <Header />
       <Container className={bioClasses.socialContainer} disableGutters>
         <Tooltip title={t("cvTooltip")} arrow>
