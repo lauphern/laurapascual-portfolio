@@ -6,7 +6,7 @@ import KeyboardReturnSharpIcon from "@material-ui/icons/KeyboardReturnSharp";
 import SwaggerUI from "swagger-ui-react";
 import "swagger-ui-react/swagger-ui.css";
 import { Document, Page, pdfjs } from "react-pdf";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 import LanguageSwitch from "../components/LanguageSwitch";
 import Header from "../components/Header";
@@ -18,7 +18,6 @@ import { useResumeStyles } from "../style/useStyles";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const Resume = props => {
-
   const { t, i18n } = useTranslation();
 
   const resumeClasses = useResumeStyles();
@@ -87,48 +86,56 @@ const Resume = props => {
         ({ item, props, key }) =>
           item && (
             <animated.div key={key} style={props}>
-              <Document
-                file={{ url: "https://lauphern-resume-server.glitch.me/api/v1/download" }}
-                onLoadSuccess={onDocumentLoadSuccess}
-                onLoadError={console.error}
-                // TODO loader
-                loading={<div>Please wait!</div>}
-                noData={<div>No pdf found</div>}
-              >
-                {/* TODO translations */}
-                <ButtonGroup variant="contained">
-                  <Button disabled={pageNumber === 1} onClick={() => setPageNumber(pageNumber - 1)}>
-                    Previous page
-                  </Button>
-                  <Button
-                    disabled={pageNumber === numPages}
-                    onClick={() => setPageNumber(pageNumber + 1)}
-                  >
-                    Next page
-                  </Button>
-                </ButtonGroup>
-                <Page pageNumber={pageNumber} />
-              </Document>
-              <p>
-                Page {pageNumber} of {numPages}
-              </p>
-              <a
-                rel="noopener noreferrer"
-                target="_blank"
-                href="https://lauphern-resume-server.glitch.me/api/v1/download"
-              >
-                Full screen
-              </a>
-              <a
-                rel="noopener noreferrer"
-                target="_blank"
-                href={fileUrl}
-                download="Resume_LauraPascual.pdf"
-              >
-                Download
-              </a>
               <Container className={resumeClasses.resumeContainer}>
-              <img src={"http://validator.swagger.io/validator?url=https://resume-api.vercel.app/definition.yaml"} alt="Validation badge"></img>
+                <Document
+                  file={{ url: "https://lauphern-resume-server.glitch.me/api/v1/download" }}
+                  onLoadSuccess={onDocumentLoadSuccess}
+                  onLoadError={console.error}
+                  // TODO loader
+                  loading={<div>Please wait!</div>}
+                  noData={<div>No pdf found</div>}
+                >
+                  {/* TODO translations */}
+                  <ButtonGroup variant="contained">
+                    <Button
+                      disabled={pageNumber === 1}
+                      onClick={() => setPageNumber(pageNumber - 1)}
+                    >
+                      Previous page
+                    </Button>
+                    <Button
+                      disabled={pageNumber === numPages}
+                      onClick={() => setPageNumber(pageNumber + 1)}
+                    >
+                      Next page
+                    </Button>
+                  </ButtonGroup>
+                  <Page pageNumber={pageNumber} />
+                </Document>
+                <p>
+                  Page {pageNumber} of {numPages}
+                </p>
+                <a
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  href="https://lauphern-resume-server.glitch.me/api/v1/download"
+                >
+                  Full screen
+                </a>
+                <a
+                  rel="noopener noreferrer"
+                  target="_blank"
+                  href={fileUrl}
+                  download="Resume_LauraPascual.pdf"
+                >
+                  Download
+                </a>
+                <img
+                  src={
+                    "http://validator.swagger.io/validator?url=https://resume-api.vercel.app/definition.yaml"
+                  }
+                  alt="Validation badge"
+                ></img>
                 <SwaggerUI
                   url="https://resume-api.vercel.app/definition.yaml"
                   validatorUrl="https://validator.swagger.io"
