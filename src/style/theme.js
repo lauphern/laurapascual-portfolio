@@ -16,9 +16,6 @@ export const theme = createMuiTheme({
   },
   typography: {
     fontFamily: ["Source Code Pro", "monospace"].join(","),
-    body1: {
-      // fontWeight: 600,
-    },
     h1: {
       fontFamily: ["Heebo", "Roboto", "Helvetica", "Arial", "sans-serif"].join(","),
       fontWeight: 400,

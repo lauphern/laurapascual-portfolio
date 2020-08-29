@@ -2,7 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { useTransition, animated } from "react-spring";
 import { Container, ButtonGroup, Button, Typography } from "@material-ui/core";
+import CloudDownloadSharpIcon from "@material-ui/icons/CloudDownloadSharp";
+import FullscreenSharpIcon from "@material-ui/icons/FullscreenSharp";
 import KeyboardReturnSharpIcon from "@material-ui/icons/KeyboardReturnSharp";
+import PictureAsPdfSharpIcon from "@material-ui/icons/PictureAsPdfSharp";
+import CachedSharpIcon from "@material-ui/icons/CachedSharp";
+import ErrorSharpIcon from "@material-ui/icons/ErrorSharp";
 import SwaggerUI from "swagger-ui-react";
 import "swagger-ui-react/swagger-ui.css";
 import { Document, Page, pdfjs } from "react-pdf";
@@ -42,6 +47,13 @@ const Resume = props => {
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [fileUrl, setFileUrl] = useState("");
+  const [documentError, setDocumentError] = useState(false);
+  const ErrorMsg = () => (
+    //TODO style
+    <Typography variant="caption">
+      <ErrorSharpIcon /> {t("pdf.nodata")}
+    </Typography>
+  );
 
   function onDocumentLoadSuccess({ numPages }) {
     setNumPages(numPages);
@@ -85,59 +97,65 @@ const Resume = props => {
           item && (
             <animated.div key={key} style={props}>
               <Container className={resumeClasses.resumeContainer}>
-                <Typography variant="h3">{t("pdf.title")}</Typography>
+                <Typography variant="h3">
+                  <PictureAsPdfSharpIcon /> {t("pdf.title")}
+                </Typography>
                 <Typography variant="h4">{t("pdf.subtitle")}</Typography>
-                <Document
-                  file={{ url: "https://lauphern-resume-server.glitch.me/api/v1/download" }}
-                  onLoadSuccess={onDocumentLoadSuccess}
-                  onLoadError={console.error}
-                  // TODO loader
-                  loading={<div>Please wait!</div>}
-                  noData={<div>No pdf found</div>}
-                >
-                  <ButtonGroup variant="contained">
-                    <Button
-                      disabled={pageNumber === 1}
-                      onClick={() => setPageNumber(pageNumber - 1)}
+                {documentError ? (
+                  <ErrorMsg />
+                ) : (
+                  <>
+                    <Document
+                      file={{ url: "https://lauphern-resume-server.glitch.me/api/v1/download" }}
+                      onLoadSuccess={onDocumentLoadSuccess}
+                      onLoadError={() => setDocumentError(true)}
+                      loading={<CachedSharpIcon className={resumeClasses.loader} />}
+                      noData={<ErrorMsg />}
                     >
-                      {t("pdf.previous")}
-                    </Button>
-                    <Button
-                      disabled={pageNumber === numPages}
-                      onClick={() => setPageNumber(pageNumber + 1)}
-                    >
-                      {t("pdf.next")}
-                    </Button>
-                  </ButtonGroup>
-                  <Page pageNumber={pageNumber} />
-                </Document>
-                {numPages && <>
-                  <p>
-                    {t("pdf.key", {pageNumber, numPages})}
-                  </p>
-                  <a
-                    rel="noopener noreferrer"
-                    target="_blank"
-                    href="https://lauphern-resume-server.glitch.me/api/v1/download"
-                  >
-                    {t("pdf.full")}
-                  </a>
-                  <a
-                    rel="noopener noreferrer"
-                    target="_blank"
-                    href={fileUrl}
-                    download="Resume_LauraPascual.pdf"
-                  >
-                    {t("pdf.download")}
-                  </a>
-                </>}
+                      <ButtonGroup variant="contained">
+                        <Button
+                          disabled={pageNumber === 1}
+                          onClick={() => setPageNumber(pageNumber - 1)}
+                        >
+                          {t("pdf.previous")}
+                        </Button>
+                        <Button
+                          disabled={pageNumber === numPages}
+                          onClick={() => setPageNumber(pageNumber + 1)}
+                        >
+                          {t("pdf.next")}
+                        </Button>
+                      </ButtonGroup>
+                      <Page pageNumber={pageNumber} />
+                    </Document>
+                    {numPages && (
+                      <>
+                        <p>{t("pdf.key", { pageNumber, numPages })}</p>
+                        <a
+                          rel="noopener noreferrer"
+                          target="_blank"
+                          href="https://lauphern-resume-server.glitch.me/api/v1/download"
+                        >
+                          <FullscreenSharpIcon /> {t("pdf.full")}
+                        </a>
+                        <a
+                          rel="noopener noreferrer"
+                          target="_blank"
+                          href={fileUrl}
+                          download="Resume_LauraPascual.pdf"
+                        >
+                          <CloudDownloadSharpIcon /> {t("pdf.download")}
+                        </a>
+                      </>
+                    )}
+                  </>
+                )}
                 <img
                   src={
                     "http://validator.swagger.io/validator?url=https://resume-api.vercel.app/definition.yaml"
                   }
                   alt="Validation badge"
                 ></img>
-                {/* TODO do custom layout */}
                 <SwaggerUI
                   url="https://resume-api.vercel.app/definition.yaml"
                   validatorUrl="https://validator.swagger.io"

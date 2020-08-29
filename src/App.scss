@@ -36,6 +36,18 @@ body {
 	}
 }
 
+@keyframes loader {
+	0% {
+		transform: scale(1) rotate(0deg);
+	}
+	50% {
+		transform: scale(1.5) rotate(180deg);
+	}
+	0% {
+		transform: scale(1) rotate(360deg);
+	}
+}
+
 @media (min-device-width: 1200px) {
 	.hover-container {
 

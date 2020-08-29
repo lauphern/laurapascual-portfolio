@@ -5,6 +5,7 @@
   "linkedin": "https://www.linkedin.com/in/laura-pascual-hernandez/?locale=en_US",
   "home": "Home",
   "pdf": {
+    "nodata": "Something went wrong! No pdf found",
     "title": "Check out and download my Résumé",
     "subtitle": "You can read the JSON data from the API in a pdf file",
     "previous": "Previous page",

@@ -200,5 +200,9 @@ export const useResumeStyles = makeStyles(() => ({
     bottom: 0,
     borderRadius: "0.5rem 0.5rem 0 0",
     boxShadow: "0px 50px 10px 3px rgba(0, 0, 0, 0.2)",
+  },
+  loader: {
+    animation: "loader 1s linear infinite",
+    color: "var(--primary)"
   }
 }));
