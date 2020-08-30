@@ -1,5 +1,10 @@
 import { makeStyles } from "@material-ui/core/styles";
 
+//CSS precedence bug in Material UI
+//Fix:
+// https://stackoverflow.com/questions/62473898/material-ui-rendering-bugs-in-production-build
+// https://github.com/mui-org/material-ui/issues/16609
+
 //TODO test in other browsers
 export const useAppStyles = makeStyles({
   layout: {
@@ -67,7 +72,7 @@ export const useAppStyles = makeStyles({
   type: {
     animation: "typeFlicker 1s step-end infinite",
   },
-});
+}, {index: 1});
 
 export const useBioStyles = makeStyles({
   leftPanel: {
@@ -117,7 +122,7 @@ export const useBioStyles = makeStyles({
     margin: "0 1rem",
     height: "2rem"
   },
-});
+}, {index: 1});
 
 export const useLinksStyles = makeStyles({
   rightPanel: {
@@ -169,7 +174,7 @@ export const useLinksStyles = makeStyles({
     position: "absolute",
     zIndex: -2,
   }
-});
+}, {index: 1});
 
 
 export const useResumeStyles = makeStyles({
@@ -235,4 +240,4 @@ export const useResumeStyles = makeStyles({
   badge: {
     objectFit: "none",
   },
-});
+}, {index: 1});
