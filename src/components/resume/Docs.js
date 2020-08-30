@@ -3,6 +3,7 @@ import { Box, CardMedia } from "@material-ui/core";
 import SwaggerUI from "swagger-ui-react";
 import "swagger-ui-react/swagger-ui.css";
 
+import "./Docs.scss";
 import { useResumeStyles } from "../../style/useStyles";
 
 const Docs = props => {

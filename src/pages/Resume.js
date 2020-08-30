@@ -10,9 +10,7 @@ import Header from "../components/Header";
 import Pdf from "../components/resume/Pdf";
 import Docs from "../components/resume/Docs";
 
-import "./Resume.scss";
-import { useAppStyles } from "../style/useStyles";
-import { useResumeStyles } from "../style/useStyles";
+import { useAppStyles, useResumeStyles } from "../style/useStyles";
 
 
 const Resume = props => {
@@ -67,7 +65,7 @@ const Resume = props => {
         ({ item, props, key }) =>
           item && (
             <animated.div key={key} style={props}>
-              <Container className={resumeClasses.resumeContainer}>
+              <Container className={resumeClasses.resumeContainer} disableGutters>
                 <Pdf />
                 <Docs />
               </Container>

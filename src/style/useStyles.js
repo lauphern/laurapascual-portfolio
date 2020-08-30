@@ -24,7 +24,16 @@ export const useAppStyles = makeStyles(() => ({
       backgroundColor: "inherit",
       boxShadow: "inset 1px 1px 3px rgba(0, 0, 0, 0.2)",
     },
-  }
+  },
+  link: {
+    transition: "0.1s",
+    color: "var(--primary)",
+
+    "&:hover": {
+      color: "var(--secondary)",
+      textDecoration: "none",
+    },
+  },
 }));
 
 export const useBioStyles = makeStyles(() => ({
@@ -53,15 +62,6 @@ export const useBioStyles = makeStyles(() => ({
     pointerEvents: "all",
     zIndex: 100,
     position: "relative",
-  },
-  link: {
-    transition: "0.1s",
-    color: "var(--primary)",
-
-    "&:hover": {
-      color: "var(--secondary)",
-      textDecoration: "none",
-    },
   },
   languageBtn: {
     fontWeight: 400,
@@ -205,6 +205,9 @@ export const useResumeStyles = makeStyles(() => ({
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
   },
+  pdfTitle: {
+    color: "var(--primary)",
+  },
   loader: {
     animation: "loader 1s linear infinite",
     color: "var(--primary)"
@@ -215,7 +218,10 @@ export const useResumeStyles = makeStyles(() => ({
     flexDirection: "column-reverse",
     alignItems: "center",
   },
+  textIcon: {
+    verticalAlign: "middle",
+  },
   badge: {
     objectFit: "none",
-  }
+  },
 }));

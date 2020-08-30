@@ -8,7 +8,7 @@ import CachedSharpIcon from "@material-ui/icons/CachedSharp";
 import ErrorSharpIcon from "@material-ui/icons/ErrorSharp";
 import { Document, Page, pdfjs } from "react-pdf";
 
-import { useResumeStyles } from "../../style/useStyles";
+import { useAppStyles, useResumeStyles } from "../../style/useStyles";
 
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
@@ -16,6 +16,8 @@ const Pdf = props => {
   const { t, i18n } = useTranslation();
 
   const resumeClasses = useResumeStyles();
+  const appClasses = useAppStyles();
+
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
   const [fileUrl, setFileUrl] = useState("");
@@ -23,7 +25,7 @@ const Pdf = props => {
   const ErrorMsg = () => (
     //TODO style
     <Typography variant="caption">
-      <ErrorSharpIcon /> {t("pdf.nodata")}
+      <ErrorSharpIcon className={resumeClasses.textIcon} /> {t("pdf.nodata")}
     </Typography>
   );
 
@@ -42,10 +44,31 @@ const Pdf = props => {
   return (
     <Container className={resumeClasses.pdfContainer}>
       <Box>
-        <Typography variant="h3">
-          <PictureAsPdfSharpIcon /> {t("pdf.title")}
+        <Typography variant="h3" className={resumeClasses.pdfTitle}>
+          <PictureAsPdfSharpIcon className={resumeClasses.textIcon} /> {t("pdf.title")}
         </Typography>
         <Typography variant="subtitle1">{t("pdf.subtitle")}</Typography>
+        {numPages && (
+          <ButtonGroup variant="contained">
+            <Button
+              className={appClasses.link}
+              rel="noopener noreferrer"
+              target="_blank"
+              href="https://lauphern-resume-server.glitch.me/api/v1/download"
+            >
+              <FullscreenSharpIcon className={resumeClasses.textIcon} /> {t("pdf.full")}
+            </Button>
+            <Button
+              className={appClasses.link}
+              rel="noopener noreferrer"
+              target="_blank"
+              href={fileUrl}
+              download="Resume_LauraPascual.pdf"
+            >
+              <CloudDownloadSharpIcon className={resumeClasses.textIcon} /> {t("pdf.download")}
+            </Button>
+          </ButtonGroup>
+        )}
       </Box>
       <Box>
         {documentError ? (
@@ -74,26 +97,7 @@ const Pdf = props => {
               {/* TODO media query for scale */}
               <Page pageNumber={pageNumber} scale="0.7" />
             </Document>
-            {numPages && (
-              <>
-                <p>{t("pdf.key", { pageNumber, numPages })}</p>
-                <a
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  href="https://lauphern-resume-server.glitch.me/api/v1/download"
-                >
-                  <FullscreenSharpIcon /> {t("pdf.full")}
-                </a>
-                <a
-                  rel="noopener noreferrer"
-                  target="_blank"
-                  href={fileUrl}
-                  download="Resume_LauraPascual.pdf"
-                >
-                  <CloudDownloadSharpIcon /> {t("pdf.download")}
-                </a>
-              </>
-            )}
+            {numPages && <Typography variant="overline">{t("pdf.key", { pageNumber, numPages })}</Typography>}
           </Box>
         )}
       </Box>

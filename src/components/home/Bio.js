@@ -18,8 +18,7 @@ import { useTranslation } from 'react-i18next';
 import LanguageSwitch from "../LanguageSwitch";
 import Header from "../Header";
 
-import { useAppStyles } from "../../style/useStyles";
-import { useBioStyles } from "../../style/useStyles";
+import { useBioStyles, useAppStyles } from "../../style/useStyles";
 
 import { hardSkills } from "../../data/hardSkills";
 
@@ -57,7 +56,7 @@ const Bio = props => {
         <Typography variant="body1">
           {/* TODO revisar que funciona */}
           <Link
-            className={`${bioClasses.pointer} ${bioClasses.link}`}
+            className={`${bioClasses.pointer} ${appClasses.link}`}
             href="mailto:laura.pascual.h@hotmail.com"
           >
             Email
@@ -66,7 +65,7 @@ const Bio = props => {
         <Divider orientation="vertical" flexItem className={bioClasses.verticalDivider} />
         <Typography variant="body1">
           <Link
-            className={`${bioClasses.pointer} ${bioClasses.link}`}
+            className={`${bioClasses.pointer} ${appClasses.link}`}
             href="https://github.com/lauphern"
             target="_blank"
             rel="noopener"
@@ -77,7 +76,7 @@ const Bio = props => {
         <Divider orientation="vertical" flexItem className={bioClasses.verticalDivider} />
         <Typography variant="body1">
           <Link
-            className={`${bioClasses.pointer} ${bioClasses.link}`}
+            className={`${bioClasses.pointer} ${appClasses.link}`}
             href={t("linkedin")}
             target="_blank"
             rel="noopener"
@@ -91,7 +90,7 @@ const Bio = props => {
           <Chip
             label={skillName}
             size="small"
-            className={`${bioClasses.hardSkill} ${bioClasses.link} ${bioClasses.pointer}`}
+            className={`${bioClasses.hardSkill} ${appClasses.link} ${bioClasses.pointer}`}
           />
         ))}
       </Box>
