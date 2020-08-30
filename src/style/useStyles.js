@@ -1,5 +1,6 @@
 import { makeStyles } from "@material-ui/core/styles";
 
+//TODO test in other browsers
 export const useAppStyles = makeStyles(() => ({
   layout: {
     minHeight: "100vh",
@@ -10,6 +11,7 @@ export const useAppStyles = makeStyles(() => ({
     position: "fixed",
     top: "20px",
     marginLeft: "5vw",
+    zIndex: 1,
   },
   languageBtn: {
     fontWeight: 600,
@@ -51,6 +53,20 @@ export const useAppStyles = makeStyles(() => ({
       textDecoration: "none",
     },
   },
+  h1Mobile: {
+    fontSize: "4rem",
+    lineHeight: "3.5rem",
+  },
+  h2Mobile: {
+    fontSize: "1.5rem",
+  },
+  firstName: {
+    textTransform: "uppercase",
+    letterSpacing: "0.18rem",
+  },
+  type: {
+    animation: "typeFlicker 1s step-end infinite",
+  },
 }));
 
 export const useBioStyles = makeStyles(() => ({
@@ -73,33 +89,6 @@ export const useBioStyles = makeStyles(() => ({
     minWidth: "100%",
     minHeight: "100vh",
     height: "100%"
-  },
-  h1Mobile: {
-    fontSize: "4rem",
-    lineHeight: "3.5rem",
-  },
-  firstName: {
-    textTransform: "uppercase",
-    letterSpacing: "0.18rem",
-  },
-  h2Mobile: {
-    fontSize: "1.75rem",
-  },
-  type: {
-    animation: "typeFlicker 1s step-end infinite",
-  },
-  expandMoreIcon: {
-    // alignSelf: "center",
-    position: "absolute",
-    bottom: 0,
-    color: "white",
-    transition: "0.1s",
-    "& > *": {
-      fontSize: "4rem",
-    },
-    "&:hover": {
-      transform: "scale(1.25)",
-    }
   },
   skillsContainer: {
     maxWidth: "90vw",
@@ -173,37 +162,55 @@ export const useLinksStyles = makeStyles(() => ({
     minWidth: "100%",
     height: "100vh",
   },
+  rightPanelBg: {
+    backgroundColor: "white",
+    width: "100%",
+    height: "100%",
+    position: "absolute",
+    zIndex: -2,
+  }
 }));
 
 
 export const useResumeStyles = makeStyles(() => ({
   headerContainer: {
-    width: "100vw",
-    display: "flex",
-    alignItems: "center",
-    flexDirection: "column",
+    minWidth: "100vw",
     paddingTop: "2.5rem",
-    maxHeight: "30vh",
     boxSizing: "border-box",
-    color: "white",
+    position: "fixed",
+    top: 0,
+    marginBottom: "2.5rem",
   },
   headerText: {
+    color: "white",
     display: "flex",
     alignItems: "flex-start",
     flexDirection: "column",
     width: "max-content",
   },
+  headerPlaceholder: {
+    height: "40vh",
+  },
   resumeContainer: {
-    background: "white",
-    padding: "5rem 5rem 0",
-    margin: "2.5rem 5vw 0",
+    // background: "white",
+    padding: "5rem 15vw",
+    minWidth: "100vw",
+    margin: "0",
     boxSizing: "border-box",
-    height: "calc(70vh - 2.5rem)",
-    overflow: "scroll",
+    // height: "calc(70vh - 2.5rem)",
+    // overflow: "scroll",
     position: "relative",
-    bottom: 0,
-    borderRadius: "0.25rem 0.25rem 0 0",
-    boxShadow: "0px 50px 10px 3px rgba(0, 0, 0, 0.2)",
+    // bottom: 0,
+    zIndex: 1,
+  },
+  resumeContainerBg: {
+    backgroundColor: "white",
+    width: "100vw",
+    height: "100%",
+    position: "absolute",
+    top: 0,
+    left: 0,
+    zIndex: -2,
   },
   pdfContainer: {
     display: "grid",

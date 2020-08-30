@@ -99,6 +99,7 @@ const Bio = props => {
                   </Typography>
                 </Container>
                 <Box className={bioClasses.skillsContainer}>
+                  {/* TODO solucionar esto en mobile, es mucho contenido */}
                   {hardSkills.map(skillName => (
                     <Chip
                       label={skillName}

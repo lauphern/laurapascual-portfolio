@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Typography } from "@material-ui/core";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 
-import { useBioStyles } from "../style/useStyles";
+import { useAppStyles } from "../style/useStyles";
 
 const Type = props => {
-  const bioClasses = useBioStyles();
-  return(
-    <span className={bioClasses.type}>_</span>
-  )
-}
+  const appClasses = useAppStyles();
+  return <span className={appClasses.type}>_</span>;
+};
 
 //Code based on: https://stackoverflow.com/questions/59786811/typewriter-effect-in-react
 
 const Typewriter = props => {
-  const bioClasses = useBioStyles();
+  const isItSmallDevice = useMediaQuery("(max-width:400px)");
+
+  const appClasses = useAppStyles();
 
   const fullName = { 0: "Laura", 1: "Pascual" };
   const [{ name, i }, setName] = useState({ name: "", i: 0 });
@@ -35,8 +36,11 @@ const Typewriter = props => {
   }, [name, lastName]);
 
   return (
-    <Typography variant="h1" align="left" className={props.isItSmallDevice && bioClasses.h1Mobile}>
-      <span className={bioClasses.firstName}>{name}{i < fullName["0"].length && <Type />}</span>
+    <Typography variant="h1" align="left" className={isItSmallDevice && appClasses.h1Mobile}>
+      <span className={appClasses.firstName}>
+        {name}
+        {i < fullName["0"].length && <Type />}
+      </span>
       <br />
       {lastName ? lastName : <span>&nbsp;</span>}
       {i === fullName["0"].length && <Type />}

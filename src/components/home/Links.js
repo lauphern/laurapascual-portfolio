@@ -1,5 +1,5 @@
 import React from "react";
-import { ButtonGroup, Button, Grid } from "@material-ui/core";
+import { ButtonGroup, Button, Grid, Box } from "@material-ui/core";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import { useTransition, animated } from "react-spring";
@@ -28,7 +28,9 @@ const Links = props => {
       container
       xs={12}
       sm={6}
-      className={`${linkClasses.rightPanel} ${isItSmallTablet && linkClasses.stacksMobile} ${isItSmallTablet && linkClasses.topPanelMobile}`}
+      className={`${linkClasses.rightPanel} ${isItSmallTablet && linkClasses.stacksMobile} ${
+        isItSmallTablet && linkClasses.topPanelMobile
+      }`}
       alignContent="center"
       justify="center"
       id="bottom-panel"
@@ -40,7 +42,9 @@ const Links = props => {
               <ButtonGroup
                 orientation="vertical"
                 fullWidth
-                className={`${isItSmallDevice && linkClasses.btnGroupMobile} ${(isItTablet && !isItSmallDevice) && linkClasses.btnGroupTablet} `}
+                className={`${isItSmallDevice && linkClasses.btnGroupMobile} ${
+                  isItTablet && !isItSmallDevice && linkClasses.btnGroupTablet
+                } `}
               >
                 <Button
                   variant="text"
@@ -87,7 +91,7 @@ const Links = props => {
             </animated.div>
           )
       )}
-      <div id="right-panel-bg"></div>
+      <Box className={linkClasses.rightPanelBg} />
     </Grid>
   );
 };

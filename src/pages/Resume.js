@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { useTransition, animated } from "react-spring";
-import { Container, Button } from "@material-ui/core";
+import { Container, Box, Button } from "@material-ui/core";
 import KeyboardReturnSharpIcon from "@material-ui/icons/KeyboardReturnSharp";
 import { useTranslation } from "react-i18next";
 
@@ -34,10 +34,9 @@ const Resume = props => {
     leave: { transform: "translate3d(0,200px,0)", opacity: 0 },
   });
 
-  
-
   return (
     <>
+      <Box className={resumeClasses.headerPlaceholder}></Box>
       <Container className={resumeClasses.headerContainer} disableGutters>
         {headerTransition.map(
           ({ item, props, key }) =>
@@ -59,17 +58,20 @@ const Resume = props => {
             )
         )}
       </Container>
-      {resumeTransition.map(
-        ({ item, props, key }) =>
-          item && (
-            <animated.div key={key} style={props}>
-              <Container className={resumeClasses.resumeContainer} disableGutters>
-                <Pdf />
-                <Docs />
-              </Container>
-            </animated.div>
-          )
-      )}
+      <Container className={resumeClasses.resumeContainer} disableGutters>
+        {resumeTransition.map(
+          ({ item, props, key }) =>
+            item && (
+              <animated.div key={key} style={props}>
+                <>
+                  <Pdf />
+                  <Docs />
+                </>
+              </animated.div>
+            )
+        )}
+        <Box className={resumeClasses.resumeContainerBg} />
+      </Container>
     </>
   );
 };
