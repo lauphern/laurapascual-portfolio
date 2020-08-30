@@ -15,13 +15,13 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import DescriptionSharpIcon from "@material-ui/icons/DescriptionSharp";
 import { useTranslation } from 'react-i18next';
 
-import LanguageSwitch from "../components/LanguageSwitch";
-import Header from "../components/Header";
+import LanguageSwitch from "../LanguageSwitch";
+import Header from "../Header";
 
-import { useAppStyles } from "../style/useStyles";
-import { useBioStyles } from "../style/useStyles";
+import { useAppStyles } from "../../style/useStyles";
+import { useBioStyles } from "../../style/useStyles";
 
-import { hardSkills } from "../data/hardSkills";
+import { hardSkills } from "../../data/hardSkills";
 
 const Bio = props => {
 
@@ -55,6 +55,7 @@ const Bio = props => {
         </Tooltip>
         <Divider orientation="vertical" flexItem className={bioClasses.verticalDivider} />
         <Typography variant="body1">
+          {/* TODO revisar que funciona */}
           <Link
             className={`${bioClasses.pointer} ${bioClasses.link}`}
             href="mailto:laura.pascual.h@hotmail.com"

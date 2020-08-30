@@ -1,7 +1,7 @@
 import React from "react";
 import { ButtonGroup, Button, Grid } from "@material-ui/core";
 
-import { useLinksStyles } from "../style/useStyles";
+import { useLinksStyles } from "../../style/useStyles";
 
 
 const Links = props => {

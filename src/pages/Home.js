@@ -3,8 +3,8 @@ import { useTransition, animated } from "react-spring";
 import { Container, Grid } from "@material-ui/core";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
 
-import Bio from "../components/Bio";
-import Links from "../components/Links";
+import Bio from "../components/home/Bio";
+import Links from "../components/home/Links";
 
 import { useAppStyles } from "../style/useStyles";
 import { _cursorEffect } from "../utils/cursorEffect";

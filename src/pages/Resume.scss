@@ -1,5 +1,11 @@
 .swagger-ui {
 
+  font-family: "Source Code Pro", "monospace" !important;
+
+  & * {
+    font-family: "Source Code Pro", "monospace" !important;
+  }
+
   .info {
     margin-top: 0;
 
@@ -8,32 +14,49 @@
     }
   }
 
-  .opblock.opblock-get {
-    border-color: var(--primary);
-    background-color: transparent;
+  .wrapper {
 
-    .opblock-summary {
-      border-color: var(--primary);
-
-      &-method {
-        background-color: var(--primary);
-      }
+    & > section > div > span:nth-last-of-type(1) > div {
+      margin-bottom: 5rem;
     }
 
-    .tab-header {
-      .tab-item.active {
-        h4 {
-          span:after {
-            background-color: var(--secondary);
+    .opblock-tag {
+
+      &-section {
+        margin-bottom: 1rem;
+      }
+    }
+  
+    .opblock.opblock-get {
+      border-color: var(--primary);
+      background-color: transparent;
+
+      .opblock {
+
+        &-summary {
+          border-color: var(--primary);
+    
+          &-method {
+            background-color: var(--primary);
+          }
+        }
+      }
+  
+      .tab-header {
+        .tab-item.active {
+          h4 {
+            span:after {
+              background-color: var(--secondary);
+            }
           }
         }
       }
     }
-  }
-
-  .btn.execute {
-    background-color: var(--secondary);
-    border-color: var(--secondary);
-    color: #3b4151
+  
+    .btn.execute {
+      background-color: var(--secondary);
+      border-color: var(--secondary);
+      color: #3b4151
+    }
   }
 }

@@ -27,5 +27,8 @@ export const theme = createMuiTheme({
       fontSize: "2rem",
       fontWeight: 400,
     },
+    h3: {
+      fontSize: "1.5rem",
+    }
   },
 });

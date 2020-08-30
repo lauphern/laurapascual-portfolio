@@ -1,26 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { useTransition, animated } from "react-spring";
-import { Container, ButtonGroup, Button, Typography } from "@material-ui/core";
-import CloudDownloadSharpIcon from "@material-ui/icons/CloudDownloadSharp";
-import FullscreenSharpIcon from "@material-ui/icons/FullscreenSharp";
+import { Container, Button } from "@material-ui/core";
 import KeyboardReturnSharpIcon from "@material-ui/icons/KeyboardReturnSharp";
-import PictureAsPdfSharpIcon from "@material-ui/icons/PictureAsPdfSharp";
-import CachedSharpIcon from "@material-ui/icons/CachedSharp";
-import ErrorSharpIcon from "@material-ui/icons/ErrorSharp";
-import SwaggerUI from "swagger-ui-react";
-import "swagger-ui-react/swagger-ui.css";
-import { Document, Page, pdfjs } from "react-pdf";
 import { useTranslation } from "react-i18next";
 
 import LanguageSwitch from "../components/LanguageSwitch";
 import Header from "../components/Header";
+import Pdf from "../components/resume/Pdf";
+import Docs from "../components/resume/Docs";
 
 import "./Resume.scss";
 import { useAppStyles } from "../style/useStyles";
 import { useResumeStyles } from "../style/useStyles";
 
-pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const Resume = props => {
   const { t, i18n } = useTranslation();
@@ -44,29 +37,7 @@ const Resume = props => {
     leave: { transform: "translate3d(0,200px,0)", opacity: 0 },
   });
 
-  const [numPages, setNumPages] = useState(null);
-  const [pageNumber, setPageNumber] = useState(1);
-  const [fileUrl, setFileUrl] = useState("");
-  const [documentError, setDocumentError] = useState(false);
-  const ErrorMsg = () => (
-    //TODO style
-    <Typography variant="caption">
-      <ErrorSharpIcon /> {t("pdf.nodata")}
-    </Typography>
-  );
-
-  function onDocumentLoadSuccess({ numPages }) {
-    setNumPages(numPages);
-  }
-
-  useEffect(() => {
-    fetch("https://lauphern-resume-server.glitch.me/api/v1/download")
-      .then(response => response.blob())
-      .then(blob => {
-        const url = window.URL.createObjectURL(new Blob([blob], { type: "application/pdf" }));
-        setFileUrl(url);
-      });
-  }, []);
+  
 
   return (
     <>
@@ -97,70 +68,8 @@ const Resume = props => {
           item && (
             <animated.div key={key} style={props}>
               <Container className={resumeClasses.resumeContainer}>
-                <Typography variant="h3">
-                  <PictureAsPdfSharpIcon /> {t("pdf.title")}
-                </Typography>
-                <Typography variant="h4">{t("pdf.subtitle")}</Typography>
-                {documentError ? (
-                  <ErrorMsg />
-                ) : (
-                  <>
-                    <Document
-                      file={{ url: "https://lauphern-resume-server.glitch.me/api/v1/download" }}
-                      onLoadSuccess={onDocumentLoadSuccess}
-                      onLoadError={() => setDocumentError(true)}
-                      loading={<CachedSharpIcon className={resumeClasses.loader} />}
-                      noData={<ErrorMsg />}
-                    >
-                      <ButtonGroup variant="contained">
-                        <Button
-                          disabled={pageNumber === 1}
-                          onClick={() => setPageNumber(pageNumber - 1)}
-                        >
-                          {t("pdf.previous")}
-                        </Button>
-                        <Button
-                          disabled={pageNumber === numPages}
-                          onClick={() => setPageNumber(pageNumber + 1)}
-                        >
-                          {t("pdf.next")}
-                        </Button>
-                      </ButtonGroup>
-                      <Page pageNumber={pageNumber} />
-                    </Document>
-                    {numPages && (
-                      <>
-                        <p>{t("pdf.key", { pageNumber, numPages })}</p>
-                        <a
-                          rel="noopener noreferrer"
-                          target="_blank"
-                          href="https://lauphern-resume-server.glitch.me/api/v1/download"
-                        >
-                          <FullscreenSharpIcon /> {t("pdf.full")}
-                        </a>
-                        <a
-                          rel="noopener noreferrer"
-                          target="_blank"
-                          href={fileUrl}
-                          download="Resume_LauraPascual.pdf"
-                        >
-                          <CloudDownloadSharpIcon /> {t("pdf.download")}
-                        </a>
-                      </>
-                    )}
-                  </>
-                )}
-                <img
-                  src={
-                    "http://validator.swagger.io/validator?url=https://resume-api.vercel.app/definition.yaml"
-                  }
-                  alt="Validation badge"
-                ></img>
-                <SwaggerUI
-                  url="https://resume-api.vercel.app/definition.yaml"
-                  validatorUrl="https://validator.swagger.io"
-                  defaultModelsExpandDepth={2}
-                />
+                <Pdf />
+                <Docs />
               </Container>
             </animated.div>
           )

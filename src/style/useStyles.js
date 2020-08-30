@@ -201,8 +201,21 @@ export const useResumeStyles = makeStyles(() => ({
     borderRadius: "0.5rem 0.5rem 0 0",
     boxShadow: "0px 50px 10px 3px rgba(0, 0, 0, 0.2)",
   },
+  pdfContainer: {
+    display: "grid",
+    gridTemplateColumns: "1fr 1fr",
+  },
   loader: {
     animation: "loader 1s linear infinite",
     color: "var(--primary)"
+  },
+  document: {
+    boxShadow: "2px 2px 3px 0px rgba(0, 0, 0, 0.2)",
+    display: "flex",
+    flexDirection: "column-reverse",
+    alignItems: "center",
+  },
+  badge: {
+    objectFit: "none",
   }
 }));
