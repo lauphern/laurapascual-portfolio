@@ -95,7 +95,7 @@ const Pdf = props => {
                 </Button>
               </ButtonGroup>
               {/* TODO media query for scale */}
-              <Page pageNumber={pageNumber} scale="0.7" />
+              <Page pageNumber={pageNumber} scale={0.7} />
             </Document>
             {numPages && <Typography variant="overline">{t("pdf.key", { pageNumber, numPages })}</Typography>}
           </Box>

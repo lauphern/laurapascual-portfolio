@@ -1,7 +1,7 @@
 import { makeStyles } from "@material-ui/core/styles";
 
 //TODO test in other browsers
-export const useAppStyles = makeStyles(() => ({
+export const useAppStyles = makeStyles({
   layout: {
     minHeight: "100vh",
     width: "100vw",
@@ -67,9 +67,9 @@ export const useAppStyles = makeStyles(() => ({
   type: {
     animation: "typeFlicker 1s step-end infinite",
   },
-}));
+});
 
-export const useBioStyles = makeStyles(() => ({
+export const useBioStyles = makeStyles({
   leftPanel: {
     minWidth: "50vw",
     alignItems: "flex-start",
@@ -117,9 +117,9 @@ export const useBioStyles = makeStyles(() => ({
     margin: "0 1rem",
     height: "2rem"
   },
-}));
+});
 
-export const useLinksStyles = makeStyles(() => ({
+export const useLinksStyles = makeStyles({
   rightPanel: {
     position: "relative",
     minWidth: "50vw",
@@ -169,10 +169,10 @@ export const useLinksStyles = makeStyles(() => ({
     position: "absolute",
     zIndex: -2,
   }
-}));
+});
 
 
-export const useResumeStyles = makeStyles(() => ({
+export const useResumeStyles = makeStyles({
   headerContainer: {
     minWidth: "100vw",
     paddingTop: "2.5rem",
@@ -235,4 +235,4 @@ export const useResumeStyles = makeStyles(() => ({
   badge: {
     objectFit: "none",
   },
-}));
+});
