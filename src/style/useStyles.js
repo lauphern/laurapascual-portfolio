@@ -43,6 +43,18 @@ export const useAppStyles = makeStyles({
       boxShadow: "inset 1px 1px 3px rgba(0, 0, 0, 0.2)",
     },
   },
+  secondaryBtn: {
+    color: "var(--accent)",
+    fontWeight: 600,
+    transition: "0.1s",
+    boxShadow: "2px 2px 3px 0px rgba(0, 0, 0, 0.2)",
+    backgroundColor: "white",
+
+    "&:hover": {
+      boxShadow: "inset 1px 1px 3px rgba(0, 0, 0, 0.2)",
+      backgroundColor: "white",
+    },
+  },
   pointer: {
     pointerEvents: "all",
     zIndex: 100,
@@ -223,16 +235,21 @@ export const useResumeStyles = makeStyles({
     left: 0,
     zIndex: -2,
   },
-  pdfContainer: {
+  pdfSection: {
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
+  },
+  pdfContainer: {
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
   },
   pdfTitle: {
     color: "var(--primary)",
   },
   loader: {
     animation: "loader 1s linear infinite",
-    color: "var(--primary)"
+    color: "var(--accent)"
   },
   document: {
     boxShadow: "2px 2px 3px 0px rgba(0, 0, 0, 0.2)",
@@ -246,4 +263,7 @@ export const useResumeStyles = makeStyles({
   badge: {
     objectFit: "none",
   },
+  pdfNav: {
+    marginBottom: "2rem",
+  }
 }, {index: 1});

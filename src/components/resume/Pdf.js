@@ -42,7 +42,7 @@ const Pdf = props => {
       });
   }, []);
   return (
-    <Container className={resumeClasses.pdfContainer}>
+    <Container className={resumeClasses.pdfSection}>
       <Box>
         <Typography variant="h3" className={resumeClasses.pdfTitle}>
           <PictureAsPdfSharpIcon className={resumeClasses.textIcon} /> {t("pdf.title")}
@@ -51,7 +51,7 @@ const Pdf = props => {
         {numPages && (
           <ButtonGroup variant="contained">
             <Button
-              className={appClasses.link}
+              className={`${appClasses.secondaryBtn}`}
               rel="noopener noreferrer"
               target="_blank"
               href="https://lauphern-resume-server.glitch.me/api/v1/download"
@@ -59,7 +59,7 @@ const Pdf = props => {
               <FullscreenSharpIcon className={resumeClasses.textIcon} /> {t("pdf.full")}
             </Button>
             <Button
-              className={appClasses.link}
+              className={`${appClasses.secondaryBtn}`}
               rel="noopener noreferrer"
               target="_blank"
               href={fileUrl}
@@ -70,11 +70,13 @@ const Pdf = props => {
           </ButtonGroup>
         )}
       </Box>
-      <Box>
+      <Box className={resumeClasses.pdfContainer}>
         {documentError ? (
-          <ErrorMsg />
-        ) : (
           <Box>
+            <ErrorMsg />
+          </Box>
+        ) : (
+          <>
             <Document
               className={numPages && resumeClasses.document}
               file={{ url: "https://lauphern-resume-server.glitch.me/api/v1/download" }}
@@ -83,11 +85,16 @@ const Pdf = props => {
               loading={<CachedSharpIcon className={resumeClasses.loader} />}
               noData={<ErrorMsg />}
             >
-              <ButtonGroup variant="contained">
-                <Button disabled={pageNumber === 1} onClick={() => setPageNumber(pageNumber - 1)}>
+              <ButtonGroup variant="contained" className={resumeClasses.pdfNav}>
+                <Button
+                  className={appClasses.secondaryBtn}
+                  disabled={pageNumber === 1}
+                  onClick={() => setPageNumber(pageNumber - 1)}
+                >
                   {t("pdf.previous")}
                 </Button>
                 <Button
+                  className={appClasses.secondaryBtn}
                   disabled={pageNumber === numPages}
                   onClick={() => setPageNumber(pageNumber + 1)}
                 >
@@ -97,8 +104,10 @@ const Pdf = props => {
               {/* TODO media query for scale */}
               <Page pageNumber={pageNumber} scale={0.7} />
             </Document>
-            {numPages && <Typography variant="overline">{t("pdf.key", { pageNumber, numPages })}</Typography>}
-          </Box>
+            {numPages && (
+              <Typography variant="overline">{t("pdf.key", { pageNumber, numPages })}</Typography>
+            )}
+          </>
         )}
       </Box>
     </Container>
