@@ -7,12 +7,12 @@ export const useAppStyles = makeStyles(() => ({
     pointerEvents: "none",
   },
   languageSwitch: {
-    position: "absolute",
+    position: "fixed",
     top: "20px",
     marginLeft: "5vw",
   },
   languageBtn: {
-    fontWeight: 400,
+    fontWeight: 600,
 
     "&:hover": {
       backgroundColor: "rgba(255,255,255, 0.15)",
@@ -64,7 +64,10 @@ export const useBioStyles = makeStyles(() => ({
     top: 0,
     left: 0,
     flexDirection: "column",
-    flexWrap: "nowrap"
+    flexWrap: "nowrap",
+  },
+  stickyPanelMobile: {
+    position: "sticky",
   },
   stacksMobile: {
     minWidth: "100%",
@@ -86,13 +89,17 @@ export const useBioStyles = makeStyles(() => ({
     animation: "typeFlicker 1s step-end infinite",
   },
   expandMoreIcon: {
-    alignSelf: "center",
+    // alignSelf: "center",
     position: "absolute",
     bottom: 0,
     color: "white",
+    transition: "0.1s",
     "& > *": {
       fontSize: "4rem",
     },
+    "&:hover": {
+      transform: "scale(1.25)",
+    }
   },
   skillsContainer: {
     maxWidth: "90vw",
@@ -100,10 +107,7 @@ export const useBioStyles = makeStyles(() => ({
   hardSkill: {
     backgroundColor: "rgba(255,255,255, 0.15)",
     color: "white",
-    // color: "var(--primary)",
     margin: "0 5px 5px 0",
-    // fontWeight: 600,
-    // fontSize: "0.9rem",
   },
   horizontalDivider: {
     width: "inherit",
@@ -135,6 +139,9 @@ export const useLinksStyles = makeStyles(() => ({
     "&>div": {
       width: "100%",
     }
+  },
+  topPanelMobile: {
+    zIndex: 1,
   },
   btn: {
     transition: "0.1s",
@@ -189,14 +196,13 @@ export const useResumeStyles = makeStyles(() => ({
   resumeContainer: {
     background: "white",
     padding: "5rem 5rem 0",
-    width: "70vw",
-    marginTop: "2.5rem",
+    margin: "2.5rem 5vw 0",
     boxSizing: "border-box",
     height: "calc(70vh - 2.5rem)",
     overflow: "scroll",
     position: "relative",
     bottom: 0,
-    borderRadius: "0.5rem 0.5rem 0 0",
+    borderRadius: "0.25rem 0.25rem 0 0",
     boxShadow: "0px 50px 10px 3px rgba(0, 0, 0, 0.2)",
   },
   pdfContainer: {

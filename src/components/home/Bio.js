@@ -12,7 +12,6 @@ import {
   Divider,
 } from "@material-ui/core";
 import useMediaQuery from "@material-ui/core/useMediaQuery";
-import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import DescriptionSharpIcon from "@material-ui/icons/DescriptionSharp";
 import { useTranslation } from "react-i18next";
 import { useTransition, animated } from "react-spring";
@@ -44,7 +43,7 @@ const Bio = props => {
       item
       xs={12}
       sm={6}
-      className={`${bioClasses.leftPanel} ${isItSmallTablet && bioClasses.stacksMobile}`}
+      className={`${bioClasses.leftPanel} ${isItSmallTablet && bioClasses.stacksMobile} ${isItSmallTablet && bioClasses.stickyPanelMobile}`}
       container
       justify="center"
     >
@@ -108,14 +107,6 @@ const Bio = props => {
                     />
                   ))}
                 </Box>
-                {isItSmallTablet && (
-                  <Link
-                    href="#bottom-panel"
-                    className={`${appClasses.pointer} ${bioClasses.expandMoreIcon}`}
-                  >
-                    <ExpandMoreIcon />
-                  </Link>
-                )}
               </>
             </animated.div>
           )
