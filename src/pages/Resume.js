@@ -5,7 +5,6 @@ import { Container, Button } from "@material-ui/core";
 import KeyboardReturnSharpIcon from "@material-ui/icons/KeyboardReturnSharp";
 import { useTranslation } from "react-i18next";
 
-import LanguageSwitch from "../components/LanguageSwitch";
 import Header from "../components/Header";
 import Pdf from "../components/resume/Pdf";
 import Docs from "../components/resume/Docs";
@@ -40,7 +39,6 @@ const Resume = props => {
   return (
     <>
       <Container className={resumeClasses.headerContainer} disableGutters>
-        <LanguageSwitch />
         {headerTransition.map(
           ({ item, props, key }) =>
             item && (

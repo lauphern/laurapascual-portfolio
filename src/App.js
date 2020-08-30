@@ -3,6 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import { ThemeProvider } from "@material-ui/core/styles";
 import "./App.scss";
 
+import LanguageSwitch from "./components/LanguageSwitch";
 import Home from "./pages/Home";
 import Resume from "./pages/Resume";
 
@@ -12,14 +13,15 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-            <Switch>
-              <Route exact path="/">
-                <Home />
-              </Route>
-              <Route path="/resume">
-                <Resume />
-              </Route>
-            </Switch>
+        <LanguageSwitch />
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/resume">
+            <Resume />
+          </Route>
+        </Switch>
       </ThemeProvider>
     </div>
   );

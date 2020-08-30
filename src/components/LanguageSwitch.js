@@ -1,15 +1,12 @@
-import React from 'react';
-import {
-  ButtonGroup,
-  Button
-} from "@material-ui/core";
-import { useTranslation } from 'react-i18next';
+import React from "react";
+import { useLocation } from "react-router-dom";
+import { ButtonGroup, Button } from "@material-ui/core";
+import { useTranslation } from "react-i18next";
+import { useTransition, animated } from "react-spring";
 
-
-import { useAppStyles, useBioStyles } from "../style/useStyles";
+import { useAppStyles } from "../style/useStyles";
 
 const LanguageSwitch = props => {
-  const bioClasses = useBioStyles();
   const appClasses = useAppStyles();
 
   const { t, i18n } = useTranslation();
@@ -18,28 +15,46 @@ const LanguageSwitch = props => {
     i18n.changeLanguage(lng);
   };
 
-  const getLanguage = () => i18n.language || window.localStorage.i18nextLng || '';
+  const getLanguage = () => i18n.language || window.localStorage.i18nextLng || "";
 
-  return(
-    <ButtonGroup variant="text" size="small" className={bioClasses.languageSwitch}>
-        <Button
-          onClick={() => changeLanguage("en")}
-          className={`${bioClasses.pointer} ${appClasses.link} ${bioClasses.languageBtn} ${
-            getLanguage().includes("en") && bioClasses.languageBtnActive
-          }`}
-        >
-          EN
-        </Button>
-        <Button
-          onClick={() => changeLanguage("es")}
-          className={`${bioClasses.pointer} ${appClasses.link} ${bioClasses.languageBtn} ${
-            getLanguage().includes("es") && bioClasses.languageBtnActive
-          }`}
-        >
-          ES
-        </Button>
-      </ButtonGroup>
-  )
-}
+  const location = useLocation();
+  const fadeInOut = useTransition(location, location => location.pathname, {
+    unique: true,
+    reset: true,
+    from: { opacity: 0 },
+    enter: { opacity: 1 },
+    leave: { opacity: 0 },
+  });
 
-export default LanguageSwitch
+  return (
+    <>
+      {fadeInOut.map(
+        ({ item, props, key }) =>
+          item && (
+            <animated.div key={key} style={props}>
+              <ButtonGroup variant="text" size="small" className={appClasses.languageSwitch}>
+                <Button
+                  onClick={() => changeLanguage("en")}
+                  className={`${appClasses.pointer} ${appClasses.link} ${appClasses.languageBtn} ${
+                    getLanguage().includes("en") && appClasses.languageBtnActive
+                  }`}
+                >
+                  EN
+                </Button>
+                <Button
+                  onClick={() => changeLanguage("es")}
+                  className={`${appClasses.pointer} ${appClasses.link} ${appClasses.languageBtn} ${
+                    getLanguage().includes("es") && appClasses.languageBtnActive
+                  }`}
+                >
+                  ES
+                </Button>
+              </ButtonGroup>
+            </animated.div>
+          )
+      )}
+    </>
+  );
+};
+
+export default LanguageSwitch;

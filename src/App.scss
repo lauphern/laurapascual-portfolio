@@ -56,6 +56,12 @@ body {
 	}
 }
 
+@media (max-width: 1199px) {
+	.hover-container {
+		visibility: hidden;
+	}
+}
+
 @media (min-device-width: 1200px) {
 	.hover-container {
 

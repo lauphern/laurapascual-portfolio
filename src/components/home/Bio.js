@@ -11,11 +11,12 @@ import {
   Tooltip,
   Divider,
 } from "@material-ui/core";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import DescriptionSharpIcon from "@material-ui/icons/DescriptionSharp";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
+import { useTransition, animated } from "react-spring";
 
-import LanguageSwitch from "../LanguageSwitch";
 import Header from "../Header";
 
 import { useBioStyles, useAppStyles } from "../../style/useStyles";
@@ -23,81 +24,101 @@ import { useBioStyles, useAppStyles } from "../../style/useStyles";
 import { hardSkills } from "../../data/hardSkills";
 
 const Bio = props => {
-
   const { t, i18n } = useTranslation();
 
   const bioClasses = useBioStyles();
   const appClasses = useAppStyles();
+
+  const isItSmallTablet = useMediaQuery("(max-width:834px)");
+
+  const leftPanelTransition = useTransition(true, null, {
+    unique: true,
+    reset: true,
+    from: { transform: "translate3d(-500px,0,0)", opacity: 0 },
+    enter: { transform: "translate3d(0,0px,0)", opacity: 1 },
+    leave: { transform: "translate3d(-500px,0,0)", opacity: 0 },
+  });
 
   return (
     <Grid
       item
       xs={12}
       sm={6}
-      className={`${bioClasses.leftPanel} ${props.isItSmallTablet && bioClasses.stacksMobile}`}
+      className={`${bioClasses.leftPanel} ${isItSmallTablet && bioClasses.stacksMobile}`}
       container
       justify="center"
     >
-      <LanguageSwitch />
-      <Header />
-      <Container className={bioClasses.socialContainer} disableGutters>
-        <Tooltip title={t("cvTooltip")} arrow>
-          <Button
-            variant="outlined"
-            className={`${bioClasses.pointer} ${appClasses.routerBtn}`}
-            component={RouterLink}
-            to="/resume"
-            size="small"
-          >
-            <DescriptionSharpIcon /> {t("cv")}
-          </Button>
-        </Tooltip>
-        <Divider orientation="vertical" flexItem className={bioClasses.verticalDivider} />
-        <Typography variant="body1">
-          {/* TODO revisar que funciona */}
-          <Link
-            className={`${bioClasses.pointer} ${appClasses.link}`}
-            href="mailto:laura.pascual.h@hotmail.com"
-          >
-            Email
-          </Link>{" "}
-        </Typography>
-        <Divider orientation="vertical" flexItem className={bioClasses.verticalDivider} />
-        <Typography variant="body1">
-          <Link
-            className={`${bioClasses.pointer} ${appClasses.link}`}
-            href="https://github.com/lauphern"
-            target="_blank"
-            rel="noopener"
-          >
-            Github
-          </Link>
-        </Typography>
-        <Divider orientation="vertical" flexItem className={bioClasses.verticalDivider} />
-        <Typography variant="body1">
-          <Link
-            className={`${bioClasses.pointer} ${appClasses.link}`}
-            href={t("linkedin")}
-            target="_blank"
-            rel="noopener"
-          >
-            Linkedin
-          </Link>
-        </Typography>
-      </Container>
-      <Box className={bioClasses.skillsContainer}>
-        {hardSkills.map(skillName => (
-          <Chip
-            label={skillName}
-            size="small"
-            className={`${bioClasses.hardSkill} ${appClasses.link} ${bioClasses.pointer}`}
-          />
-        ))}
-      </Box>
-      {props.isItSmallTablet && (
-        <Link href="#bottom-panel" className={`${bioClasses.pointer} ${bioClasses.expandMoreIcon}`}>
-          <ExpandMoreIcon />
-        </Link>
+      {leftPanelTransition.map(
+        ({ item, props, key }) =>
+          item && (
+            <animated.div key={key} style={props}>
+              <>
+                <Header />
+                <Container className={bioClasses.socialContainer} disableGutters>
+                  <Tooltip title={t("cvTooltip")} arrow>
+                    <Button
+                      variant="outlined"
+                      className={`${appClasses.pointer} ${appClasses.routerBtn}`}
+                      component={RouterLink}
+                      to="/resume"
+                      size="small"
+                    >
+                      <DescriptionSharpIcon /> {t("cv")}
+                    </Button>
+                  </Tooltip>
+                  <Divider orientation="vertical" flexItem className={bioClasses.verticalDivider} />
+                  <Typography variant="body1">
+                    {/* TODO revisar que funciona */}
+                    <Link
+                      className={`${appClasses.pointer} ${appClasses.link}`}
+                      href="mailto:laura.pascual.h@hotmail.com"
+                    >
+                      Email
+                    </Link>{" "}
+                  </Typography>
+                  <Divider orientation="vertical" flexItem className={bioClasses.verticalDivider} />
+                  <Typography variant="body1">
+                    <Link
+                      className={`${appClasses.pointer} ${appClasses.link}`}
+                      href="https://github.com/lauphern"
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      Github
+                    </Link>
+                  </Typography>
+                  <Divider orientation="vertical" flexItem className={bioClasses.verticalDivider} />
+                  <Typography variant="body1">
+                    <Link
+                      className={`${appClasses.pointer} ${appClasses.link}`}
+                      href={t("linkedin")}
+                      target="_blank"
+                      rel="noopener"
+                    >
+                      Linkedin
+                    </Link>
+                  </Typography>
+                </Container>
+                <Box className={bioClasses.skillsContainer}>
+                  {hardSkills.map(skillName => (
+                    <Chip
+                      label={skillName}
+                      size="small"
+                      className={`${bioClasses.hardSkill} ${appClasses.link} ${appClasses.pointer}`}
+                    />
+                  ))}
+                </Box>
+                {isItSmallTablet && (
+                  <Link
+                    href="#bottom-panel"
+                    className={`${appClasses.pointer} ${bioClasses.expandMoreIcon}`}
+                  >
+                    <ExpandMoreIcon />
+                  </Link>
+                )}
+              </>
+            </animated.div>
+          )
       )}
     </Grid>
   );

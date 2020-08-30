@@ -4,11 +4,23 @@ export const useAppStyles = makeStyles(() => ({
   layout: {
     minHeight: "100vh",
     width: "100vw",
-    flexWrap: "nowrap",
-  },
-  mainContainer: {
-    position: "absolute",
     pointerEvents: "none",
+  },
+  languageSwitch: {
+    position: "absolute",
+    top: "20px",
+    marginLeft: "5vw",
+  },
+  languageBtn: {
+    fontWeight: 400,
+
+    "&:hover": {
+      backgroundColor: "rgba(255,255,255, 0.15)",
+    }
+  },
+  languageBtnActive: {
+    color: "var(--secondary) !important",
+    backgroundColor: "rgba(255,255,255, 0.15)",
   },
   routerBtn: {
     border: "2px solid var(--primary)",
@@ -24,6 +36,11 @@ export const useAppStyles = makeStyles(() => ({
       backgroundColor: "inherit",
       boxShadow: "inset 1px 1px 3px rgba(0, 0, 0, 0.2)",
     },
+  },
+  pointer: {
+    pointerEvents: "all",
+    zIndex: 100,
+    position: "relative",
   },
   link: {
     transition: "0.1s",
@@ -53,26 +70,6 @@ export const useBioStyles = makeStyles(() => ({
     minWidth: "100%",
     minHeight: "100vh",
     height: "100%"
-  },
-  languageSwitch: {
-    position: "absolute",
-    top: "20px",
-  },
-  pointer: {
-    pointerEvents: "all",
-    zIndex: 100,
-    position: "relative",
-  },
-  languageBtn: {
-    fontWeight: 400,
-
-    "&:hover": {
-      backgroundColor: "rgba(255,255,255, 0.15)",
-    }
-  },
-  languageBtnActive: {
-    color: "var(--secondary)",
-    backgroundColor: "rgba(255,255,255, 0.15)",
   },
   h1Mobile: {
     fontSize: "4rem",
@@ -131,9 +128,13 @@ export const useBioStyles = makeStyles(() => ({
 
 export const useLinksStyles = makeStyles(() => ({
   rightPanel: {
-    backgroundColor: "white",
+    position: "relative",
     minWidth: "50vw",
-    height: "100vh"
+    height: "100vh",
+
+    "&>div": {
+      width: "100%",
+    }
   },
   btn: {
     transition: "0.1s",
@@ -151,18 +152,15 @@ export const useLinksStyles = makeStyles(() => ({
   capitalize: {
     textTransform: "none",
   },
-  pointer: {
-    pointerEvents: "all",
-    zIndex: 100,
-    position: "relative",
-  },
   btnGroupMobile: {
+    "& > *": {
+      fontSize: "1.3rem",
+    },
+  },
+  btnGroupTablet: {
     "& > *": {
       fontSize: "1.5rem",
     },
-  },
-  btnMobile: {
-    borderBottom: "1px solid var(--bg-color) !important",
   },
   stacksMobile: {
     minWidth: "100%",
