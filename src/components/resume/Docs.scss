@@ -46,7 +46,7 @@
         .tab-item.active {
           h4 {
             span:after {
-              background-color: var(--secondary);
+              background-color: var(--accent);
             }
           }
         }
@@ -54,8 +54,8 @@
     }
   
     .btn.execute {
-      background-color: var(--secondary);
-      border-color: var(--secondary);
+      background-color: var(--accent);
+      border-color: var(--accent);
       color: #3b4151
     }
   }

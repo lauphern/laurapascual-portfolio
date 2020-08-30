@@ -1,21 +1,23 @@
 html {
 	scroll-behavior: smooth;
 	// --primary: #ACACE6;
-	--primary: #00BFFF;
+	--primary: #4666FF;
+	--accent: #FFA585;
 	// --primary: #73C2FB;
-	--primary-alpha: rgba(0, 191, 255, 0.1);
 	// --primary: #623CEA;
 	--secondary: #FEFE33;
-	--bg-color: #404a4f;
 	// --bg-color: #B0BABF;
 	// --bg-color: #E9ECED;
 	// --bg-color: #d2d8da;
 	// --bg-color: #bbc4c7;
 	// --bg-color: #a6afb3;
 }
+// 1C05B3
+// 0000CD
+// 4666FF
 
 body {
-	background-color: var(--bg-color);
+	background-color: var(--primary);
 }
 
 .hover-container {
@@ -29,7 +31,7 @@ body {
 
 @keyframes typeFlicker {
   0% {
-		color: var(--primary);
+		color: var(--accent);
 	}
   50% {
 		color: white;

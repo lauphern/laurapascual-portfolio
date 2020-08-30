@@ -104,7 +104,7 @@ const Bio = props => {
                     <Chip
                       label={skillName}
                       size="small"
-                      className={`${bioClasses.hardSkill} ${appClasses.link} ${appClasses.pointer}`}
+                      className={`${bioClasses.hardSkill} ${appClasses.pointer}`}
                     />
                   ))}
                 </Box>

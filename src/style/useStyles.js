@@ -20,27 +20,26 @@ export const useAppStyles = makeStyles({
   },
   languageBtn: {
     fontWeight: 600,
+    color: "white",
 
     "&:hover": {
-      backgroundColor: "rgba(255,255,255, 0.15)",
+      backgroundColor: "rgba(255,255,255, 0.7)",
+      color: "var(--primary)"
     }
   },
   languageBtnActive: {
-    color: "var(--secondary) !important",
-    backgroundColor: "rgba(255,255,255, 0.15)",
+    color: "var(--primary) !important",
+    backgroundColor: "rgba(255,255,255, 0.7)",
   },
   routerBtn: {
-    border: "2px solid var(--primary)",
+    color: "white",
     fontWeight: 600,
-    color: "var(--primary)",
     transition: "0.1s",
     boxShadow: "2px 2px 3px 0px rgba(0, 0, 0, 0.2)",
-    backgroundColor: "rgba(255,255,255, 0.15)",
+    backgroundColor: "var(--accent)",
 
     "&:hover": {
-      borderColor: "var(--secondary)",
-      color: "var(--secondary)",
-      backgroundColor: "inherit",
+      backgroundColor: "var(--accent)",
       boxShadow: "inset 1px 1px 3px rgba(0, 0, 0, 0.2)",
     },
   },
@@ -50,11 +49,12 @@ export const useAppStyles = makeStyles({
     position: "relative",
   },
   link: {
-    transition: "0.1s",
-    color: "var(--primary)",
+    color: "white",
+    // transition: "0.1s",
+    // color: "var(--primary)",
 
     "&:hover": {
-      color: "var(--secondary)",
+      color: "var(--accent)",
       textDecoration: "none",
     },
   },
@@ -99,9 +99,14 @@ export const useBioStyles = makeStyles({
     maxWidth: "90vw",
   },
   hardSkill: {
-    backgroundColor: "rgba(255,255,255, 0.15)",
+    backgroundColor: "rgba(255,255,255, 0.2)",
     color: "white",
     margin: "0 5px 5px 0",
+
+    "&:hover": {
+      color: "var(--primary)",
+      backgroundColor: "rgba(255,255,255, 0.7)",
+    }
   },
   horizontalDivider: {
     width: "inherit",
@@ -115,7 +120,8 @@ export const useBioStyles = makeStyles({
     margin: "2rem 0",
 
     "& > *": {
-      margin: "0.5rem 0"
+      margin: "0.5rem 0",
+      fontWeight: 600,
     }
   },
   verticalDivider: {
@@ -143,7 +149,7 @@ export const useLinksStyles = makeStyles({
     "&:hover": {
       fontWeight: 400,
       lineHeight: 3,
-      backgroundColor: "var(--primary)",
+      backgroundColor: "var(--accent)",
       color: "white",
     },
   },
