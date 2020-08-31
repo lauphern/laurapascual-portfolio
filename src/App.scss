@@ -11,6 +11,12 @@ html {
 	// --bg-color: #d2d8da;
 	// --bg-color: #bbc4c7;
 	// --bg-color: #a6afb3;
+	//TODO change pointer for auto
+	cursor: url("/cursor.png"), auto;
+
+	button, a {
+		cursor: url("/pointer-sm.png"), pointer !important;
+	}
 }
 // 1C05B3
 // 0000CD
@@ -67,7 +73,7 @@ body {
 			top: var(--y);
 			width: var(--size);
 			height: var(--size);
-			background: radial-gradient(circle closest-side, rgba(238, 130, 238, 0.2) 0%, rgba(0, 0, 255, 0.2) 33%, rgba(0, 255, 255, 0.2) 66%, rgba(255,255,255,0) 100%);
+			background: radial-gradient(circle closest-side, rgba(238, 130, 238, 0.25) 0%, rgba(0, 0, 255, 0.25) 33%, rgba(0, 255, 255, 0.25) 66%, rgba(255,255,255,0) 100%);
 			transform: translate(-50%, -50%);
 			transition: width .2s ease, height .2s ease;
 		}
@@ -78,3 +84,7 @@ body {
 		}
 	}
 }
+
+//TODO
+//do the message thing
+//finish adding things to Context

@@ -111,6 +111,7 @@ export const useBioStyles = makeStyles({
     maxWidth: "90vw",
   },
   hardSkill: {
+    cursor: "url('/cursor.png'), auto",
     backgroundColor: "rgba(255,255,255, 0.2)",
     color: "white",
     margin: "0 5px 5px 0",
