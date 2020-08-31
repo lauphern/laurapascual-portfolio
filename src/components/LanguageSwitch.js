@@ -15,6 +15,7 @@ const LanguageSwitch = props => {
     i18n.changeLanguage(lng);
   };
 
+  //TODO poner en Context
   const getLanguage = () => i18n.language || window.localStorage.i18nextLng || "";
 
   const location = useLocation();

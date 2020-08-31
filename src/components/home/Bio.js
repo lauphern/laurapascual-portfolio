@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Store } from "../../store";
 import { Link as RouterLink } from "react-router-dom";
 import {
   Container,
@@ -20,9 +21,12 @@ import Header from "../Header";
 
 import { useBioStyles, useAppStyles } from "../../style/useStyles";
 
-import { hardSkills } from "../../data/hardSkills";
+// import { hardSkills } from "../../data/hardSkills";
 
 const Bio = props => {
+
+  const { hardSkills } = useContext(Store);
+
   const { t, i18n } = useTranslation();
 
   const bioClasses = useBioStyles();
