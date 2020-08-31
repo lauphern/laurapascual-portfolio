@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Store } from "../../store";
 import { useTranslation } from "react-i18next";
 import { Container, Box, ButtonGroup, Button, Typography } from "@material-ui/core";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 import CloudDownloadSharpIcon from "@material-ui/icons/CloudDownloadSharp";
 import FullscreenSharpIcon from "@material-ui/icons/FullscreenSharp";
 import PictureAsPdfSharpIcon from "@material-ui/icons/PictureAsPdfSharp";
@@ -16,8 +16,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 const Pdf = props => {
   const { t, i18n } = useTranslation();
 
-  const isItSmallDevice = useMediaQuery("(max-width:400px)");
-  const isItSmallTablet = useMediaQuery("(max-width:834px)");
+  const { mediaQueries: {isItSmallTablet} } = useContext(Store);
 
   const resumeClasses = useResumeStyles();
   const appClasses = useAppStyles();

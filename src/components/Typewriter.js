@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Store } from "../store";
 import { Typography } from "@material-ui/core";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import { useAppStyles } from "../style/useStyles";
 
@@ -12,7 +12,7 @@ const Type = props => {
 //Code based on: https://stackoverflow.com/questions/59786811/typewriter-effect-in-react
 
 const Typewriter = props => {
-  const isItSmallDevice = useMediaQuery("(max-width:400px)");
+  const { mediaQueries: { isItSmallDevice } } = useContext(Store);
 
   const appClasses = useAppStyles();
 

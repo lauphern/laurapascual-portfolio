@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Store } from "../store";
 import { Typography } from "@material-ui/core";
 import { useTranslation } from 'react-i18next';
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import Typewriter from "../components/Typewriter";
 
@@ -11,7 +11,7 @@ import { useAppStyles } from "../style/useStyles";
 const Header = props => {
   const { t, i18n } = useTranslation();
 
-  const isItSmallDevice = useMediaQuery("(max-width:400px)");
+  const { mediaQueries: {isItSmallDevice} } = useContext(Store);
 
   const appClasses = useAppStyles();
 

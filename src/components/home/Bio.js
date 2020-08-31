@@ -12,7 +12,6 @@ import {
   Tooltip,
   Divider,
 } from "@material-ui/core";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 import DescriptionSharpIcon from "@material-ui/icons/DescriptionSharp";
 import { useTranslation } from "react-i18next";
 import { useTransition, animated } from "react-spring";
@@ -21,18 +20,14 @@ import Header from "../Header";
 
 import { useBioStyles, useAppStyles } from "../../style/useStyles";
 
-// import { hardSkills } from "../../data/hardSkills";
-
 const Bio = props => {
 
-  const { hardSkills } = useContext(Store);
+  const { hardSkills, mediaQueries: { isItSmallTablet } } = useContext(Store);
 
   const { t, i18n } = useTranslation();
 
   const bioClasses = useBioStyles();
   const appClasses = useAppStyles();
-
-  const isItSmallTablet = useMediaQuery("(max-width:834px)");
 
   const leftPanelTransition = useTransition(true, null, {
     unique: true,

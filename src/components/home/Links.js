@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Store } from "../../store";
 import { ButtonGroup, Button, Grid, Box } from "@material-ui/core";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 
 import { useTransition, animated } from "react-spring";
 
@@ -10,9 +10,9 @@ const Links = props => {
   const linkClasses = useLinksStyles();
   const appClasses = useAppStyles();
 
-  const isItSmallDevice = useMediaQuery("(max-width:400px)");
-  const isItSmallTablet = useMediaQuery("(max-width:834px)");
-  const isItTablet = useMediaQuery("(max-width:1100px)");
+  const {
+    mediaQueries: { isItSmallDevice, isItSmallTablet, isItTablet },
+  } = useContext(Store);
 
   const rightPanelTransition = useTransition(true, null, {
     unique: true,

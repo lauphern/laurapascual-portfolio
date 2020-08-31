@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Store } from "../store";
 import { Link as RouterLink } from "react-router-dom";
 import { useTransition, animated } from "react-spring";
 import { Container, Box, Button } from "@material-ui/core";
-import useMediaQuery from "@material-ui/core/useMediaQuery";
 import KeyboardReturnSharpIcon from "@material-ui/icons/KeyboardReturnSharp";
 import { useTranslation } from "react-i18next";
 
@@ -16,7 +16,7 @@ import { useAppStyles, useResumeStyles } from "../style/useStyles";
 const Resume = props => {
   const { t, i18n } = useTranslation();
 
-  const isItSmallTablet = useMediaQuery("(max-width:834px)");
+  const { mediaQueries: { isItSmallTablet } } = useContext(Store);
 
   const resumeClasses = useResumeStyles();
   const appClasses = useAppStyles();
