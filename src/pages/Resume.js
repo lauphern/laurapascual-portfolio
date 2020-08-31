@@ -49,7 +49,7 @@ const Resume = props => {
                   <Header />
                   <Button
                     variant="outlined"
-                    className={`${appClasses.routerBtn}`}
+                    className={`${appClasses.routerBtn} ${appClasses.pointer}`}
                     component={RouterLink}
                     to="/"
                     size="small"

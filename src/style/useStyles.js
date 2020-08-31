@@ -57,8 +57,8 @@ export const useAppStyles = makeStyles({
   },
   pointer: {
     pointerEvents: "all",
-    zIndex: 100,
-    position: "relative",
+    // zIndex: 100,
+    // position: "relative",
   },
   link: {
     color: "white",
@@ -204,6 +204,7 @@ export const useResumeStyles = makeStyles({
     position: "fixed",
     top: 0,
     marginBottom: "2.5rem",
+    pointerEvents: "none",
   },
   headerText: {
     color: "white",
@@ -227,6 +228,7 @@ export const useResumeStyles = makeStyles({
     position: "relative",
     // bottom: 0,
     zIndex: 1,
+    pointerEvents: "none",
   },
   resumeContainerMobile: {
     padding: "5rem 1rem",

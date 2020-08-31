@@ -2,6 +2,12 @@
 
   font-family: "Source Code Pro", "monospace" !important;
 
+  section, button, .opblock-get, .model-container {
+    pointer-events: all !important;
+    // z-index: 100 !important;
+    // position: relative !important;
+  }
+
   & * {
     font-family: "Source Code Pro", "monospace" !important;
   }
@@ -21,6 +27,8 @@
     }
 
     .opblock-tag {
+
+      cursor: url("/pointer-sm.png"), pointer !important;
 
       &-section {
         margin-bottom: 1rem;

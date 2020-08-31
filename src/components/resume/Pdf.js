@@ -54,7 +54,7 @@ const Pdf = props => {
         {numPages && (
           <ButtonGroup variant="contained" orientation="vertical">
             <Button
-              className={`${appClasses.secondaryBtn}`}
+              className={`${appClasses.secondaryBtn} ${appClasses.pointer}`}
               rel="noopener noreferrer"
               target="_blank"
               href="https://lauphern-resume-server.glitch.me/api/v1/download"
@@ -62,7 +62,7 @@ const Pdf = props => {
               <FullscreenSharpIcon className={resumeClasses.textIcon} /> {t("pdf.full")}
             </Button>
             <Button
-              className={`${appClasses.secondaryBtn}`}
+              className={`${appClasses.secondaryBtn} ${appClasses.pointer}`}
               rel="noopener noreferrer"
               target="_blank"
               href={fileUrl}
@@ -90,14 +90,14 @@ const Pdf = props => {
             >
               <ButtonGroup variant="contained" className={resumeClasses.pdfNav}>
                 <Button
-                  className={appClasses.secondaryBtn}
+                  className={`${appClasses.secondaryBtn} ${appClasses.pointer}`}
                   disabled={pageNumber === 1}
                   onClick={() => setPageNumber(pageNumber - 1)}
                 >
                   {t("pdf.previous")}
                 </Button>
                 <Button
-                  className={appClasses.secondaryBtn}
+                  className={`${appClasses.secondaryBtn} ${appClasses.pointer}`}
                   disabled={pageNumber === numPages}
                   onClick={() => setPageNumber(pageNumber + 1)}
                 >
