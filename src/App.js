@@ -8,6 +8,7 @@ import LanguageSwitch from "./components/LanguageSwitch";
 import Home from "./pages/Home";
 import Resume from "./pages/Resume";
 
+import { _showMessage } from "./utils/showMessage";
 import { _cursorEffect } from "./utils/cursorEffect";
 
 import { theme } from "./style/theme";
@@ -20,6 +21,7 @@ function App() {
   const location = useLocation();
 
   useEffect(() => {
+    _showMessage();
     if (!isItSmallerThanLaptop)
       document.querySelector(".hover-container").addEventListener("mousemove", _cursorEffect);
     else document.querySelector(".hover-container").removeEventListener("mousemove", _cursorEffect);

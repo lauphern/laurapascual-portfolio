@@ -63,6 +63,7 @@ body {
 }
 
 @media (min-device-width: 1200px) {
+	//TODO make it show on the ResumeContainer
 	.hover-container {
 
 			&::before {
@@ -88,6 +89,5 @@ body {
 }
 
 //TODO
-//cursor effect based on location
 //do the message thing
 //finish adding things to Context
