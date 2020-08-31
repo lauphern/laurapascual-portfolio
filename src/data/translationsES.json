@@ -8,10 +8,10 @@
     "nodata": "¡Algo salió mal! No se encontró ningún archivo pdf",
     "title": "Descubre y descarga mi Currículum",
     "subtitle": "Puedes leer la información en formato JSON de la API en un archivo pdf",
-    "previous": "Página anterior",
-    "next": "Página siguiente",
+    "previous": "Anterior",
+    "next": "Siguiente",
     "key": "Página {{pageNumber}} de {{numPages}}",
-    "full": "Modo pantalla completa",
+    "full": "Pantalla completa",
     "download": "Descargar"
   }
 }

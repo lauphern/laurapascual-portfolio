@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import { Container, Box, ButtonGroup, Button, Typography } from "@material-ui/core";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import CloudDownloadSharpIcon from "@material-ui/icons/CloudDownloadSharp";
 import FullscreenSharpIcon from "@material-ui/icons/FullscreenSharp";
 import PictureAsPdfSharpIcon from "@material-ui/icons/PictureAsPdfSharp";
@@ -14,6 +15,9 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 
 const Pdf = props => {
   const { t, i18n } = useTranslation();
+
+  const isItSmallDevice = useMediaQuery("(max-width:400px)");
+  const isItSmallTablet = useMediaQuery("(max-width:834px)");
 
   const resumeClasses = useResumeStyles();
   const appClasses = useAppStyles();
@@ -42,14 +46,14 @@ const Pdf = props => {
       });
   }, []);
   return (
-    <Container className={resumeClasses.pdfSection}>
+    <Container className={`${isItSmallTablet ? resumeClasses.pdfSectionMobile : resumeClasses.pdfSection}`}>
       <Box>
         <Typography variant="h3" className={resumeClasses.pdfTitle}>
           <PictureAsPdfSharpIcon className={resumeClasses.textIcon} /> {t("pdf.title")}
         </Typography>
         <Typography variant="subtitle1">{t("pdf.subtitle")}</Typography>
         {numPages && (
-          <ButtonGroup variant="contained">
+          <ButtonGroup variant="contained" orientation="vertical">
             <Button
               className={`${appClasses.secondaryBtn}`}
               rel="noopener noreferrer"
@@ -102,7 +106,7 @@ const Pdf = props => {
                 </Button>
               </ButtonGroup>
               {/* TODO media query for scale */}
-              <Page pageNumber={pageNumber} scale={0.7} />
+              <Page pageNumber={pageNumber} scale={isItSmallTablet ? 0.25 : 0.7} />
             </Document>
             {numPages && (
               <Typography variant="overline">{t("pdf.key", { pageNumber, numPages })}</Typography>

@@ -8,10 +8,10 @@
     "nodata": "Something went wrong! No pdf found",
     "title": "Check out and download my Résumé",
     "subtitle": "You can read the JSON data from the API in a pdf file",
-    "previous": "Previous page",
-    "next": "Next page",
+    "previous": "Previous",
+    "next": "Next",
     "key": "Page {{pageNumber}} of {{numPages}}",
-    "full": "Full screen mode",
+    "full": "Full screen",
     "download": "Download"
   }
 }

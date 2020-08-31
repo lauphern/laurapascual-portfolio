@@ -209,7 +209,8 @@ export const useResumeStyles = makeStyles({
     display: "flex",
     alignItems: "flex-start",
     flexDirection: "column",
-    width: "max-content",
+    width: "fit-content",
+    padding: "0 2rem",
   },
   headerPlaceholder: {
     height: "40vh",
@@ -226,6 +227,9 @@ export const useResumeStyles = makeStyles({
     // bottom: 0,
     zIndex: 1,
   },
+  resumeContainerMobile: {
+    padding: "5rem 1rem",
+  },
   resumeContainerBg: {
     backgroundColor: "white",
     width: "100vw",
@@ -238,6 +242,10 @@ export const useResumeStyles = makeStyles({
   pdfSection: {
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
+  },
+  pdfSectionMobile: {
+    display: "grid",
+    gridTemplateRows: "1fr 1fr",
   },
   pdfContainer: {
     display: "flex",

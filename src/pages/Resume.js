@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { useTransition, animated } from "react-spring";
 import { Container, Box, Button } from "@material-ui/core";
+import useMediaQuery from "@material-ui/core/useMediaQuery";
 import KeyboardReturnSharpIcon from "@material-ui/icons/KeyboardReturnSharp";
 import { useTranslation } from "react-i18next";
 
@@ -14,6 +15,8 @@ import { useAppStyles, useResumeStyles } from "../style/useStyles";
 //TODO do mobile
 const Resume = props => {
   const { t, i18n } = useTranslation();
+
+  const isItSmallTablet = useMediaQuery("(max-width:834px)");
 
   const resumeClasses = useResumeStyles();
   const appClasses = useAppStyles();
@@ -58,7 +61,7 @@ const Resume = props => {
             )
         )}
       </Container>
-      <Container className={resumeClasses.resumeContainer} disableGutters>
+      <Container className={`${resumeClasses.resumeContainer} ${isItSmallTablet && resumeClasses.resumeContainerMobile}`} disableGutters>
         {resumeTransition.map(
           ({ item, props, key }) =>
             item && (
