@@ -11,6 +11,7 @@ const Links = props => {
   const appClasses = useAppStyles();
 
   const {
+    projects,
     mediaQueries: { isItSmallDevice, isItSmallTablet, isItTablet },
   } = useContext(Store);
 
@@ -46,47 +47,16 @@ const Links = props => {
                   isItTablet && !isItSmallDevice && linkClasses.btnGroupTablet
                 } `}
               >
-                <Button
-                  variant="text"
-                  className={`${linkClasses.btn} ${appClasses.pointer}`}
-                  href="https://cristina-escritora.vercel.app/"
-                  target="_blank"
-                >
-                  Frontity site
-                </Button>
-                <Button
-                  variant="text"
-                  className={`${linkClasses.btn} ${appClasses.pointer}`}
-                  href="https://time4time-demo.netlify.com/"
-                  target="_blank"
-                >
-                  Time 4 Time 2.0
-                </Button>
-                <Button
-                  variant="text"
-                  className={`${linkClasses.btn} ${appClasses.pointer}`}
-                  href="https://textures-muidemo.netlify.com/"
-                  target="_blank"
-                >
-                  Textures -&nbsp;
-                  <span className={linkClasses.capitalize}>Material-UI demo</span>
-                </Button>
-                <Button
-                  variant="text"
-                  className={`${linkClasses.btn} ${appClasses.pointer}`}
-                  href="https://svg-css-animations.netlify.com/"
-                  target="_blank"
-                >
-                  SVG & CSS animations
-                </Button>
-                <Button
-                  variant="text"
-                  className={`${linkClasses.btn} ${appClasses.pointer}`}
-                  href="https://where-is-home.netlify.com/"
-                  target="_blank"
-                >
-                  Three.js&nbsp;<span className={linkClasses.capitalize}>demo</span>
-                </Button>
+                {projects.map(project => (
+                  <Button
+                    variant="text"
+                    className={`${linkClasses.btn} ${appClasses.pointer}`}
+                    href={project.url}
+                    target="_blank"
+                  >
+                    {project.title}
+                  </Button>
+                ))}
               </ButtonGroup>
             </animated.div>
           )

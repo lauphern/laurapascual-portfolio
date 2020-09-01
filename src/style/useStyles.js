@@ -167,9 +167,6 @@ export const useLinksStyles = makeStyles({
   btnDisabled: {
     color: "#878787",
   },
-  capitalize: {
-    textTransform: "none",
-  },
   btnGroupMobile: {
     "& > *": {
       fontSize: "1.3rem",
