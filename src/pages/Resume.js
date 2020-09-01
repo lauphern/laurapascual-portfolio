@@ -54,7 +54,7 @@ const Resume = props => {
                     to="/"
                     size="small"
                   >
-                    <KeyboardReturnSharpIcon /> {t("home")}
+                    <KeyboardReturnSharpIcon />&nbsp;{t("home")}
                   </Button>
                 </Container>
               </animated.div>

@@ -28,7 +28,7 @@ const Pdf = props => {
   const ErrorMsg = () => (
     //TODO style
     <Typography variant="caption">
-      <ErrorSharpIcon className={resumeClasses.textIcon} /> {t("pdf.nodata")}
+      <ErrorSharpIcon className={resumeClasses.textIcon} />&nbsp;{t("pdf.nodata")}
     </Typography>
   );
 
@@ -48,7 +48,7 @@ const Pdf = props => {
     <Container className={`${isItSmallTablet ? resumeClasses.pdfSectionMobile : resumeClasses.pdfSection}`}>
       <Box>
         <Typography variant="h3" className={resumeClasses.pdfTitle}>
-          <PictureAsPdfSharpIcon className={resumeClasses.textIcon} /> {t("pdf.title")}
+          <PictureAsPdfSharpIcon className={resumeClasses.textIcon} />&nbsp;{t("pdf.title")}
         </Typography>
         <Typography variant="subtitle1">{t("pdf.subtitle")}</Typography>
         {numPages && (
@@ -59,7 +59,7 @@ const Pdf = props => {
               target="_blank"
               href="https://lauphern-resume-server.glitch.me/api/v1/download"
             >
-              <FullscreenSharpIcon className={resumeClasses.textIcon} /> {t("pdf.full")}
+              <FullscreenSharpIcon className={resumeClasses.textIcon} />&nbsp;{t("pdf.full")}
             </Button>
             <Button
               className={`${appClasses.secondaryBtn} ${appClasses.pointer}`}
@@ -68,7 +68,7 @@ const Pdf = props => {
               href={fileUrl}
               download="Resume_LauraPascual.pdf"
             >
-              <CloudDownloadSharpIcon className={resumeClasses.textIcon} /> {t("pdf.download")}
+              <CloudDownloadSharpIcon className={resumeClasses.textIcon} />&nbsp;{t("pdf.download")}
             </Button>
           </ButtonGroup>
         )}

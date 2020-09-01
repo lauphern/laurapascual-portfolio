@@ -49,6 +49,7 @@ export const useAppStyles = makeStyles({
     transition: "0.1s",
     boxShadow: "2px 2px 3px 0px rgba(0, 0, 0, 0.2)",
     backgroundColor: "white",
+    textTransform: "capitalize",
 
     "&:hover": {
       boxShadow: "inset 1px 1px 3px rgba(0, 0, 0, 0.2)",
@@ -57,13 +58,9 @@ export const useAppStyles = makeStyles({
   },
   pointer: {
     pointerEvents: "all",
-    // zIndex: 100,
-    // position: "relative",
   },
   link: {
     color: "white",
-    // transition: "0.1s",
-    // color: "var(--primary)",
 
     "&:hover": {
       color: "var(--accent)",
