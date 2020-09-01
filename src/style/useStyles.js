@@ -142,6 +142,7 @@ export const useBioStyles = makeStyles({
 
 export const useLinksStyles = makeStyles({
   rightPanel: {
+    flexDirection: "column",
     position: "relative",
     minWidth: "50vw",
     height: "100vh",
