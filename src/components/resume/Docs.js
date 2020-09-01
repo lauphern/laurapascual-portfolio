@@ -16,7 +16,7 @@ const Docs = props => {
         <CardMedia
           className={resumeClasses.badge}
           component="img"
-          src="http://validator.swagger.io/validator?url=https://resume-api.vercel.app/definition.yaml"
+          src="https://validator.swagger.io/validator?url=https://resume-api.vercel.app/definition.yaml"
           alt="Validation badge"
         ></CardMedia>
       </Box>
