@@ -270,8 +270,13 @@ export const useResumeStyles = makeStyles({
   textIcon: {
     verticalAlign: "middle",
   },
+  badgeContainer: {
+    display: "flex",
+    justifyContent: "flex-end",
+  },
   badge: {
     objectFit: "none",
+    width: "auto"
   },
   pdfNav: {
     marginBottom: "2rem",
