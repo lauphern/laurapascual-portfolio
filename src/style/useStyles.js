@@ -215,17 +215,14 @@ export const useResumeStyles = makeStyles({
     height: "40vh",
   },
   resumeContainer: {
-    // background: "white",
+    //TODO change this when I do the cursorEffect on this div
+    pointerEvents: "all",
     padding: "5rem 15vw",
     minWidth: "100vw",
     margin: "0",
     boxSizing: "border-box",
-    // height: "calc(70vh - 2.5rem)",
-    // overflow: "scroll",
     position: "relative",
-    // bottom: 0,
     zIndex: 1,
-    pointerEvents: "none",
   },
   resumeContainerMobile: {
     padding: "5rem 1rem",
@@ -245,7 +242,12 @@ export const useResumeStyles = makeStyles({
   },
   pdfSectionMobile: {
     display: "grid",
-    gridTemplateRows: "1fr 1fr",
+    gridTemplateRows: "auto auto",
+  },
+  pdfTextContainer: {
+    "& > *": {
+      marginBottom: "1rem",
+    }
   },
   pdfContainer: {
     display: "flex",

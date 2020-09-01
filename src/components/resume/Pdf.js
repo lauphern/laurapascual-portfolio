@@ -7,6 +7,8 @@ import FullscreenSharpIcon from "@material-ui/icons/FullscreenSharp";
 import PictureAsPdfSharpIcon from "@material-ui/icons/PictureAsPdfSharp";
 import CachedSharpIcon from "@material-ui/icons/CachedSharp";
 import ErrorSharpIcon from "@material-ui/icons/ErrorSharp";
+import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
+import NavigateNextIcon from '@material-ui/icons/NavigateNext';
 import { Document, Page, pdfjs } from "react-pdf";
 
 import { useAppStyles, useResumeStyles } from "../../style/useStyles";
@@ -16,7 +18,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 const Pdf = props => {
   const { t, i18n } = useTranslation();
 
-  const { mediaQueries: {isItSmallTablet} } = useContext(Store);
+  const { mediaQueries: { isItSmallDevice, isItSmallTablet } } = useContext(Store);
 
   const resumeClasses = useResumeStyles();
   const appClasses = useAppStyles();
@@ -26,7 +28,6 @@ const Pdf = props => {
   const [fileUrl, setFileUrl] = useState("");
   const [documentError, setDocumentError] = useState(false);
   const ErrorMsg = () => (
-    //TODO style
     <Typography variant="caption">
       <ErrorSharpIcon className={resumeClasses.textIcon} />&nbsp;{t("pdf.nodata")}
     </Typography>
@@ -46,7 +47,7 @@ const Pdf = props => {
   }, []);
   return (
     <Container className={`${isItSmallTablet ? resumeClasses.pdfSectionMobile : resumeClasses.pdfSection}`}>
-      <Box>
+      <Box className={resumeClasses.pdfTextContainer}>
         <Typography variant="h3" className={resumeClasses.pdfTitle}>
           <PictureAsPdfSharpIcon className={resumeClasses.textIcon} />&nbsp;{t("pdf.title")}
         </Typography>
@@ -90,22 +91,23 @@ const Pdf = props => {
             >
               <ButtonGroup variant="contained" className={resumeClasses.pdfNav}>
                 <Button
+                  aria-label="before"
                   className={`${appClasses.secondaryBtn} ${appClasses.pointer}`}
                   disabled={pageNumber === 1}
                   onClick={() => setPageNumber(pageNumber - 1)}
                 >
-                  {t("pdf.previous")}
+                  <NavigateBeforeIcon />
                 </Button>
                 <Button
+                  aria-label="next"
                   className={`${appClasses.secondaryBtn} ${appClasses.pointer}`}
                   disabled={pageNumber === numPages}
                   onClick={() => setPageNumber(pageNumber + 1)}
                 >
-                  {t("pdf.next")}
+                  <NavigateNextIcon />
                 </Button>
               </ButtonGroup>
-              {/* TODO media query for scale */}
-              <Page pageNumber={pageNumber} scale={isItSmallTablet ? 0.25 : 0.7} />
+              <Page pageNumber={pageNumber} scale={isItSmallTablet ? (isItSmallDevice ? 0.25 : 0.5) : 0.7} />
             </Document>
             {numPages && (
               <Typography variant="overline">{t("pdf.key", { pageNumber, numPages })}</Typography>
