@@ -71,7 +71,6 @@ const Bio = props => {
                   </Tooltip>
                   <Divider orientation="vertical" flexItem className={bioClasses.verticalDivider} />
                   <Typography variant="body1">
-                    {/* TODO revisar que funciona */}
                     <Link
                       className={`${appClasses.pointer} ${appClasses.link}`}
                       href="mailto:laura.pascual.h@hotmail.com"
