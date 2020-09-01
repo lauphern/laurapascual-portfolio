@@ -11,6 +11,7 @@ const Docs = props => {
 
   return (
     <Box>
+    {/* TODO see if I can add this inside with dom manipulation and refs */}
       <CardMedia
         className={resumeClasses.badge}
         component="img"

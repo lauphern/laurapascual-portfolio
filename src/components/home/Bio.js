@@ -21,8 +21,10 @@ import Header from "../Header";
 import { useBioStyles, useAppStyles } from "../../style/useStyles";
 
 const Bio = props => {
-
-  const { hardSkills, mediaQueries: { isItSmallTablet } } = useContext(Store);
+  const {
+    hardSkills,
+    mediaQueries: { isItSmallTablet, isItShortHeight },
+  } = useContext(Store);
 
   const { t, i18n } = useTranslation();
 
@@ -42,7 +44,9 @@ const Bio = props => {
       item
       xs={12}
       sm={6}
-      className={`${bioClasses.leftPanel} ${isItSmallTablet && bioClasses.stacksMobile} ${isItSmallTablet && bioClasses.stickyPanelMobile}`}
+      className={`${bioClasses.leftPanel} ${isItSmallTablet && bioClasses.stacksMobile} ${
+        isItSmallTablet && bioClasses.stickyPanelMobile
+      }`}
       container
       justify="center"
     >
@@ -61,7 +65,8 @@ const Bio = props => {
                       to="/resume"
                       size="small"
                     >
-                      <DescriptionSharpIcon />&nbsp;{t("cv")}
+                      <DescriptionSharpIcon />
+                      &nbsp;{t("cv")}
                     </Button>
                   </Tooltip>
                   <Divider orientation="vertical" flexItem className={bioClasses.verticalDivider} />
@@ -97,16 +102,19 @@ const Bio = props => {
                     </Link>
                   </Typography>
                 </Container>
-                <Box className={bioClasses.skillsContainer}>
-                  {/* TODO solucionar esto en mobile, es mucho contenido */}
-                  {hardSkills.map(skillName => (
-                    <Chip
-                      label={skillName}
-                      size="small"
-                      className={`${bioClasses.hardSkill} ${appClasses.pointer}`}
-                    />
-                  ))}
-                </Box>
+                {/* TODO do a "show more" or "show hard skills" button + modal
+                for short devices */}
+                {!isItShortHeight && (
+                  <Box className={bioClasses.skillsContainer}>
+                    {hardSkills.map(skillName => (
+                      <Chip
+                        label={skillName}
+                        size="small"
+                        className={`${bioClasses.hardSkill} ${appClasses.pointer}`}
+                      />
+                    ))}
+                  </Box>
+                )}
               </>
             </animated.div>
           )
