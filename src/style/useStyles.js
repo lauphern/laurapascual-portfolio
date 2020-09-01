@@ -40,7 +40,7 @@ export const useAppStyles = makeStyles({
 
     "&:hover": {
       backgroundColor: "var(--accent)",
-      boxShadow: "inset 1px 1px 3px rgba(0, 0, 0, 0.2)",
+      boxShadow: "inset 2px 2px 3px rgba(0, 0, 0, 0.2)",
     },
   },
   secondaryBtn: {
@@ -52,7 +52,7 @@ export const useAppStyles = makeStyles({
     textTransform: "capitalize",
 
     "&:hover": {
-      boxShadow: "inset 1px 1px 3px rgba(0, 0, 0, 0.2)",
+      boxShadow: "inset 2px 2px 3px rgba(0, 0, 0, 0.2)",
       backgroundColor: "white",
     },
   },
@@ -81,6 +81,23 @@ export const useAppStyles = makeStyles({
   type: {
     animation: "typeFlicker 1s step-end infinite",
   },
+  sourceCodeBtn: {
+    display: "inline-flex",
+    justifyContent: "center",
+    alignItems: "center",
+    position: "fixed",
+    bottom: 0,
+    right: 0,
+    padding: "0.5rem 1rem !important",
+    margin: "2rem",
+    zIndex: 100,
+
+    "& > span": {
+      textAlign: "center",
+      lineHeight: "initial",
+      fontSize: "0.75rem",
+    }
+  }
 }, {index: 1});
 
 export const useBioStyles = makeStyles({
