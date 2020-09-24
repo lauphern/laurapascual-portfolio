@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Store } from "../../store";
-import { ButtonGroup, Button, Grid, Box } from "@material-ui/core";
+import { ButtonGroup, Button, Grid, Box, Tooltip } from "@material-ui/core";
 
 import { useTransition, animated } from "react-spring";
 
@@ -48,14 +48,16 @@ const Links = props => {
                 } `}
               >
                 {projects.map(project => (
-                  <Button
-                    variant="text"
-                    className={`${linkClasses.btn} ${appClasses.pointer}`}
-                    href={project.url}
-                    target="_blank"
-                  >
-                    {project.title}
-                  </Button>
+                  <Tooltip title={project.framework} arrow>
+                    <Button
+                      variant="text"
+                      className={`${linkClasses.btn} ${appClasses.pointer}`}
+                      href={project.url}
+                      target="_blank"
+                    >
+                      {project.title}
+                    </Button>
+                  </Tooltip>
                 ))}
               </ButtonGroup>
             </animated.div>
