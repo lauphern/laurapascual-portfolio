@@ -1,5 +1,9 @@
 export const projects = [
   {
+    title: "Trump Says...",
+    url: "https://trump-says.azurewebsites.net/"
+  },
+  {
     title: "Resume API",
     url: "https://github.com/users/lauphern/projects/2"
   },
