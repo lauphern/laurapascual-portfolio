@@ -7,8 +7,8 @@ import FullscreenSharpIcon from "@material-ui/icons/FullscreenSharp";
 import PictureAsPdfSharpIcon from "@material-ui/icons/PictureAsPdfSharp";
 import CachedSharpIcon from "@material-ui/icons/CachedSharp";
 import ErrorSharpIcon from "@material-ui/icons/ErrorSharp";
-import NavigateBeforeIcon from '@material-ui/icons/NavigateBefore';
-import NavigateNextIcon from '@material-ui/icons/NavigateNext';
+import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
+import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import { Document, Page, pdfjs } from "react-pdf";
 
 import { useAppStyles, useResumeStyles } from "../../style/useStyles";
@@ -18,7 +18,9 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 const Pdf = props => {
   const { t, i18n } = useTranslation();
 
-  const { mediaQueries: { isItSmallDevice, isItSmallTablet } } = useContext(Store);
+  const {
+    mediaQueries: { isItSmallDevice, isItSmallTablet },
+  } = useContext(Store);
 
   const resumeClasses = useResumeStyles();
   const appClasses = useAppStyles();
@@ -29,7 +31,8 @@ const Pdf = props => {
   const [documentError, setDocumentError] = useState(false);
   const ErrorMsg = () => (
     <Typography variant="caption">
-      <ErrorSharpIcon className={resumeClasses.textIcon} />&nbsp;{t("pdf.nodata")}
+      <ErrorSharpIcon className={resumeClasses.textIcon} />
+      &nbsp;{t("pdf.nodata")}
     </Typography>
   );
 
@@ -38,18 +41,29 @@ const Pdf = props => {
   }
 
   useEffect(() => {
-    fetch("https://lauphern-resume-server.glitch.me/api/v1/download")
+    fetch(`${process.env.REACT_APP_MAIN_SERVER_URL}/download`)
       .then(response => response.blob())
       .then(blob => {
         const url = window.URL.createObjectURL(new Blob([blob], { type: "application/pdf" }));
         setFileUrl(url);
+      })
+      .catch(err => {
+        fetch(`${process.env.REACT_APP_BACKUP_SERVER_URL}/download`)
+          .then(response => response.blob())
+          .then(blob => {
+            const url = window.URL.createObjectURL(new Blob([blob], { type: "application/pdf" }));
+            setFileUrl(url);
+          })
       });
   }, []);
   return (
-    <Container className={`${isItSmallTablet ? resumeClasses.pdfSectionMobile : resumeClasses.pdfSection}`}>
+    <Container
+      className={`${isItSmallTablet ? resumeClasses.pdfSectionMobile : resumeClasses.pdfSection}`}
+    >
       <Box className={resumeClasses.pdfTextContainer}>
         <Typography variant="h3" className={resumeClasses.pdfTitle}>
-          <PictureAsPdfSharpIcon className={resumeClasses.textIcon} />&nbsp;{t("pdf.title")}
+          <PictureAsPdfSharpIcon className={resumeClasses.textIcon} />
+          &nbsp;{t("pdf.title")}
         </Typography>
         <Typography variant="subtitle1">{t("pdf.subtitle")}</Typography>
         {numPages && (
@@ -58,9 +72,10 @@ const Pdf = props => {
               className={`${appClasses.secondaryBtn} ${appClasses.pointer}`}
               rel="noopener noreferrer"
               target="_blank"
-              href="https://lauphern-resume-server.glitch.me/api/v1/download"
+              href={`${process.env.REACT_APP_MAIN_SERVER_URL}/download`}
             >
-              <FullscreenSharpIcon className={resumeClasses.textIcon} />&nbsp;{t("pdf.full")}
+              <FullscreenSharpIcon className={resumeClasses.textIcon} />
+              &nbsp;{t("pdf.full")}
             </Button>
             <Button
               className={`${appClasses.secondaryBtn} ${appClasses.pointer}`}
@@ -69,7 +84,8 @@ const Pdf = props => {
               href={fileUrl}
               download="Resume_LauraPascual.pdf"
             >
-              <CloudDownloadSharpIcon className={resumeClasses.textIcon} />&nbsp;{t("pdf.download")}
+              <CloudDownloadSharpIcon className={resumeClasses.textIcon} />
+              &nbsp;{t("pdf.download")}
             </Button>
           </ButtonGroup>
         )}
@@ -83,7 +99,8 @@ const Pdf = props => {
           <>
             <Document
               className={numPages && resumeClasses.document}
-              file={{ url: "https://lauphern-resume-server.glitch.me/api/v1/download" }}
+              // TODO try with the backup url if this one doesn't work
+              file={{ url: `${process.env.REACT_APP_MAIN_SERVER_URL}/download` }}
               onLoadSuccess={onDocumentLoadSuccess}
               onLoadError={() => setDocumentError(true)}
               loading={<CachedSharpIcon className={resumeClasses.loader} />}
@@ -107,7 +124,10 @@ const Pdf = props => {
                   <NavigateNextIcon />
                 </Button>
               </ButtonGroup>
-              <Page pageNumber={pageNumber} scale={isItSmallTablet ? (isItSmallDevice ? 0.25 : 0.5) : 0.7} />
+              <Page
+                pageNumber={pageNumber}
+                scale={isItSmallTablet ? (isItSmallDevice ? 0.25 : 0.5) : 0.7}
+              />
             </Document>
             {numPages && (
               <Typography variant="overline">{t("pdf.key", { pageNumber, numPages })}</Typography>
