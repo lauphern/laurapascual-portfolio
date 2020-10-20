@@ -1,5 +1,4 @@
-import React, { useEffect, useContext } from "react";
-import { Store } from "./store";
+import React, { useEffect } from "react";
 import { Switch, Route, useLocation } from "react-router-dom";
 import { Fab } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/core/styles";
@@ -11,16 +10,12 @@ import Home from "./pages/Home";
 import Resume from "./pages/Resume";
 
 import { _showMessage } from "./utils/showMessage";
-import { _cursorEffect } from "./utils/cursorEffect";
 
 import { theme } from "./style/theme";
 
 import { useAppStyles } from "./style/useStyles";
 
 function App() {
-  const {
-    mediaQueries: { isItSmallerThanLaptop },
-  } = useContext(Store);
 
   const location = useLocation();
 
@@ -28,14 +23,10 @@ function App() {
 
   useEffect(() => {
     _showMessage();
-    if (!isItSmallerThanLaptop)
-      document.querySelector(".hover-container").addEventListener("mousemove", _cursorEffect);
-    else document.querySelector(".hover-container").removeEventListener("mousemove", _cursorEffect);
   }, [location]);
 
   return (
     <div className="App">
-      <div className="hover-container"></div>
       <ThemeProvider theme={theme}>
         <LanguageSwitch />
         <Switch>

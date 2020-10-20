@@ -230,7 +230,6 @@ export const useResumeStyles = makeStyles({
     height: "40vh",
   },
   resumeContainer: {
-    //TODO change this when I do the cursorEffect on this div
     pointerEvents: "all",
     padding: "5rem 15vw",
     minWidth: "100vw",
