@@ -39,7 +39,8 @@ const Resume = props => {
   });
 
   useEffect(() => {
-    props.setDomReady(true);
+    // props.setDomReady(true);
+    setTimeout(()=>props.setDomReady(true), 1000)
   }, []);
 
   return (
