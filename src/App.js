@@ -29,7 +29,7 @@ function App() {
   return (
     <div className="App">
       <ThemeProvider theme={theme}>
-        {!domReady ? <h1>Loading!</h1> : null}
+        {/* {!domReady ? <h1>Loading!</h1> : null} */}
         <div style={{display: !domReady ? "none" : "block"}}>
           <LanguageSwitch />
           <Switch>

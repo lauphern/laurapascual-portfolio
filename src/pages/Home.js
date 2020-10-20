@@ -11,7 +11,10 @@ const Home = props => {
 
   useEffect(() => {
     // props.setDomReady(true);
-    setTimeout(()=>props.setDomReady(true), 1000)
+    setTimeout(() => {
+      props.setDomReady(true);
+      document.querySelector("#domLoader").style.display = "none";
+    }, 1000);
   }, []);
 
   return (
