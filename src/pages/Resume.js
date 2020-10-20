@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Store } from "../store";
 import { Link as RouterLink } from "react-router-dom";
 import { useTransition, animated } from "react-spring";
@@ -15,7 +15,9 @@ import { useAppStyles, useResumeStyles } from "../style/useStyles";
 const Resume = props => {
   const { t, i18n } = useTranslation();
 
-  const { mediaQueries: { isItSmallTablet } } = useContext(Store);
+  const {
+    mediaQueries: { isItSmallTablet },
+  } = useContext(Store);
 
   const resumeClasses = useResumeStyles();
   const appClasses = useAppStyles();
@@ -36,6 +38,10 @@ const Resume = props => {
     leave: { transform: "translate3d(0,200px,0)", opacity: 0 },
   });
 
+  useEffect(() => {
+    props.setDomReady(true);
+  }, []);
+
   return (
     <>
       <Box className={resumeClasses.headerPlaceholder}></Box>
@@ -53,14 +59,20 @@ const Resume = props => {
                     to="/"
                     size="small"
                   >
-                    <KeyboardReturnSharpIcon />&nbsp;{t("home")}
+                    <KeyboardReturnSharpIcon />
+                    &nbsp;{t("home")}
                   </Button>
                 </Container>
               </animated.div>
             )
         )}
       </Container>
-      <Container className={`${resumeClasses.resumeContainer} ${isItSmallTablet && resumeClasses.resumeContainerMobile}`} disableGutters>
+      <Container
+        className={`${resumeClasses.resumeContainer} ${
+          isItSmallTablet && resumeClasses.resumeContainerMobile
+        }`}
+        disableGutters
+      >
         {resumeTransition.map(
           ({ item, props, key }) =>
             item && (

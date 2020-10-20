@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Grid } from "@material-ui/core";
 
 import Bio from "../components/home/Bio";
@@ -8,6 +8,10 @@ import { useAppStyles } from "../style/useStyles";
 
 const Home = props => {
   const classes = useAppStyles();
+
+  useEffect(() => {
+    props.setDomReady(true);
+  }, []);
 
   return (
     <>
