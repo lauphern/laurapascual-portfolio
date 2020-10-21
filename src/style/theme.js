@@ -28,7 +28,12 @@ export const theme = createMuiTheme({
       fontWeight: 400,
     },
     h3: {
+      fontFamily: ["Heebo", "Roboto", "Helvetica", "Arial", "sans-serif"].join(","),
       fontSize: "1.5rem",
+    },
+    h4: {
+      fontFamily: ["Heebo", "Roboto", "Helvetica", "Arial", "sans-serif"].join(","),
+      fontSize: "1.25rem",
     }
   },
 });

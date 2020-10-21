@@ -240,8 +240,9 @@ export const useResumeStyles = makeStyles(
     },
     resumeContainer: {
       display: "flex",
+      flexDirection: "column",
       pointerEvents: "all",
-      padding: "5rem 15vw",
+      padding: "2rem",
       minWidth: "100vw",
       margin: "0",
       boxSizing: "border-box",
@@ -294,16 +295,19 @@ export const useResumeStyles = makeStyles(
     textIcon: {
       verticalAlign: "middle",
     },
-    badgeContainer: {
-      display: "flex",
-      justifyContent: "flex-end",
-    },
     badge: {
       objectFit: "none",
       width: "auto",
     },
     pdfNav: {
       marginBottom: "2rem",
+    },
+    docsContainer: {
+      display: "flex",
+    },
+    resumeTitle: {
+      display: "inline-flex",
+      alignItems: "flex-end",
     },
     drawerContainer: {
       [theme.breakpoints.up("sm")]: {

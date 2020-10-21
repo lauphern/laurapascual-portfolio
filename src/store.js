@@ -17,6 +17,310 @@ export const StoreProvider = props => {
       isItSmallThanLaptop: useMediaQuery("(max-width:1199px)"),
       isItShortHeight: useMediaQuery("(max-height:600px)"),
     },
+    servers: {
+      production: "https://resume-api-server.azurewebsites.net/api/v1",
+      backup: "https://lauphern-resume-server.glitch.me/api/v1",
+    },
+    endpoints: [
+      //TODO translate
+      {
+        path: "/",
+        title: "API information",
+        description: "Description and list of endpoints",
+        method: "GET",
+        parameters: {},
+        responses: [
+          {
+            code: "200",
+            description: "Successful operation",
+            mediaType: "application/json",
+            exampleValue: `{\n  "info": "string",\n  "endpoints": [\n    "string"\n  ]\n}`,
+          },
+          {
+            code: "400",
+            description: "Invalid request",
+            mediaType: "application/json",
+            exampleValue: `{\n  "code": "string",\n  "message": "string"\n}`,
+          },
+          {
+            code: "5XX",
+            description: "Unexpected error",
+            mediaType: "application/json",
+            exampleValue: `{\n  "code": "string",\n  "message": "string"\n}`,
+          },
+        ],
+      },
+      {
+        path: "/personal-info",
+        title: "Personal information",
+        description: "Full name, location and contact information",
+        method: "GET",
+        parameters: {},
+        responses: [
+          {
+            code: "200",
+            description: "Successful operation",
+            mediaType: "application/json",
+            exampleValue: `{\n  "name": "string",\n  "job_title": "string",\n  "location": "string",\n  "contact_info": {\n    "email": "string",\n    "linkedin": "string",\n    "github": "string",\n    "personal_website": "string"\n  },\n  "bio": "string"\n}`,
+          },
+          {
+            code: "400",
+            description: "Invalid request",
+            mediaType: "application/json",
+            exampleValue: `{\n  "code": "string",\n  "message": "string"\n}`,
+          },
+          {
+            code: "5XX",
+            description: "Unexpected error",
+            mediaType: "application/json",
+            exampleValue: `{\n  "code": "string",\n  "message": "string"\n}`,
+          },
+        ],
+      },
+      {
+        path: "/progessional-experience",
+        title: "Professional experience",
+        description: "Relevant professional experience",
+        method: "GET",
+        parameters: {},
+        responses: [
+          {
+            code: "200",
+            description: "Successful operation",
+            mediaType: "application/json",
+            exampleValue: `[\n  {\n    "title": "string",\n    "company": {\n      "company_name": "string",\n      "company_location": "string"\n    },\n    "volunteer": true,\n    "start_date": "2020-10-21",\n    "end_date": "2020-10-21",\n    "tasks": [\n      "string"\n    ],\n    "language": "en"\n  }\n]`,
+          },
+          {
+            code: "400",
+            description: "Invalid request",
+            mediaType: "application/json",
+            exampleValue: `{\n  "code": "string",\n  "message": "string"\n}`,
+          },
+          {
+            code: "5XX",
+            description: "Unexpected error",
+            mediaType: "application/json",
+            exampleValue: `{\n  "code": "string",\n  "message": "string"\n}`,
+          },
+        ],
+      },
+      {
+        path: "/education",
+        title: "Education",
+        description: "Educational background",
+        method: "GET",
+        parameters: {},
+        responses: [
+          {
+            code: "200",
+            description: "Successful operation",
+            mediaType: "application/json",
+            exampleValue: `[\n  {\n    "title": "string",\n    "school": {\n      "school_name": "string",\n      "school_location": "string"\n    },\n    "level": "bachelor",\n    "start_date": "2020-10-21",\n    "end_date": "2020-10-21",\n    "finished": true,\n    "skills": [\n      "string"\n    ],\n    "language": "en"\n  }\n]`,
+          },
+          {
+            code: "400",
+            description: "Invalid request",
+            mediaType: "application/json",
+            exampleValue: `{\n  "code": "string",\n  "message": "string"\n}`,
+          },
+          {
+            code: "5XX",
+            description: "Unexpected error",
+            mediaType: "application/json",
+            exampleValue: `{\n  "code": "string",\n  "message": "string"\n}`,
+          },
+        ],
+      },
+      {
+        path: "/certifications",
+        title: "Certifications",
+        description: "Official certifications and diplomas",
+        method: "GET",
+        parameters: {},
+        responses: [
+          {
+            code: "200",
+            description: "Successful operation",
+            mediaType: "application/json",
+            exampleValue: `[\n  {\n    "title": "string",\n    "school": {\n      "school_name": "string",\n      "school_location": "string"\n    },\n    "level": "bachelor",\n    "start_date": "2020-10-21",\n    "end_date": "2020-10-21",\n    "finished": true,\n    "skills": [\n      "string"\n    ],\n    "language": "en"\n  }\n]`,
+          },
+          {
+            code: "400",
+            description: "Invalid request",
+            mediaType: "application/json",
+            exampleValue: `{\n  "code": "string",\n  "message": "string"\n}`,
+          },
+          {
+            code: "5XX",
+            description: "Unexpected error",
+            mediaType: "application/json",
+            exampleValue: `{\n  "code": "string",\n  "message": "string"\n}`,
+          },
+        ],
+      },
+      {
+        path: "/volunteer-work",
+        title: "Volunteer work",
+        description: "Volunteer work",
+        method: "GET",
+        parameters: {},
+        responses: [
+          {
+            code: "200",
+            description: "Successful operation",
+            mediaType: "application/json",
+            exampleValue: `[\n  {\n    "title": "string",\n    "company": {\n      "company_name": "string",\n      "company_location": "string"\n    },\n    "volunteer": true,\n    "start_date": "2020-10-21",\n    "end_date": "2020-10-21",\n    "tasks": [\n      "string"\n    ],\n    "language": "en"\n  }\n]`,
+          },
+          {
+            code: "400",
+            description: "Invalid request",
+            mediaType: "application/json",
+            exampleValue: `{\n  "code": "string",\n  "message": "string"\n}`,
+          },
+          {
+            code: "5XX",
+            description: "Unexpected error",
+            mediaType: "application/json",
+            exampleValue: `{\n  "code": "string",\n  "message": "string"\n}`,
+          },
+        ],
+      },
+      {
+        path: "/hard-skills",
+        title: "Hard skills",
+        description: "List of hard skills",
+        method: "GET",
+        parameters: {},
+        responses: [
+          {
+            code: "200",
+            description: "Successful operation",
+            mediaType: "application/json",
+            exampleValue: `[\n  {\n    "name": "string",\n    "type": "language",\n    "language": "en"\n  }\n]`,
+          },
+          {
+            code: "400",
+            description: "Invalid request",
+            mediaType: "application/json",
+            exampleValue: `{\n  "code": "string",\n  "message": "string"\n}`,
+          },
+          {
+            code: "5XX",
+            description: "Unexpected error",
+            mediaType: "application/json",
+            exampleValue: `{\n  "code": "string",\n  "message": "string"\n}`,
+          },
+        ],
+      },
+      {
+        path: "/soft-skills",
+        title: "Soft skills",
+        description: "List of soft skills",
+        method: "GET",
+        parameters: {},
+        responses: [
+          {
+            code: "200",
+            description: "Successful operation",
+            mediaType: "application/json",
+            exampleValue: `[\n  "string"\n]`,
+          },
+          {
+            code: "400",
+            description: "Invalid request",
+            mediaType: "application/json",
+            exampleValue: `{\n  "code": "string",\n  "message": "string"\n}`,
+          },
+          {
+            code: "5XX",
+            description: "Unexpected error",
+            mediaType: "application/json",
+            exampleValue: `{\n  "code": "string",\n  "message": "string"\n}`,
+          },
+        ],
+      },
+      {
+        path: "/languages",
+        title: "Languages",
+        description: "Spoken and written languages",
+        method: "GET",
+        parameters: {},
+        responses: [
+          {
+            code: "200",
+            description: "Successful operation",
+            mediaType: "application/json",
+            exampleValue: `[\n  "Spanish"\n]`,
+          },
+          {
+            code: "400",
+            description: "Invalid request",
+            mediaType: "application/json",
+            exampleValue: `{\n  "code": "string",\n  "message": "string"\n}`,
+          },
+          {
+            code: "5XX",
+            description: "Unexpected error",
+            mediaType: "application/json",
+            exampleValue: `{\n  "code": "string",\n  "message": "string"\n}`,
+          },
+        ],
+      },
+      {
+        path: "/portfolio",
+        title: "Portfolio",
+        description: "List of dev projects",
+        method: "GET",
+        parameters: {},
+        responses: [
+          {
+            code: "200",
+            description: "Successful operation",
+            mediaType: "application/json",
+            exampleValue: `[\n  {\n    "name": "string",\n    "type": "language",\n    "language": "en"\n  }\n]`,
+          },
+          {
+            code: "400",
+            description: "Invalid request",
+            mediaType: "application/json",
+            exampleValue: `{\n  "code": "string",\n  "message": "string"\n}`,
+          },
+          {
+            code: "5XX",
+            description: "Unexpected error",
+            mediaType: "application/json",
+            exampleValue: `{\n  "code": "string",\n  "message": "string"\n}`,
+          },
+        ],
+      },
+      {
+        path: "/download",
+        title: "Download CV in pdf",
+        description: "Download the API's data in a pdf",
+        method: "GET",
+        parameters: {},
+        responses: [
+          {
+            code: "200",
+            description: "Successful operation",
+            mediaType: "application/json",
+            exampleValue: ``,
+          },
+          {
+            code: "400",
+            description: "Invalid request",
+            mediaType: "application/json",
+            exampleValue: `{\n  "code": "string",\n  "message": "string"\n}`,
+          },
+          {
+            code: "5XX",
+            description: "Unexpected error",
+            mediaType: "application/json",
+            exampleValue: `{\n  "code": "string",\n  "message": "string"\n}`,
+          },
+        ],
+      },
+    ],
   };
   return <Store.Provider value={contextValue}>{props.children}</Store.Provider>;
 };
