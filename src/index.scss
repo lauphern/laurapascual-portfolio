@@ -4,6 +4,40 @@
 
 body {
   margin: 0;
+	background-color: var(--primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+#domLoader {
+  z-index: 3;
+  opacity: 1;
+  visibility: visible;
+  transition: all 0.5s 1s;
+  background-color: var(--primary);
+  width: 100vw;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Heebo", "Roboto", "Helvetica", "Arial", "sans-serif";
+  font-weight: 400;
+  font-size: 5rem;
+
+  p {
+    color: var(--accent);
+    text-align: right;
+
+    span {
+      color: white;
+    }
+  }
+}
+
+.progressFade {
+  visibility: hidden !important;
+  opacity: 0 !important;
 }

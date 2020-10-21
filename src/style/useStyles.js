@@ -90,7 +90,7 @@ export const useAppStyles = makeStyles({
     right: 0,
     padding: "0.5rem 1rem !important",
     margin: "2rem",
-    zIndex: 100,
+    zIndex: 2,
 
     "& > span": {
       textAlign: "center",

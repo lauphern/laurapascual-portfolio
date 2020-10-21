@@ -10,10 +10,9 @@ const Home = props => {
   const classes = useAppStyles();
 
   useEffect(() => {
-    // props.setDomReady(true);
     setTimeout(() => {
       props.setDomReady(true);
-      document.querySelector("#domLoader").style.display = "none";
+      document.querySelector("#domLoader").classList.add("progressFade");
     }, 1000);
   }, []);
 
