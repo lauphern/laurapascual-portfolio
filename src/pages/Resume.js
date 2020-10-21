@@ -7,8 +7,9 @@ import KeyboardReturnSharpIcon from "@material-ui/icons/KeyboardReturnSharp";
 import { useTranslation } from "react-i18next";
 
 import Header from "../components/Header";
-import Pdf from "../components/resume/Pdf";
 import Docs from "../components/resume/Docs";
+import Pdf from "../components/resume/Pdf";
+import OldDocs from "../components/resume/OldDocs";
 
 import { useAppStyles, useResumeStyles } from "../style/useStyles";
 
@@ -76,17 +77,18 @@ const Resume = props => {
         }`}
         disableGutters
       >
-        {resumeTransition.map(
+        {/* {resumeTransition.map(
           ({ item, props, key }) =>
             item && (
               <animated.div key={key} style={props}>
-                <>
-                  <Pdf />
+                <> */}
                   <Docs />
-                </>
+                  {/* <Pdf /> */}
+                  {/* <OldDocs /> */}
+                {/* </>
               </animated.div>
             )
-        )}
+        )} */}
         <Box className={resumeClasses.resumeContainerBg} />
       </Container>
     </>
