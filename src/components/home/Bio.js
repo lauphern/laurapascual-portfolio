@@ -67,7 +67,7 @@ const Bio = props => {
                       size="small"
                     >
                       <DescriptionSharpIcon />
-                      &nbsp;{t("cv")}
+                      &nbsp;Résumé API
                     </Button>
                   </Tooltip>
                   <Divider orientation="vertical" flexItem className={bioClasses.verticalDivider} />
