@@ -87,7 +87,7 @@ export const StoreProvider = props => {
         ],
       },
       {
-        path: "/progessional-experience",
+        path: "/professional-experience",
         title: "Professional experience",
         description: "Relevant professional experience",
         method: "GET",

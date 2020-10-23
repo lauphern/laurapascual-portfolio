@@ -4,7 +4,7 @@ import { Box, CardMedia, Drawer, Hidden, IconButton, Typography, Chip } from "@m
 import MenuIcon from "@material-ui/icons/Menu";
 
 import DrawerList from "./DrawerList";
-import TabPanel from "./TabPanel";
+import Panel from "./Panel";
 
 import { useResumeStyles } from "../../style/useStyles";
 
@@ -95,7 +95,7 @@ const Docs = props => {
         </nav>
         <main className={resumeClasses.endpointsContainer}>
           {endpoints.map((endpoint, i) => (
-            <TabPanel value={activeTab} index={i} endpoint={endpoint} />
+            <Panel value={activeTab} index={i} endpoint={endpoint} />
           ))}
         </main>
       </Box>

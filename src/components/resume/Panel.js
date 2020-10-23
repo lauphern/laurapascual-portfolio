@@ -8,7 +8,7 @@ import Response from "./Response";
 
 import { defaultServer, backupServer } from "../../utils/apiRequest";
 
-const TabPanel = props => {
+const Panel = props => {
   const { endpoint, value, index, ...other } = props;
 
   const { i18n } = useTranslation();
@@ -17,8 +17,16 @@ const TabPanel = props => {
 
   const [apiResponse, setApiResponse] = useState({});
   const [apiError, setApiError] = useState("");
+  const [formValues, setFormValues] = useState({
+    "Accept-Language": "",
+    year: "",
+    type: "",
+    level: "",
+    school: "",
+  });
 
   const parseResponse = ({ res, endpoint }) => {
+    //TODO llevar a utils
     let response = endpoint.responses.find(el => parseInt(el.code[0]) === res.status / 100);
     let indentation = 0;
     //TODO it doesn't work for all responses
@@ -46,30 +54,49 @@ const TabPanel = props => {
 
   const handleSubmit = e => {
     //TODO handle download route
-    clearResponse();
+    clearPanelState({clearForm: false});
     e.preventDefault();
+    let params = { ...formValues };
+    for (const key in params) {
+      if (key === "Accept-Language") delete params[key];
+      else if (params[key].length === 0) delete params[key];
+    }
+    debugger;
     defaultServer
-      .get(endpoint.path, { headers: { "Accept-Language": getLanguage() } })
+      .get(endpoint.path, {
+        headers: { "Accept-Language": formValues["Accept-Language"] || getLanguage() },
+        params,
+      })
       .then(res => {
         // let test = response.value.match(/\n\s*\n/)
         const response = parseResponse({ res, endpoint });
         setApiResponse(response);
       })
       .catch(err => {
+        debugger;
         return backupServer
-          .get(endpoint.path, { headers: { "Accept-Language": getLanguage() } })
+          .get(endpoint.path, {
+            headers: { "Accept-Language": formValues["Accept-Language"] || getLanguage() },
+            params,
+          })
           .then(res => {
             const response = parseResponse({ res, endpoint });
             setApiResponse(response);
           })
           .catch(err => {
+            debugger;
             const errorObject = {
-              code: err.response.status,
-              description: err.response.statusText,
+              code: err.response && err.response.status,
+              description: err.response && err.response.statusText,
               mediaType: "application/json",
-              value: `{\n  "code": "${err.response.status}",\n  "message": "${err.message}"\n}`,
+              value: `{\n  "code": "${err.response && err.response.status}",\n  "message": "${err.message}"\n}`,
             };
-            if (typeof err.response.data == "string" && err.response.data.length > 0)
+            debugger;
+            if (
+              err.response && typeof err.response.data == "string" &&
+              err.response.data.length > 0 &&
+              err.response.data.indexOf("DOCTYPE") < 0
+            )
               setApiError(err.response.data);
             else setApiError(err.message);
             setApiResponse(errorObject);
@@ -77,13 +104,22 @@ const TabPanel = props => {
       });
   };
 
-  const clearResponse = () => {
+  const clearPanelState = ({ clearForm = true }) => {
     setApiResponse({});
     setApiError("");
+    if (clearForm) {
+      setFormValues({
+        "Accept-Language": "",
+        year: "",
+        type: "",
+        level: "",
+        school: "",
+      });
+    }
   };
 
   useEffect(() => {
-    clearResponse()
+    clearPanelState({});
   }, [value]);
 
   return (
@@ -100,7 +136,13 @@ const TabPanel = props => {
             {endpoint.title} <Chip size="small" label={endpoint.method} />
           </Typography>
           <Typography variant="subtitle1">{endpoint.description}</Typography>
-          <RequestForm handleSubmit={handleSubmit} clearResponse={clearResponse} parameters={endpoint.parameters}/>
+          <RequestForm
+            formValues={formValues}
+            setFormValues={setFormValues}
+            handleSubmit={handleSubmit}
+            clearPanelState={clearPanelState}
+            parameters={endpoint.parameters}
+          />
           {/* TODO do loader with backdrop */}
           {/* 2nd params
           3rd fix regex */}
@@ -122,4 +164,4 @@ const TabPanel = props => {
   );
 };
 
-export default TabPanel;
+export default Panel;

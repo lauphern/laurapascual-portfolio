@@ -1,22 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import { InputLabel, Select, MenuItem, TextField, Button } from "@material-ui/core";
 
 const CustomInput = props => {
-
-  const { param } = props;
-
-  const [test, setTest] = useState("")
+  const { param, formValues, setFormValues } = props;
 
   return (
     <>
       <p>In: {param.in}</p>
-      <InputLabel id={param.name}>{param.name}</InputLabel>
+      <InputLabel id={param.name} required={param.required}>{param.name}</InputLabel>
       {/* value should point to state */}
       {param.enum.length > 0 ? (
-        <Select name="" value={test} labelId={param.name} displayEmpty renderValue={()=> "Select parameter"} required={param.required}>
-          {/* <MenuItem value="" disabled>
-            Select language
-          </MenuItem> */}
+        <Select
+          name={param.name}
+          value={formValues[param.name]}
+          labelId={param.name}
+          required={param.required}
+          displayEmpty
+          renderValue={value => value || "Choose a value"}
+          onChange={e => setFormValues({...formValues, [param.name]: e.target.value})}
+        >
           {param.enum.map(val => (
             <MenuItem value={val}>{val}</MenuItem>
           ))}
@@ -27,8 +29,12 @@ const CustomInput = props => {
           labelId={param.name}
           required={param.required}
           placeholder={param.example}
-          // name=""
-          // value{}
+          name={param.name}
+          value={formValues[param.name]}
+          InputProps={{ inputProps: { min: 2010 } }}
+          min={param.type === "number" ? 2010 : null}
+          // TODO si, lo que pasa es que no se actualiza el valor, en el display tampoco
+          onChange={e => setFormValues({...formValues, [param.name]: e.target.value})}
         />
       )}
     </>
@@ -36,15 +42,15 @@ const CustomInput = props => {
 };
 
 const RequestForm = props => {
-  const { handleSubmit, clearResponse, parameters } = props;
+  const { handleSubmit, clearPanelState, parameters, formValues, setFormValues } = props;
 
   return (
     <form onSubmit={handleSubmit}>
       {parameters.map(param => (
-        <CustomInput param={param} />
+        <CustomInput formValues={formValues} setFormValues={setFormValues} param={param} />
       ))}
       <Button type="submit">Try it out</Button>
-      <Button onClick={clearResponse}>Clear</Button>
+      <Button onClick={() => clearPanelState({})}>Clear</Button>
     </form>
   );
 };
