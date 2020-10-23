@@ -32,10 +32,10 @@ const Docs = props => {
     setMobileOpen(!mobileOpen);
   };
 
-  const [value, setValue] = React.useState(0);
+  const [activeTab, setActiveTab] = React.useState(0);
 
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
+  const handleChange = (event, newActiveTab) => {
+    setActiveTab(newActiveTab);
   };
 
   return (
@@ -78,7 +78,7 @@ const Docs = props => {
                 keepMounted: true, // Better open performance on mobile.
               }}
             >
-              <DrawerList value={value} handleChange={handleChange} />
+              <DrawerList value={activeTab} handleChange={handleChange} />
             </Drawer>
           </Hidden>
           <Hidden xsDown>
@@ -89,13 +89,13 @@ const Docs = props => {
               variant="permanent"
               open
             >
-              <DrawerList value={value} handleChange={handleChange} />
+              <DrawerList value={activeTab} handleChange={handleChange} />
             </Drawer>
           </Hidden>
         </nav>
         <main className={resumeClasses.endpointsContainer}>
           {endpoints.map((endpoint, i) => (
-            <TabPanel value={value} index={i} endpoint={endpoint} />
+            <TabPanel value={activeTab} index={i} endpoint={endpoint} />
           ))}
         </main>
       </Box>

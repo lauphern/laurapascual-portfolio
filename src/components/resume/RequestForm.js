@@ -3,7 +3,7 @@ import { InputLabel, Select, MenuItem, Button } from "@material-ui/core";
 
 const RequestForm = props => {
 
-  const { handleSubmit } = props;
+  const { handleSubmit, clearResponse } = props;
 
   return (
     <form onSubmit={handleSubmit}>
@@ -12,6 +12,7 @@ const RequestForm = props => {
         <MenuItem value="">A parameter</MenuItem>
       </Select>
       <Button type="submit">Try it out</Button>
+      <Button onClick={clearResponse}>Clear</Button>
     </form>
   );
 };
