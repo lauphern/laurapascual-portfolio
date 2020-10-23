@@ -100,7 +100,7 @@ const TabPanel = props => {
             {endpoint.title} <Chip size="small" label={endpoint.method} />
           </Typography>
           <Typography variant="subtitle1">{endpoint.description}</Typography>
-          <RequestForm handleSubmit={handleSubmit} clearResponse={clearResponse} />
+          <RequestForm handleSubmit={handleSubmit} clearResponse={clearResponse} parameters={endpoint.parameters}/>
           {/* TODO do loader with backdrop */}
           {/* 2nd params
           3rd fix regex */}

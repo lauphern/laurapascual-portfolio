@@ -15,7 +15,7 @@ const Response = props => {
         <TableCell>Media type: {response.mediaType}</TableCell>
       </TableRow>
       <TableRow>
-        <TableCell>Example value:</TableCell>
+        <TableCell>Value:</TableCell>
       </TableRow>
       <TableRow>
         <TableCell>

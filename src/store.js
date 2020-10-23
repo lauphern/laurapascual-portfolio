@@ -29,7 +29,7 @@ export const StoreProvider = props => {
         title: "API information",
         description: "Description and list of endpoints",
         method: "GET",
-        parameters: {},
+        parameters: [],
         responses: [
           {
             code: "200",
@@ -56,7 +56,15 @@ export const StoreProvider = props => {
         title: "Personal information",
         description: "Full name, location and contact information",
         method: "GET",
-        parameters: {},
+        parameters: [
+          {
+            name: "Accept-Language",
+            in: "header",
+            enum: ["en", "es"],
+            required: true,
+            type: "string",
+          },
+        ],
         responses: [
           {
             code: "200",
@@ -83,7 +91,16 @@ export const StoreProvider = props => {
         title: "Professional experience",
         description: "Relevant professional experience",
         method: "GET",
-        parameters: {},
+        parameters: [
+          {
+            name: "Accept-Language",
+            in: "header",
+            enum: ["en", "es"],
+            required: true,
+            type: "string",
+          },
+          { name: "year", in: "query", enum: [], required: false, example: 2020, type: "number" },
+        ],
         responses: [
           {
             code: "200",
@@ -110,7 +127,23 @@ export const StoreProvider = props => {
         title: "Education",
         description: "Educational background",
         method: "GET",
-        parameters: {},
+        parameters: [
+          {
+            name: "Accept-Language",
+            in: "header",
+            enum: ["en", "es"],
+            required: true,
+            type: "string",
+          },
+          { name: "year", in: "query", enum: [], required: false, example: 2020, type: "number" },
+          {
+            name: "level",
+            in: "query",
+            enum: ["bachelor", "bootcamp", "nanodegree", "other"],
+            type: "string",
+            required: false,
+          },
+        ],
         responses: [
           {
             code: "200",
@@ -137,7 +170,24 @@ export const StoreProvider = props => {
         title: "Certifications",
         description: "Official certifications and diplomas",
         method: "GET",
-        parameters: {},
+        parameters: [
+          {
+            name: "Accept-Language",
+            in: "header",
+            enum: ["en", "es"],
+            required: true,
+            type: "string",
+          },
+          { name: "year", in: "query", enum: [], required: false, example: 2020, type: "number" },
+          {
+            name: "school",
+            in: "query",
+            enum: [],
+            required: false,
+            type: "string",
+            example: "HackerRank",
+          },
+        ],
         responses: [
           {
             code: "200",
@@ -164,7 +214,16 @@ export const StoreProvider = props => {
         title: "Volunteer work",
         description: "Volunteer work",
         method: "GET",
-        parameters: {},
+        parameters: [
+          {
+            name: "Accept-Language",
+            in: "header",
+            enum: ["en", "es"],
+            required: true,
+            type: "string",
+          },
+          { name: "year", in: "query", enum: [], required: false, example: 2015, type: "number" },
+        ],
         responses: [
           {
             code: "200",
@@ -191,7 +250,22 @@ export const StoreProvider = props => {
         title: "Hard skills",
         description: "List of hard skills",
         method: "GET",
-        parameters: {},
+        parameters: [
+          {
+            name: "Accept-Language",
+            in: "header",
+            enum: ["en", "es"],
+            required: true,
+            type: "string",
+          },
+          {
+            name: "type",
+            in: "query",
+            enum: ["language", "framework", "library", "design"],
+            type: "string",
+            required: false,
+          },
+        ],
         responses: [
           {
             code: "200",
@@ -218,7 +292,15 @@ export const StoreProvider = props => {
         title: "Soft skills",
         description: "List of soft skills",
         method: "GET",
-        parameters: {},
+        parameters: [
+          {
+            name: "Accept-Language",
+            in: "header",
+            enum: ["en", "es"],
+            required: true,
+            type: "string",
+          },
+        ],
         responses: [
           {
             code: "200",
@@ -245,7 +327,15 @@ export const StoreProvider = props => {
         title: "Languages",
         description: "Spoken and written languages",
         method: "GET",
-        parameters: {},
+        parameters: [
+          {
+            name: "Accept-Language",
+            in: "header",
+            enum: ["en", "es"],
+            required: true,
+            type: "string",
+          },
+        ],
         responses: [
           {
             code: "200",
@@ -272,7 +362,15 @@ export const StoreProvider = props => {
         title: "Portfolio",
         description: "List of dev projects",
         method: "GET",
-        parameters: {},
+        parameters: [
+          {
+            name: "Accept-Language",
+            in: "header",
+            enum: ["en", "es"],
+            required: true,
+            type: "string",
+          },
+        ],
         responses: [
           {
             code: "200",
@@ -299,11 +397,20 @@ export const StoreProvider = props => {
         title: "Download CV in pdf",
         description: "Download the API's data in a pdf",
         method: "GET",
-        parameters: {},
+        parameters: [
+          {
+            name: "Accept-Language",
+            in: "header",
+            enum: ["en", "es"],
+            required: true,
+            type: "string",
+          },
+        ],
         responses: [
           {
             code: "200",
             description: "Successful operation",
+            // TODO
             mediaType: "application/json",
             value: ``,
           },
