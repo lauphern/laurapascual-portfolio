@@ -8,8 +8,6 @@ import "./App.scss";
 
 import LanguageSwitch from "./components/LanguageSwitch";
 
-import { _showMessage } from "./utils/showMessage";
-
 import { theme } from "./style/theme";
 
 import { useAppStyles } from "./style/useStyles";
@@ -48,7 +46,7 @@ function App() {
   let counterRef = useRef();
 
   useEffect(() => {
-    _showMessage();
+    import("./utils/showMessage").then(({ _showMessage }) => _showMessage());
   }, [location]);
 
   useEffect(() => {
