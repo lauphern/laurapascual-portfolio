@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense, useRef, useContext } from "react";
+import { Store } from "./store";
 import { Switch, Route, useLocation } from "react-router-dom";
 import { Fab } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/core/styles";
@@ -6,8 +7,6 @@ import CodeSharpIcon from "@material-ui/icons/CodeSharp";
 import "./App.scss";
 
 import LanguageSwitch from "./components/LanguageSwitch";
-import Home from "./pages/Home";
-import Resume from "./pages/Resume";
 
 import { _showMessage } from "./utils/showMessage";
 
@@ -15,28 +14,78 @@ import { theme } from "./style/theme";
 
 import { useAppStyles } from "./style/useStyles";
 
+const Home = React.lazy(() => import("./pages/Home"));
+const Resume = React.lazy(() => import("./pages/Resume"));
+
+const NumericalLoader = props => {
+  const appClasses = useAppStyles();
+
+  const {
+    mediaQueries: { isItSmallTablet },
+  } = useContext(Store);
+
+  const { num } = props;
+  return (
+    <div
+      className={`${appClasses.numericalLoader} ${
+        isItSmallTablet && appClasses.numericalLoaderMobile
+      }`}
+    >
+      <p>
+        <span>{num}</span>%
+      </p>
+    </div>
+  );
+};
+
 function App() {
   const location = useLocation();
 
   const appClasses = useAppStyles();
 
   const [domReady, setDomReady] = useState(false);
+  const [loaderNumber, setLoaderNumber] = useState(0);
+  let counterRef = useRef();
 
   useEffect(() => {
     _showMessage();
   }, [location]);
 
+  useEffect(() => {
+    counterRef.current = setInterval(() => {
+      setLoaderNumber(loaderNumber => (loaderNumber += 2));
+      if (loaderNumber >= 100) {
+        setLoaderNumber(0);
+        return clearInterval(counterRef.current);
+      }
+    }, 100);
+    return () => {
+      setLoaderNumber(0);
+      clearInterval(counterRef.current);
+    };
+  }, []);
+
   return (
     <div className="App">
-      <ThemeProvider theme={theme}>
-        <div style={{display: !domReady ? "none" : "block"}}>
+      <Suspense fallback={<NumericalLoader num={loaderNumber} />}>
+        <ThemeProvider theme={theme}>
           <LanguageSwitch />
           <Switch>
             <Route exact path="/">
-              <Home setDomReady={setDomReady}/>
+              <Home
+                setDomReady={setDomReady}
+                loaderNumber={loaderNumber}
+                setLoaderNumber={setLoaderNumber}
+                counterRef={counterRef}
+              />
             </Route>
             <Route path="/resume">
-              <Resume setDomReady={setDomReady}/>
+              <Resume
+                setDomReady={setDomReady}
+                loaderNumber={loaderNumber}
+                setLoaderNumber={setLoaderNumber}
+                counterRef={counterRef}
+              />
             </Route>
           </Switch>
           <Fab
@@ -55,8 +104,8 @@ function App() {
               code
             </span>
           </Fab>
-        </div>
-      </ThemeProvider>
+        </ThemeProvider>
+      </Suspense>
     </div>
   );
 }

@@ -99,6 +99,40 @@ export const useAppStyles = makeStyles(
         fontSize: "0.75rem",
       },
     },
+    numericalLoader: {
+      zIndex: 3,
+      opacity: 1,
+      visibility: "visible",
+      transition: "all 0.5s 1s",
+      backgroundColor: "var(--primary)",
+      width: "100vw",
+      height: "100vh",
+      position: "fixed",
+      top: 0,
+      left: 0,
+      display: "flex",
+      justifyContent: "flex-end",
+      alignItems: "center",
+      fontFamily: '"Heebo", "Roboto", "Helvetica", "Arial", "sans-serif"',
+      fontWeight: 400,
+      fontSize: "5rem",
+
+      "& > p": {
+        color: "var(--accent)",
+        textAlign: "right",
+        marginRight: "45vw",
+
+        "& > span": {
+          color: "white",
+        },
+      },
+    },
+    numericalLoaderMobile: {
+      justifyContent: "center",
+      "& > p": {
+        marginRight: "0vw",
+      },
+    },
   },
   { index: 1 }
 );
@@ -312,8 +346,8 @@ export const useResumeStyles = makeStyles(
     drawerContainer: {
       [theme.breakpoints.up("sm")]: {
         width: "25vw",
-        flexShrink: 0
-      }
+        flexShrink: 0,
+      },
     },
     drawerPaper: {
       position: "relative",
@@ -333,7 +367,7 @@ export const useResumeStyles = makeStyles(
     backdrop: {
       // zIndex: 100,
       zIndex: theme.zIndex.drawer + 1,
-    }
+    },
   }),
   { index: 1 }
 );

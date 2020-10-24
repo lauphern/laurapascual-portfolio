@@ -16,6 +16,8 @@ import { useAppStyles, useResumeStyles } from "../style/useStyles";
 const Resume = props => {
   const { t, i18n } = useTranslation();
 
+  const { setLoaderNumber, counterRef } = props;
+
   const {
     mediaQueries: { isItSmallTablet },
   } = useContext(Store);
@@ -42,8 +44,9 @@ const Resume = props => {
   useEffect(() => {
     setTimeout(() => {
       props.setDomReady(true);
-      document.querySelector("#domLoader").classList.add("progressFade");
     }, 1000);
+    clearInterval(counterRef.current);
+    setLoaderNumber(0);
   }, []);
 
   return (
@@ -82,10 +85,10 @@ const Resume = props => {
             item && (
               <animated.div key={key} style={props}>
                 <> */}
-                  <Docs />
-                  {/* <Pdf /> */}
-                  {/* <OldDocs /> */}
-                {/* </>
+        <Docs />
+        {/* <Pdf /> */}
+        {/* <OldDocs /> */}
+        {/* </>
               </animated.div>
             )
         )} */}

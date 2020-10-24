@@ -9,11 +9,14 @@ import { useAppStyles } from "../style/useStyles";
 const Home = props => {
   const classes = useAppStyles();
 
+  const { setLoaderNumber, counterRef } = props;
+
   useEffect(() => {
     setTimeout(() => {
       props.setDomReady(true);
-      document.querySelector("#domLoader").classList.add("progressFade");
     }, 1000);
+    clearInterval(counterRef.current);
+    setLoaderNumber(0);
   }, []);
 
   return (
