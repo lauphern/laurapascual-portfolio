@@ -7,6 +7,7 @@ import CodeSharpIcon from "@material-ui/icons/CodeSharp";
 import "./App.scss";
 
 import LanguageSwitch from "./components/LanguageSwitch";
+import ErrorBoundary from "./pages/ErrorBoundary";
 
 import { theme } from "./style/theme";
 
@@ -64,6 +65,7 @@ function App() {
 
   return (
     <div className="App">
+    <ErrorBoundary>
       <Suspense fallback={<NumericalLoader num={loaderNumber} />}>
         <ThemeProvider theme={theme}>
           <LanguageSwitch />
@@ -101,6 +103,7 @@ function App() {
           </Fab>
         </ThemeProvider>
       </Suspense>
+      </ErrorBoundary>
     </div>
   );
 }
