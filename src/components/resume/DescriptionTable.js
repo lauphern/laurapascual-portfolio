@@ -12,7 +12,6 @@ import {
 import Response from "./Response";
 
 const DescriptionTable = props => {
-
   const { endpoint } = props;
 
   return (
@@ -24,17 +23,25 @@ const DescriptionTable = props => {
               Parameters
             </TableCell>
           </TableRow>
-          <TableRow>
+          {endpoint.parameters.length > 0 ? <TableRow>
             <TableCell>Name</TableCell>
-            <TableCell colSpan={2}>Description</TableCell>
-          </TableRow>
+            <TableCell>In</TableCell>
+            <TableCell>Type</TableCell>
+          </TableRow> : null}
         </TableHead>
-        <TableBody>
-          <TableRow>
-            <TableCell>Name of param</TableCell>
-            <TableCell colSpan={2}>This is the description</TableCell>
-          </TableRow>
-        </TableBody>
+        {endpoint.parameters.length > 0 ? <TableBody>
+          {endpoint.parameters.map(param => (
+            <TableRow>
+              <TableCell>{param.name}</TableCell>
+              <TableCell>{param.in}</TableCell>
+              <TableCell>{param.type}</TableCell>
+            </TableRow>
+          ))}
+        </TableBody> : <TableBody>
+            <TableRow>
+              <TableCell colSpan={3}>None</TableCell>
+            </TableRow>
+        </TableBody>}
         <TableHead>
           <TableRow>
             <TableCell align="center" colSpan={3}>
