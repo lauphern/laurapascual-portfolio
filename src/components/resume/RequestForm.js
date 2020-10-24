@@ -33,7 +33,6 @@ const CustomInput = props => {
           value={formValues[param.name]}
           InputProps={{ inputProps: { min: 2010 } }}
           min={param.type === "number" ? 2010 : null}
-          // TODO si, lo que pasa es que no se actualiza el valor, en el display tampoco
           onChange={e => setFormValues({...formValues, [param.name]: e.target.value})}
         />
       )}

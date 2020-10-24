@@ -23,7 +23,6 @@ export const StoreProvider = props => {
     },
     endpoints: [
       //TODO translate
-      //TODO add params
       {
         path: "/",
         title: "API information",
@@ -410,7 +409,7 @@ export const StoreProvider = props => {
           {
             code: "200",
             description: "Successful operation",
-            // TODO
+            // TODO download response
             mediaType: "application/json",
             value: ``,
           },
