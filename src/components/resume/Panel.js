@@ -16,9 +16,6 @@ import RequestForm from "./RequestForm";
 import DescriptionTable from "./DescriptionTable";
 import Response from "./Response";
 
-import { defaultServer, backupServer } from "../../utils/apiRequest";
-import parseResponse from "../../utils/parseResponse";
-
 import { useResumeStyles } from "../../style/useStyles";
 
 const Panel = props => {
@@ -51,49 +48,55 @@ const Panel = props => {
       if (key === "Accept-Language") delete params[key];
       else if (params[key].length === 0) delete params[key];
     }
-    defaultServer
-      .get(endpoint.path, {
-        headers: { "Accept-Language": formValues["Accept-Language"] || getLanguage() },
-        params,
-      })
-      .then(res => {
-        // let test = response.value.match(/\n\s*\n/)
-        const response = parseResponse({ res, endpoint });
-        setApiResponse(response);
-        setOpen(false);
-      })
-      .catch(err => {
-        return backupServer
-          .get(endpoint.path, {
-            headers: { "Accept-Language": formValues["Accept-Language"] || getLanguage() },
-            params,
-          })
-          .then(res => {
+    import("../../utils/apiRequest").then(({defaultServer, backupServer}) => {
+      defaultServer
+        .get(endpoint.path, {
+          headers: { "Accept-Language": formValues["Accept-Language"] || getLanguage() },
+          params,
+        })
+        .then(res => {
+          // let test = response.value.match(/\n\s*\n/)
+          import("../../utils/parseResponse").then(({parseResponse}) => {
             const response = parseResponse({ res, endpoint });
             setApiResponse(response);
             setOpen(false);
-          })
-          .catch(err => {
-            const errorObject = {
-              code: err.response && err.response.status,
-              description: err.response && err.response.statusText,
-              mediaType: "application/json",
-              value: `{\n  "code": "${err.response && err.response.status}",\n  "message": "${
-                err.message
-              }"\n}`,
-            };
-            if (
-              err.response &&
-              typeof err.response.data == "string" &&
-              err.response.data.length > 0 &&
-              err.response.data.indexOf("DOCTYPE") < 0
-            )
-              setApiError(err.response.data);
-            else setApiError(err.message);
-            setApiResponse(errorObject);
-            setOpen(false);
           });
-      });
+        })
+        .catch(err => {
+          return backupServer
+            .get(endpoint.path, {
+              headers: { "Accept-Language": formValues["Accept-Language"] || getLanguage() },
+              params,
+            })
+            .then(res => {
+              import("../../utils/parseResponse").then(({parseResponse}) => {
+                const response = parseResponse({ res, endpoint });
+                setApiResponse(response);
+                setOpen(false);
+              });
+            })
+            .catch(err => {
+              const errorObject = {
+                code: err.response && err.response.status,
+                description: err.response && err.response.statusText,
+                mediaType: "application/json",
+                value: `{\n  "code": "${err.response && err.response.status}",\n  "message": "${
+                  err.message
+                }"\n}`,
+              };
+              if (
+                err.response &&
+                typeof err.response.data == "string" &&
+                err.response.data.length > 0 &&
+                err.response.data.indexOf("DOCTYPE") < 0
+              )
+                setApiError(err.response.data);
+              else setApiError(err.message);
+              setApiResponse(errorObject);
+              setOpen(false);
+            });
+        });
+    });
   };
 
   const clearPanelState = ({ clearForm = true }) => {
