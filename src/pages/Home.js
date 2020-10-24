@@ -12,9 +12,6 @@ const Home = props => {
   const { setLoaderNumber, counterRef } = props;
 
   useEffect(() => {
-    setTimeout(() => {
-      props.setDomReady(true);
-    }, 1000);
     clearInterval(counterRef.current);
     setLoaderNumber(0);
   }, []);

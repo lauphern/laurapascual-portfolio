@@ -41,7 +41,6 @@ function App() {
 
   const appClasses = useAppStyles();
 
-  const [domReady, setDomReady] = useState(false);
   const [loaderNumber, setLoaderNumber] = useState(0);
   let counterRef = useRef();
 
@@ -71,7 +70,6 @@ function App() {
           <Switch>
             <Route exact path="/">
               <Home
-                setDomReady={setDomReady}
                 loaderNumber={loaderNumber}
                 setLoaderNumber={setLoaderNumber}
                 counterRef={counterRef}
@@ -79,7 +77,6 @@ function App() {
             </Route>
             <Route path="/resume">
               <Resume
-                setDomReady={setDomReady}
                 loaderNumber={loaderNumber}
                 setLoaderNumber={setLoaderNumber}
                 counterRef={counterRef}
