@@ -329,6 +329,10 @@ export const useResumeStyles = makeStyles(
     },
     endpointsContainer: {
       flexGrow: 1,
+    },
+    backdrop: {
+      // zIndex: 100,
+      zIndex: theme.zIndex.drawer + 1,
     }
   }),
   { index: 1 }
