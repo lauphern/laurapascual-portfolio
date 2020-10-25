@@ -1,12 +1,7 @@
 import React, { Suspense } from "react";
 import { TableRow, TableCell, CircularProgress } from "@material-ui/core";
 
-// const Pdf = React.lazy(() => import("./Pdf"));
-const Pdf = React.lazy(() => {
-  return new Promise(resolve => {
-    setTimeout(() => resolve(import("./Pdf")), 3000);
-  });
-});
+const Pdf = React.lazy(() => import("./Pdf"));
 
 const Response = props => {
   const { response } = props;
