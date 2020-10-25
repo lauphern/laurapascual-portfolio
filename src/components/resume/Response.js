@@ -1,10 +1,13 @@
 import React, { Suspense } from "react";
+import { useTranslation } from "react-i18next";
 import { TableRow, TableCell, CircularProgress } from "@material-ui/core";
 
 const Pdf = React.lazy(() => import("./Pdf"));
 
 const Response = props => {
   const { response } = props;
+
+  const { t, i18n } = useTranslation();
 
   return (
     <>
@@ -13,10 +16,10 @@ const Response = props => {
         <TableCell>{response.description}</TableCell>
       </TableRow>
       <TableRow>
-        <TableCell>Media type: {response.mediaType}</TableCell>
+        <TableCell>{`${t("requestTable.mediaType")} ${response.mediaType}`}</TableCell>
       </TableRow>
       <TableRow>
-        <TableCell>Value:</TableCell>
+        <TableCell>{t("requestTable.value")}</TableCell>
       </TableRow>
       <TableRow>
         <TableCell>

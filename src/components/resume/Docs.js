@@ -1,4 +1,5 @@
 import React, { useState, useContext } from "react";
+import { useTranslation } from "react-i18next";
 import { Store } from "../../store";
 import { Box, CardMedia, Drawer, Hidden, IconButton, Typography, Chip } from "@material-ui/core";
 import MenuIcon from "@material-ui/icons/Menu";
@@ -22,6 +23,8 @@ const Badge = props => {
 };
 
 const Docs = props => {
+  const { t, i18n } = useTranslation();
+
   const { endpoints } = useContext(Store);
 
   const resumeClasses = useResumeStyles();
@@ -41,18 +44,22 @@ const Docs = props => {
   return (
     <>
       <Box className={resumeClasses.resumeTitle}>
-        {/* TODO translate */}
-        <Typography variant="h3">Resume API</Typography>
+        <Typography variant="h3">Résumé API</Typography>
         <Chip size="small" label="v1.0" />
         <Chip size="small" label="OAS3" />
         <Badge />
       </Box>
-      <Typography variant="h4">
-        Read my résumé in JSON format and download the data in a pdf file
-      </Typography>
+      <Typography variant="h4">{t("docsSubtitle")}</Typography>
       <Typography variant="body1">
-        I created a REST API to show my résumé in JSON format. Why? It was a good excuse to learn
-        API development and it makes it easier to share my résumé.
+        {t("docsDescription", { returnObjects: true }).map(el => {
+          if (el.indexOf("OpenAPI") > 0)
+            return (
+              <a href="https://resume-api.vercel.app/definition.yaml" target="_blank" rel="noopener noreferrer">
+                {el}
+              </a>
+            );
+          else return el;
+        })}
       </Typography>
       <Box className={resumeClasses.docsContainer}>
         <IconButton
@@ -67,7 +74,6 @@ const Docs = props => {
         <nav className={resumeClasses.drawerContainer}>
           <Hidden smUp>
             <Drawer
-              // container={container}
               variant="temporary"
               open={mobileOpen}
               onClose={handleDrawerToggle}

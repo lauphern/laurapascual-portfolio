@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import {
   TableContainer,
   Table,
@@ -14,19 +15,21 @@ import Response from "./Response";
 const DescriptionTable = props => {
   const { endpoint } = props;
 
+  const { t, i18n } = useTranslation();
+
   return (
     <TableContainer component={Paper}>
       <Table aria-label="spanning table">
         <TableHead>
           <TableRow>
             <TableCell align="center" colSpan={3}>
-              Parameters
+              {t("requestTable.parameters")}
             </TableCell>
           </TableRow>
           {endpoint.parameters.length > 0 ? <TableRow>
-            <TableCell>Name</TableCell>
-            <TableCell>In</TableCell>
-            <TableCell>Type</TableCell>
+            <TableCell>{t("requestTable.name")}</TableCell>
+            <TableCell>{t("requestTable.in")}</TableCell>
+            <TableCell>{t("requestTable.type")}</TableCell>
           </TableRow> : null}
         </TableHead>
         {endpoint.parameters.length > 0 ? <TableBody>
@@ -39,18 +42,18 @@ const DescriptionTable = props => {
           ))}
         </TableBody> : <TableBody>
             <TableRow>
-              <TableCell colSpan={3}>None</TableCell>
+              <TableCell colSpan={3}>{t("requestTable.none")}</TableCell>
             </TableRow>
         </TableBody>}
         <TableHead>
           <TableRow>
             <TableCell align="center" colSpan={3}>
-              Responses
+              {t("requestTable.responses")}
             </TableCell>
           </TableRow>
           <TableRow>
-            <TableCell>Code</TableCell>
-            <TableCell colSpan={2}>Description</TableCell>
+            <TableCell>{t("requestTable.code")}</TableCell>
+            <TableCell colSpan={2}>{t("requestTable.description")}</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

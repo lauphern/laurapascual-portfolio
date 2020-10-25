@@ -7,6 +7,26 @@
   "defaultError": "Oops! Something went wrong!",
   "showHardSkills": "See hard skills",
   "home": "Home",
+  "docsSubtitle": "Read my résumé in JSON format and download the data in a pdf file",
+  "docsDescription": [
+    "I created a REST API to show my résumé in JSON format. Why? It was a good excuse to learn API development and it makes sharing my résumé easier. You can use it too! Check out the ",
+    "OpenAPI 3.0 specification",
+    "."
+  ],
+  "tryBtn": "Try it out",
+  "clearBtn": "Clear",
+  "requestTable": {
+    "mediaType": "Media type:",
+    "value": "Value:",
+    "parameters": "Parameters",
+    "name": "Name",
+    "in": "In",
+    "type": "Type",
+    "none": "None",
+    "responses": "Responses",
+    "code": "Code",
+    "description": "Description"
+  },
   "pdf": {
     "nodata": "Something went wrong! The pdf can't be displayed",
     "title": "Check out and download my Résumé",

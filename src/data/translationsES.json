@@ -7,6 +7,26 @@
   "defaultError": "¡Vaya, algo salió mal!",
   "showHardSkills": "Ver hard skills",
   "home": "Inicio",
+  "docsSubtitle": "Lee mi currículum en formato JSON y descarga la información en un archivo pdf",
+  "docsDescription": [
+    "Creé una REST API para compartir mi currículum en formato JSON. ¿Por qué? Era una buena excusa para aprender desarrollo de APIs y me facilita compartir mi currículum. ¡Tú también lo puedes utilizar! Échale un ojo a la ",
+    "especificación de OpenAPI 3.0",
+    "."
+  ],
+  "tryBtn": "Pruébalo",
+  "clearBtn": "Borrar",
+  "requestTable": {
+    "mediaType": "Tipo:",
+    "value": "Valor:",
+    "parameters": "Parámetros",
+    "name": "Nombre",
+    "in": "En",
+    "type": "Tipo",
+    "none": "Ninguno",
+    "responses": "Respuestas",
+    "code": "Código",
+    "description": "Descripción"
+  },
   "pdf": {
     "nodata": "¡Algo salió mal! No se puede mostrar el archivo pdf",
     "title": "Descubre y descarga mi Currículum",

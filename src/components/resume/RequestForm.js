@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import { InputLabel, Select, MenuItem, TextField, Button } from "@material-ui/core";
 
 const CustomInput = props => {
@@ -7,7 +8,9 @@ const CustomInput = props => {
   return (
     <>
       <p>In: {param.in}</p>
-      <InputLabel id={param.name} required={param.required}>{param.name}</InputLabel>
+      <InputLabel id={param.name} required={param.required}>
+        {param.name}
+      </InputLabel>
       {param.enum.length > 0 ? (
         <Select
           name={param.name}
@@ -16,7 +19,7 @@ const CustomInput = props => {
           required={param.required}
           displayEmpty
           renderValue={value => value || "Choose a value"}
-          onChange={e => setFormValues({...formValues, [param.name]: e.target.value})}
+          onChange={e => setFormValues({ ...formValues, [param.name]: e.target.value })}
         >
           {param.enum.map(val => (
             <MenuItem value={val}>{val}</MenuItem>
@@ -32,7 +35,7 @@ const CustomInput = props => {
           value={formValues[param.name]}
           InputProps={{ inputProps: { min: 2010 } }}
           min={param.type === "number" ? 2010 : null}
-          onChange={e => setFormValues({...formValues, [param.name]: e.target.value})}
+          onChange={e => setFormValues({ ...formValues, [param.name]: e.target.value })}
         />
       )}
     </>
@@ -42,13 +45,15 @@ const CustomInput = props => {
 const RequestForm = props => {
   const { handleSubmit, clearPanelState, parameters, formValues, setFormValues } = props;
 
+  const { t, i18n } = useTranslation();
+
   return (
     <form onSubmit={handleSubmit}>
       {parameters.map(param => (
         <CustomInput formValues={formValues} setFormValues={setFormValues} param={param} />
       ))}
-      <Button type="submit">Try it out</Button>
-      <Button onClick={() => clearPanelState({})}>Clear</Button>
+      <Button type="submit">{t("tryBtn")}</Button>
+      <Button onClick={() => clearPanelState({})}>{t("clearBtn")}</Button>
     </form>
   );
 };
