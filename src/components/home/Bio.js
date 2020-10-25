@@ -31,7 +31,6 @@ const Bio = props => {
   const bioClasses = useBioStyles();
   const appClasses = useAppStyles();
 
-  //TODO not visible on first reload anymore
   const leftPanelTransition = useTransition(true, null, {
     unique: true,
     reset: true,

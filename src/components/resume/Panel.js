@@ -110,6 +110,7 @@ const Panel = props => {
             "Content-Type": "application/pdf",
           },
           responseType: "arraybuffer",
+          timeout: 10000,
         })
         .then(res => {
           const url = window.URL.createObjectURL(new Blob([res.data], { type: "application/pdf" }));
