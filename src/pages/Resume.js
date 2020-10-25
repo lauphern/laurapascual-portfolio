@@ -3,7 +3,7 @@ import { Store } from "../store";
 import { Link as RouterLink } from "react-router-dom";
 import { useTransition, animated } from "react-spring";
 import { Container, Box, Button } from "@material-ui/core";
-import KeyboardReturnSharpIcon from "@material-ui/icons/KeyboardReturnSharp";
+import ArrowBackIosSharpIcon from "@material-ui/icons/ArrowBackIosSharp";
 import { useTranslation } from "react-i18next";
 
 import Header from "../components/Header";
@@ -64,7 +64,7 @@ const Resume = props => {
                     to="/"
                     size="small"
                   >
-                    <KeyboardReturnSharpIcon />
+                    <ArrowBackIosSharpIcon />
                     &nbsp;{t("home")}
                   </Button>
                 </Container>

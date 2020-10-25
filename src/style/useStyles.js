@@ -133,6 +133,24 @@ export const useAppStyles = makeStyles(
         marginRight: "0vw",
       },
     },
+    "404Page": {
+      width: "100vw",
+      height: "100vh",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      flexDirection: "column",
+      color: "white",
+
+      "& > *": {
+        margin: "1rem 0",
+      },
+
+      "& > h3:nth-of-type(1)": {
+        fontSize: "5rem",
+        display: "inline-flex",
+      }
+    }
   },
   { index: 1 }
 );

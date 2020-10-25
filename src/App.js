@@ -1,10 +1,12 @@
 import React, { useState, useEffect, Suspense, useRef, useContext } from "react";
 import { Store } from "./store";
 import { Switch, Route, useLocation } from "react-router-dom";
-import { Fab } from "@material-ui/core";
+import { Fab, Button } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CodeSharpIcon from "@material-ui/icons/CodeSharp";
 import "./App.scss";
+
+import { Link as RouterLink } from "react-router-dom";
 
 import LanguageSwitch from "./components/LanguageSwitch";
 import ErrorBoundary from "./pages/ErrorBoundary";
@@ -15,6 +17,7 @@ import { useAppStyles } from "./style/useStyles";
 
 const Home = React.lazy(() => import("./pages/Home"));
 const Resume = React.lazy(() => import("./pages/Resume"));
+const NoMatch = React.lazy(() => import("./pages/NoMatch"));
 
 const NumericalLoader = props => {
   //TODO the value doesn't change when you switch between routes
@@ -67,44 +70,48 @@ function App() {
 
   return (
     <div className="App">
-    <ErrorBoundary>
-      <Suspense fallback={<NumericalLoader num={loaderNumber} />}>
-        <ThemeProvider theme={theme}>
-          <LanguageSwitch />
-          <Switch>
-            <Route exact path="/">
-              <Home
-                loaderNumber={loaderNumber}
-                setLoaderNumber={setLoaderNumber}
-                counterRef={counterRef}
-              />
-            </Route>
-            <Route path="/resume">
-              <Resume
-                loaderNumber={loaderNumber}
-                setLoaderNumber={setLoaderNumber}
-                counterRef={counterRef}
-              />
-            </Route>
-          </Switch>
-          <Fab
-            variant="extended"
-            size="medium"
-            href="https://github.com/users/lauphern/projects/2"
-            className={`${appClasses.sourceCodeBtn} ${appClasses.routerBtn}`}
-            target="_blank"
-            rel="noopener"
-          >
-            <CodeSharpIcon fontSize="small" />
-            &nbsp;
-            <span>
-              Source
-              <br />
-              code
-            </span>
-          </Fab>
-        </ThemeProvider>
-      </Suspense>
+      <ErrorBoundary>
+        <Suspense fallback={<NumericalLoader num={loaderNumber} />}>
+          <ThemeProvider theme={theme}>
+            <Button
+              variant="outlined"
+              // className={`${appClasses.routerBtn}`}
+              component={RouterLink}
+              to="/jelo"
+              size="small"
+            >
+              HOLA
+            </Button>
+            <LanguageSwitch />
+            <Switch>
+              <Route exact path="/">
+                <Home setLoaderNumber={setLoaderNumber} counterRef={counterRef} />
+              </Route>
+              <Route path="/resume">
+                <Resume setLoaderNumber={setLoaderNumber} counterRef={counterRef} />
+              </Route>
+              <Route path="*">
+                <NoMatch setLoaderNumber={setLoaderNumber} counterRef={counterRef} />
+              </Route>
+            </Switch>
+            <Fab
+              variant="extended"
+              size="medium"
+              href="https://github.com/users/lauphern/projects/2"
+              className={`${appClasses.sourceCodeBtn} ${appClasses.routerBtn}`}
+              target="_blank"
+              rel="noopener"
+            >
+              <CodeSharpIcon fontSize="small" />
+              &nbsp;
+              <span>
+                Source
+                <br />
+                code
+              </span>
+            </Fab>
+          </ThemeProvider>
+        </Suspense>
       </ErrorBoundary>
     </div>
   );
