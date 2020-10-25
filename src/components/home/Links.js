@@ -63,7 +63,6 @@ const Links = props => {
             </animated.div>
           )
       )}
-      <Box className={linkClasses.rightPanelBg} />
     </Grid>
   );
 };

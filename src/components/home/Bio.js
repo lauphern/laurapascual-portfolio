@@ -26,7 +26,7 @@ const Bio = props => {
 
   const {
     hardSkills,
-    mediaQueries: { isItSmallTablet, isItShortHeight },
+    mediaQueries: { isItSmallDevice, isItSmallTablet, isItShortHeight },
   } = useContext(Store);
 
   const { t, i18n } = useTranslation();
@@ -59,7 +59,7 @@ const Bio = props => {
             <animated.div key={key} style={props}>
               <>
                 <Header />
-                <Container className={bioClasses.socialContainer} disableGutters>
+                <Container className={`${bioClasses.socialContainer} ${(isItSmallDevice || isItShortHeight) && bioClasses.socialContainerMobile}`} disableGutters>
                   <Tooltip title={t("cvTooltip")} arrow>
                     <Button
                       variant="outlined"
@@ -104,8 +104,7 @@ const Bio = props => {
                     </Link>
                   </Typography>
                 </Container>
-                {/* TODO do a "show more" or "show hard skills" button + modal
-                for short devices */}
+                {/* TODO fix this for landscape in small devices */}
                 {!isItShortHeight ? (
                   <Box className={bioClasses.skillsContainer}>
                     {hardSkills.map(skillName => (

@@ -68,6 +68,10 @@ export const useAppStyles = makeStyles(
       fontSize: "4rem",
       lineHeight: "3.5rem",
     },
+    h1Landscape: {
+      fontSize: "3rem",
+      lineHeight: "3.25rem",
+    },
     h2Mobile: {
       fontSize: "1.5rem",
     },
@@ -185,6 +189,9 @@ export const useBioStyles = makeStyles(
         fontWeight: 600,
       },
     },
+    socialContainerMobile: {
+      margin: "1rem 0",
+    },
     verticalDivider: {
       margin: "0 1rem",
       height: "2rem",
@@ -212,6 +219,7 @@ export const useLinksStyles = makeStyles(
       position: "relative",
       minWidth: "50vw",
       height: "100vh",
+      backgroundColor: "white",
 
       "&>div": {
         width: "100%",
@@ -245,14 +253,10 @@ export const useLinksStyles = makeStyles(
     },
     stacksMobile: {
       minWidth: "100%",
-      height: "100vh",
-    },
-    rightPanelBg: {
-      backgroundColor: "white",
-      width: "100%",
-      height: "100%",
-      position: "absolute",
-      zIndex: -2,
+      minHeight: "100vh",
+      height: "fit-content",
+      boxSizing: "border-box",
+      padding: "1rem 0",
     },
   },
   { index: 1 }
@@ -278,6 +282,9 @@ export const useResumeStyles = makeStyles(
     },
     headerPlaceholder: {
       height: "40vh",
+    },
+    headerPlaceholderLandscape: {
+      minHeight: "90vh",
     },
     resumeContainer: {
       backgroundColor: "white",

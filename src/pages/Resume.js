@@ -19,8 +19,9 @@ const Resume = props => {
   const { setLoaderNumber, counterRef } = props;
 
   const {
-    mediaQueries: { isItSmallTablet },
+    mediaQueries: { isItSmallTablet, isItShortHeight },
   } = useContext(Store);
+  
 
   const resumeClasses = useResumeStyles();
   const appClasses = useAppStyles();
@@ -48,7 +49,7 @@ const Resume = props => {
 
   return (
     <>
-      <Box className={resumeClasses.headerPlaceholder}></Box>
+      <Box className={`${resumeClasses.headerPlaceholder} ${isItShortHeight && resumeClasses.headerPlaceholderLandscape}`}></Box>
       <Container className={resumeClasses.headerContainer} disableGutters>
         {headerTransition.map(
           ({ item, props, key }) =>

@@ -11,14 +11,14 @@ import { useAppStyles } from "../style/useStyles";
 const Header = props => {
   const { t, i18n } = useTranslation();
 
-  const { mediaQueries: {isItSmallDevice} } = useContext(Store);
+  const { mediaQueries: {isItSmallDevice, isItShortHeight} } = useContext(Store);
 
   const appClasses = useAppStyles();
 
   return (
     <>
       <Typewriter />
-      <Typography variant="h2" className={isItSmallDevice && appClasses.h2Mobile}>
+      <Typography variant="h2" className={(isItSmallDevice || isItShortHeight) && appClasses.h2Mobile}>
         {t("subtitle")}
       </Typography>
     </>

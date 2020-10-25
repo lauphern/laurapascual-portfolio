@@ -12,7 +12,7 @@ const Type = props => {
 //Code based on: https://stackoverflow.com/questions/59786811/typewriter-effect-in-react
 
 const Typewriter = props => {
-  const { mediaQueries: { isItSmallDevice } } = useContext(Store);
+  const { mediaQueries: { isItSmallDevice, isItShortHeight } } = useContext(Store);
 
   const appClasses = useAppStyles();
 
@@ -36,7 +36,7 @@ const Typewriter = props => {
   }, [name, lastName]);
 
   return (
-    <Typography variant="h1" align="left" className={isItSmallDevice && appClasses.h1Mobile}>
+    <Typography variant="h1" align="left" className={`${isItSmallDevice && appClasses.h1Mobile} ${isItShortHeight && appClasses.h1Landscape}`}>
       <span className={appClasses.firstName}>
         {name}
         {i < fullName["0"].length && <Type />}
