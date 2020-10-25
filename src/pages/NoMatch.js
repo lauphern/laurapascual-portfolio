@@ -12,7 +12,7 @@ const NoMatch = props => {
 
   const appClasses = useAppStyles();
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const { setLoaderNumber, counterRef } = props;
 

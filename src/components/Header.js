@@ -9,7 +9,7 @@ import { useAppStyles } from "../style/useStyles";
 
 
 const Header = props => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const { mediaQueries: {isItSmallDevice, isItShortHeight} } = useContext(Store);
 

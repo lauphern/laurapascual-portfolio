@@ -29,7 +29,7 @@ const Bio = props => {
     mediaQueries: { isItSmallDevice, isItSmallTablet, isItShortHeight },
   } = useContext(Store);
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const bioClasses = useBioStyles();
   const appClasses = useAppStyles();

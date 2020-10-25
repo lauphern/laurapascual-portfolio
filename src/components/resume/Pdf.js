@@ -20,7 +20,7 @@ const Pdf = props => {
   const [pageNumber, setPageNumber] = useState(1);
   const [documentError, setDocumentError] = useState(false);
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const {
     mediaQueries: { isItSmallDevice, isItSmallTablet },

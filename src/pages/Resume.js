@@ -14,7 +14,7 @@ import { useAppStyles, useResumeStyles } from "../style/useStyles";
 //TODO style children
 
 const Resume = props => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const { setLoaderNumber, counterRef } = props;
 
@@ -25,7 +25,7 @@ const Resume = props => {
   const resumeClasses = useResumeStyles();
   const appClasses = useAppStyles();
 
-  const [show, set] = useState(true);
+  const [show, setShow] = useState(true);
   const headerTransition = useTransition(show, null, {
     unique: true,
     reset: true,

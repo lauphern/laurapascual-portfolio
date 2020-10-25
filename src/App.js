@@ -17,7 +17,6 @@ const Home = React.lazy(() => import("./pages/Home"));
 const Resume = React.lazy(() => import("./pages/Resume"));
 const NoMatch = React.lazy(() => import("./pages/NoMatch"));
 
-//TODO remove unused variables
 
 const NumericalLoader = props => {
   //TODO the value doesn't change when you switch between routes

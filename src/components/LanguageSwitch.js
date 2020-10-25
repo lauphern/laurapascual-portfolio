@@ -9,7 +9,7 @@ import { useAppStyles } from "../style/useStyles";
 const LanguageSwitch = props => {
   const appClasses = useAppStyles();
 
-  const { t, i18n } = useTranslation();
+  const { i18n } = useTranslation();
 
   const changeLanguage = lng => {
     i18n.changeLanguage(lng);

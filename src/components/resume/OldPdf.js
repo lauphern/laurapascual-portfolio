@@ -16,7 +16,7 @@ import { useAppStyles, useResumeStyles } from "../../style/useStyles";
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.js`;
 
 const Pdf = props => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const {
     mediaQueries: { isItSmallDevice, isItSmallTablet },

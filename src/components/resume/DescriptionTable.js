@@ -15,7 +15,7 @@ import Response from "./Response";
 const DescriptionTable = props => {
   const { endpoint } = props;
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <TableContainer component={Paper}>

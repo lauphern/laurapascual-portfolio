@@ -5,7 +5,7 @@ import { Typography, InputLabel, Select, MenuItem, TextField, Button } from "@ma
 const CustomInput = props => {
   const { param, formValues, setFormValues } = props;
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <>
@@ -47,7 +47,7 @@ const CustomInput = props => {
 const RequestForm = props => {
   const { handleSubmit, clearPanelState, parameters, formValues, setFormValues } = props;
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <form onSubmit={handleSubmit}>

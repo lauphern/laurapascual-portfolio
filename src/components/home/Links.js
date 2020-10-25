@@ -1,14 +1,13 @@
 import React, { useContext } from "react";
 import { Store } from "../../store";
-import { ButtonGroup, Button, Grid, Box, Tooltip } from "@material-ui/core";
+import { ButtonGroup, Button, Grid, Tooltip } from "@material-ui/core";
 
 import { useTransition, animated } from "react-spring";
 
-import { useAppStyles, useLinksStyles } from "../../style/useStyles";
+import { useLinksStyles } from "../../style/useStyles";
 
 const Links = props => {
   const linkClasses = useLinksStyles();
-  const appClasses = useAppStyles();
 
   const {
     projects,

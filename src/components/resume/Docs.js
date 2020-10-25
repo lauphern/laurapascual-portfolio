@@ -23,7 +23,7 @@ const Badge = props => {
 };
 
 const Docs = props => {
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   const { endpoints } = useContext(Store);
 

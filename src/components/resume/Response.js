@@ -7,7 +7,7 @@ const Pdf = React.lazy(() => import("./Pdf"));
 const Response = props => {
   const { response } = props;
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
 
   return (
     <>
