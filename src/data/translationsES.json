@@ -5,7 +5,7 @@
   "showHardSkills": "Ver hard skills",
   "home": "Inicio",
   "pdf": {
-    "nodata": "¡Algo salió mal! No se encontró ningún archivo pdf",
+    "nodata": "¡Algo salió mal! No se puede mostrar el archivo pdf",
     "title": "Descubre y descarga mi Currículum",
     "subtitle": "Puedes leer la información en formato JSON de la API en un archivo pdf",
     "key": "Página {{pageNumber}} de {{numPages}}",

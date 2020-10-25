@@ -5,7 +5,7 @@
   "showHardSkills": "See hard skills",
   "home": "Home",
   "pdf": {
-    "nodata": "Something went wrong! No pdf found",
+    "nodata": "Something went wrong! The pdf can't be displayed",
     "title": "Check out and download my Résumé",
     "subtitle": "You can read the JSON data from the API in a pdf file",
     "key": "Page {{pageNumber}} of {{numPages}}",

@@ -1,7 +1,7 @@
 import React, { useState, useContext } from "react";
 import { Store } from "../../store";
 import { useTranslation } from "react-i18next";
-import { ButtonGroup, Button, Typography } from "@material-ui/core";
+import { Box, ButtonGroup, Button, Typography } from "@material-ui/core";
 import CloudDownloadSharpIcon from "@material-ui/icons/CloudDownloadSharp";
 import FullscreenSharpIcon from "@material-ui/icons/FullscreenSharp";
 import ErrorSharpIcon from "@material-ui/icons/ErrorSharp";
@@ -39,67 +39,75 @@ const Pdf = props => {
 
   const onDocumentLoadSuccess = ({ numPages }) => {
     setNumPages(numPages);
-  }
+  };
 
   return (
     <>
-      <Document
-        className={numPages && resumeClasses.document}
-        file={{ url: url }}
-        onLoadSuccess={onDocumentLoadSuccess}
-        onLoadError={() => setDocumentError(true)}
-        loading={<CachedSharpIcon className={resumeClasses.loader} />}
-        noData={<ErrorMsg />}
-      >
-        <ButtonGroup variant="contained" className={resumeClasses.pdfNav}>
-          <Button
-            aria-label="before"
-            className={`${appClasses.secondaryBtn}`}
-            disabled={pageNumber === 1}
-            onClick={() => setPageNumber(pageNumber - 1)}
+      {documentError ? (
+        <Box>
+          <ErrorMsg />
+        </Box>
+      ) : (
+        <>
+          <Document
+            className={numPages && resumeClasses.document}
+            file={{ url: url }}
+            onLoadSuccess={onDocumentLoadSuccess}
+            onLoadError={() => setDocumentError(true)}
+            loading={<CachedSharpIcon className={resumeClasses.loader} />}
+            noData={<ErrorMsg />}
           >
-            <NavigateBeforeIcon />
+            <ButtonGroup variant="contained" className={resumeClasses.pdfNav}>
+              <Button
+                aria-label="before"
+                className={`${appClasses.secondaryBtn}`}
+                disabled={pageNumber === 1}
+                onClick={() => setPageNumber(pageNumber - 1)}
+              >
+                <NavigateBeforeIcon />
+              </Button>
+              <Button
+                aria-label="next"
+                className={`${appClasses.secondaryBtn}`}
+                disabled={pageNumber === numPages}
+                onClick={() => setPageNumber(pageNumber + 1)}
+              >
+                <NavigateNextIcon />
+              </Button>
+            </ButtonGroup>
+            <Page
+              pageNumber={pageNumber}
+              scale={isItSmallTablet ? (isItSmallDevice ? 0.25 : 0.5) : 0.7}
+            />
+          </Document>
+          {numPages && (
+            <Typography variant="overline">{t("pdf.key", { pageNumber, numPages })}</Typography>
+          )}
+        </>
+      )}
+      {url && (
+        <ButtonGroup variant="contained" orientation="vertical">
+          <Button
+            className={`${appClasses.secondaryBtn}`}
+            rel="noopener noreferrer"
+            target="_blank"
+            href={url}
+          >
+            <FullscreenSharpIcon className={resumeClasses.textIcon} />
+            &nbsp;{t("pdf.full")}
           </Button>
           <Button
-            aria-label="next"
             className={`${appClasses.secondaryBtn}`}
-            disabled={pageNumber === numPages}
-            onClick={() => setPageNumber(pageNumber + 1)}
+            rel="noopener noreferrer"
+            target="_blank"
+            href={url}
+            download="Resume_LauraPascual.pdf"
           >
-            <NavigateNextIcon />
+            <CloudDownloadSharpIcon className={resumeClasses.textIcon} />
+            &nbsp;{t("pdf.download")}
           </Button>
         </ButtonGroup>
-        <Page
-          pageNumber={pageNumber}
-          scale={isItSmallTablet ? (isItSmallDevice ? 0.25 : 0.5) : 0.7}
-        />
-      </Document>
-      {numPages && (
-        <Typography variant="overline">{t("pdf.key", { pageNumber, numPages })}</Typography>
       )}
-      {numPages && (
-          <ButtonGroup variant="contained" orientation="vertical">
-            <Button
-              className={`${appClasses.secondaryBtn}`}
-              rel="noopener noreferrer"
-              target="_blank"
-              href={url}
-            >
-              <FullscreenSharpIcon className={resumeClasses.textIcon} />
-              &nbsp;{t("pdf.full")}
-            </Button>
-            <Button
-              className={`${appClasses.secondaryBtn}`}
-              rel="noopener noreferrer"
-              target="_blank"
-              href={url}
-              download="Resume_LauraPascual.pdf"
-            >
-              <CloudDownloadSharpIcon className={resumeClasses.textIcon} />
-              &nbsp;{t("pdf.download")}
-            </Button>
-          </ButtonGroup>
-        )}
     </>
   );
 };
