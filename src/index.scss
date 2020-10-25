@@ -13,3 +13,23 @@ code {
   display: block;
   white-space: pre-wrap   
 }
+
+#default-error-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+
+  & > * {
+    margin: 1rem 0;
+  }
+
+  & > h3:nth-of-type(1) {
+    font-size: 5rem;
+  }
+
+}

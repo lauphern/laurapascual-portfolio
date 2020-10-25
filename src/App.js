@@ -1,12 +1,10 @@
 import React, { useState, useEffect, Suspense, useRef, useContext } from "react";
 import { Store } from "./store";
 import { Switch, Route, useLocation } from "react-router-dom";
-import { Fab, Button } from "@material-ui/core";
+import { Fab } from "@material-ui/core";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CodeSharpIcon from "@material-ui/icons/CodeSharp";
 import "./App.scss";
-
-import { Link as RouterLink } from "react-router-dom";
 
 import LanguageSwitch from "./components/LanguageSwitch";
 import ErrorBoundary from "./pages/ErrorBoundary";
@@ -68,20 +66,14 @@ function App() {
     };
   }, []);
 
+  const [x, setX] = useState("hiiii")
   return (
     <div className="App">
       <ErrorBoundary>
         <Suspense fallback={<NumericalLoader num={loaderNumber} />}>
           <ThemeProvider theme={theme}>
-            <Button
-              variant="outlined"
-              // className={`${appClasses.routerBtn}`}
-              component={RouterLink}
-              to="/jelo"
-              size="small"
-            >
-              HOLA
-            </Button>
+          {<button onClick={() => setX({"hola": "jeje"})}>{x}</button>}
+
             <LanguageSwitch />
             <Switch>
               <Route exact path="/">
