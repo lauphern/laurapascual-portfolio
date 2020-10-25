@@ -45,8 +45,7 @@ const Pdf = props => {
     <>
       <Document
         className={numPages && resumeClasses.document}
-        // TODO try with the backup url if this one doesn't work
-        file={{ url: `${process.env.REACT_APP_MAIN_SERVER_URL}/download` }}
+        file={{ url: url }}
         onLoadSuccess={onDocumentLoadSuccess}
         onLoadError={() => setDocumentError(true)}
         loading={<CachedSharpIcon className={resumeClasses.loader} />}
@@ -84,7 +83,7 @@ const Pdf = props => {
               className={`${appClasses.secondaryBtn}`}
               rel="noopener noreferrer"
               target="_blank"
-              href={`${process.env.REACT_APP_MAIN_SERVER_URL}/download`}
+              href={url}
             >
               <FullscreenSharpIcon className={resumeClasses.textIcon} />
               &nbsp;{t("pdf.full")}

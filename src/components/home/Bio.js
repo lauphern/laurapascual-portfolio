@@ -104,7 +104,6 @@ const Bio = props => {
                     </Link>
                   </Typography>
                 </Container>
-                {/* TODO fix this for landscape in small devices */}
                 {!isItShortHeight ? (
                   <Box className={bioClasses.skillsContainer}>
                     {hardSkills.map(skillName => (
