@@ -8,10 +8,10 @@ import { useTranslation } from "react-i18next";
 
 import Header from "../components/Header";
 import Docs from "../components/resume/Docs";
-import Pdf from "../components/resume/Pdf";
-import OldDocs from "../components/resume/OldDocs";
 
 import { useAppStyles, useResumeStyles } from "../style/useStyles";
+
+//TODO style children
 
 const Resume = props => {
   const { t, i18n } = useTranslation();
@@ -21,7 +21,6 @@ const Resume = props => {
   const {
     mediaQueries: { isItSmallTablet, isItShortHeight },
   } = useContext(Store);
-  
 
   const resumeClasses = useResumeStyles();
   const appClasses = useAppStyles();
@@ -49,8 +48,17 @@ const Resume = props => {
 
   return (
     <>
-      <Box className={`${resumeClasses.headerPlaceholder} ${isItShortHeight && resumeClasses.headerPlaceholderLandscape}`}></Box>
-      <Container className={`${resumeClasses.headerContainer} ${isItShortHeight && resumeClasses.headerContainerLandscape}`} disableGutters>
+      <Box
+        className={`${resumeClasses.headerPlaceholder} ${
+          isItShortHeight && resumeClasses.headerPlaceholderLandscape
+        }`}
+      ></Box>
+      <Container
+        className={`${resumeClasses.headerContainer} ${
+          isItShortHeight && resumeClasses.headerContainerLandscape
+        }`}
+        disableGutters
+      >
         {headerTransition.map(
           ({ item, props, key }) =>
             item && (
@@ -78,18 +86,16 @@ const Resume = props => {
         }`}
         disableGutters
       >
-        {/* {resumeTransition.map(
+        {resumeTransition.map(
           ({ item, props, key }) =>
             item && (
               <animated.div key={key} style={props}>
-                <> */}
-        <Docs />
-        {/* <Pdf /> */}
-        {/* <OldDocs /> */}
-        {/* </>
+                <>
+                  <Docs />
+                </>
               </animated.div>
             )
-        )} */}
+        )}
       </Container>
     </>
   );

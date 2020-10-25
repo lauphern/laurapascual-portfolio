@@ -17,6 +17,8 @@ const Home = React.lazy(() => import("./pages/Home"));
 const Resume = React.lazy(() => import("./pages/Resume"));
 const NoMatch = React.lazy(() => import("./pages/NoMatch"));
 
+//TODO remove unused variables
+
 const NumericalLoader = props => {
   //TODO the value doesn't change when you switch between routes
   //it might be because of useEffect in Home and Resume
@@ -66,14 +68,11 @@ function App() {
     };
   }, []);
 
-  const [x, setX] = useState("hiiii")
   return (
     <div className="App">
       <ErrorBoundary>
         <Suspense fallback={<NumericalLoader num={loaderNumber} />}>
           <ThemeProvider theme={theme}>
-          {<button onClick={() => setX({"hola": "jeje"})}>{x}</button>}
-
             <LanguageSwitch />
             <Switch>
               <Route exact path="/">
