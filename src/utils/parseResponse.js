@@ -1,5 +1,5 @@
 export const parseResponse = ({ res, endpoint }) => {
-  let response = endpoint.responses.find(el => parseInt(el.code[0]) === res.status / 100);
+  let response = {...endpoint.responses.find(el => parseInt(el.code[0]) === res.status / 100)};
   let indentation = 0;
   //TODO it doesn't work for all responses
   response.value = JSON.stringify(res.data).replace(

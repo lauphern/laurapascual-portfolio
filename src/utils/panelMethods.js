@@ -89,7 +89,7 @@ export const handlePdfDownload = ({
       })
       .then(res => {
         const url = window.URL.createObjectURL(new Blob([res.data], { type: "application/pdf" }));
-        let response = endpoint.responses.find(el => parseInt(el.code[0]) === res.status / 100);
+        let response = {...endpoint.responses.find(el => parseInt(el.code[0]) === res.status / 100)};
         response.url = url;
         setApiResponse(response);
         setOpen(false);
@@ -107,7 +107,7 @@ export const handlePdfDownload = ({
             const url = window.URL.createObjectURL(
               new Blob([res.data], { type: "application/pdf" })
             );
-            let response = endpoint.responses.find(el => parseInt(el.code[0]) === res.status / 100);
+            let response = {...endpoint.responses.find(el => parseInt(el.code[0]) === res.status / 100)};
             response.url = url;
             setApiResponse(response);
             setOpen(false);
