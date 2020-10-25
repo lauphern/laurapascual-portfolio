@@ -39,7 +39,6 @@ const Panel = props => {
   const [open, setOpen] = useState(false);
 
   const handleSubmit = e => {
-    //TODO handle download route
     setOpen(true);
     clearPanelState({ clearForm: false });
     e.preventDefault();
@@ -48,7 +47,7 @@ const Panel = props => {
       if (key === "Accept-Language") delete params[key];
       else if (params[key].length === 0) delete params[key];
     }
-    import("../../utils/apiRequest").then(({defaultServer, backupServer}) => {
+    import("../../utils/apiRequest").then(({ defaultServer, backupServer }) => {
       defaultServer
         .get(endpoint.path, {
           headers: { "Accept-Language": formValues["Accept-Language"] || getLanguage() },
@@ -56,7 +55,7 @@ const Panel = props => {
         })
         .then(res => {
           // let test = response.value.match(/\n\s*\n/)
-          import("../../utils/parseResponse").then(({parseResponse}) => {
+          import("../../utils/parseResponse").then(({ parseResponse }) => {
             const response = parseResponse({ res, endpoint });
             setApiResponse(response);
             setOpen(false);
@@ -69,11 +68,75 @@ const Panel = props => {
               params,
             })
             .then(res => {
-              import("../../utils/parseResponse").then(({parseResponse}) => {
+              import("../../utils/parseResponse").then(({ parseResponse }) => {
                 const response = parseResponse({ res, endpoint });
                 setApiResponse(response);
                 setOpen(false);
               });
+            })
+            .catch(err => {
+              const errorObject = {
+                code: err.response && err.response.status,
+                description: err.response && err.response.statusText,
+                mediaType: "application/json",
+                value: `{\n  "code": "${err.response && err.response.status}",\n  "message": "${
+                  err.message
+                }"\n}`,
+              };
+              if (
+                err.response &&
+                typeof err.response.data == "string" &&
+                err.response.data.length > 0 &&
+                err.response.data.indexOf("DOCTYPE") < 0
+              )
+                setApiError(err.response.data);
+              else setApiError(err.message);
+              setApiResponse(errorObject);
+              setOpen(false);
+            });
+        });
+    });
+  };
+
+  const handlePdfDownload = e => {
+    setOpen(true);
+    clearPanelState({ clearForm: false });
+    e.preventDefault();
+    import("../../utils/apiRequest").then(({ defaultServer, backupServer }) => {
+      defaultServer
+        .get(endpoint.path, {
+          headers: {
+            "Accept-Language": formValues["Accept-Language"] || getLanguage(),
+            "Content-Type": "application/pdf",
+          },
+          responseType: "arraybuffer",
+        })
+        .then(res => {
+          const url = window.URL.createObjectURL(new Blob([res.data], { type: "application/pdf" }));
+          let response = endpoint.responses.find(el => parseInt(el.code[0]) === res.status / 100);
+          response.url = url;
+          setApiResponse(response);
+          setOpen(false);
+        })
+        .catch(err => {
+          return backupServer
+            .get(endpoint.path, {
+              headers: {
+                "Accept-Language": formValues["Accept-Language"] || getLanguage(),
+                "Content-Type": "application/pdf",
+              },
+              responseType: "arraybuffer",
+            })
+            .then(res => {
+              const url = window.URL.createObjectURL(
+                new Blob([res.data], { type: "application/pdf" })
+              );
+              let response = endpoint.responses.find(
+                el => parseInt(el.code[0]) === res.status / 100
+              );
+              response.url = url;
+              setApiResponse(response);
+              setOpen(false);
             })
             .catch(err => {
               const errorObject = {
@@ -134,13 +197,15 @@ const Panel = props => {
           <RequestForm
             formValues={formValues}
             setFormValues={setFormValues}
-            handleSubmit={handleSubmit}
+            handleSubmit={endpoint.path === "/download" ? handlePdfDownload : handleSubmit}
             clearPanelState={clearPanelState}
             parameters={endpoint.parameters}
           />
-          <Backdrop className={resumeClasses.backdrop} open={open} onClick={() => setOpen(false)}>
-            <CircularProgress color="inherit" />
-          </Backdrop>
+          {open ? (
+            <Backdrop className={resumeClasses.backdrop} open={open} onClick={() => setOpen(false)}>
+              <CircularProgress color="inherit" />
+            </Backdrop>
+          ) : null}
           {apiError ? <p>{apiError}</p> : null}
           {Object.keys(apiResponse).length > 0 ? (
             <TableContainer component={Paper}>

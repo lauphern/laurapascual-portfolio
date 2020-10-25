@@ -1,10 +1,11 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { TableRow, TableCell } from "@material-ui/core";
 
-const Response = props => {
+const Pdf = React.lazy(() => import("./Pdf"));
 
+const Response = props => {
   const { response } = props;
-  
+
   return (
     <>
       <TableRow key={response.code}>
@@ -19,7 +20,14 @@ const Response = props => {
       </TableRow>
       <TableRow>
         <TableCell>
-          <code>{response.value}</code>
+          {/* TODO proper fallback */}
+          {response.url ? (
+            <Suspense fallback={<div>Pdf loading</div>}>
+              <Pdf url={response.url} />
+            </Suspense>
+          ) : (
+            <code>{response.value}</code>
+          )}
         </TableCell>
       </TableRow>
     </>

@@ -409,9 +409,8 @@ export const StoreProvider = props => {
           {
             code: "200",
             description: "Successful operation",
-            // TODO download response
-            mediaType: "application/json",
-            value: ``,
+            mediaType: "application/pdf",
+            value: `PDF file`,
           },
           {
             code: "400",

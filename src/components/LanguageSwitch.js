@@ -35,7 +35,7 @@ const LanguageSwitch = props => {
               <ButtonGroup variant="text" size="small" className={appClasses.languageSwitch}>
                 <Button
                   onClick={() => changeLanguage("en")}
-                  className={`${appClasses.pointer} ${appClasses.languageBtn} ${
+                  className={`${appClasses.languageBtn} ${
                     getLanguage().includes("en") && appClasses.languageBtnActive
                   }`}
                 >
@@ -43,7 +43,7 @@ const LanguageSwitch = props => {
                 </Button>
                 <Button
                   onClick={() => changeLanguage("es")}
-                  className={`${appClasses.pointer} ${appClasses.languageBtn} ${
+                  className={`${appClasses.languageBtn} ${
                     getLanguage().includes("es") && appClasses.languageBtnActive
                   }`}
                 >

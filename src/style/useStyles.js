@@ -11,7 +11,6 @@ export const useAppStyles = makeStyles(
     layout: {
       minHeight: "100vh",
       width: "100vw",
-      pointerEvents: "none",
     },
     languageSwitch: {
       position: "fixed",
@@ -56,9 +55,6 @@ export const useAppStyles = makeStyles(
         boxShadow: "inset 2px 2px 3px rgba(0, 0, 0, 0.2)",
         backgroundColor: "white",
       },
-    },
-    pointer: {
-      pointerEvents: "all",
     },
     link: {
       color: "white",
@@ -259,7 +255,6 @@ export const useResumeStyles = makeStyles(
       position: "fixed",
       top: 0,
       marginBottom: "2.5rem",
-      pointerEvents: "none",
     },
     headerText: {
       color: "white",
@@ -273,11 +268,12 @@ export const useResumeStyles = makeStyles(
       height: "40vh",
     },
     resumeContainer: {
+      backgroundColor: "white",
       display: "flex",
       flexDirection: "column",
-      pointerEvents: "all",
       padding: "2rem",
       minWidth: "100vw",
+      minHeight: "100vh",
       margin: "0",
       boxSizing: "border-box",
       position: "relative",
@@ -285,15 +281,6 @@ export const useResumeStyles = makeStyles(
     },
     resumeContainerMobile: {
       padding: "5rem 1rem",
-    },
-    resumeContainerBg: {
-      backgroundColor: "white",
-      width: "100vw",
-      height: "100%",
-      position: "absolute",
-      top: 0,
-      left: 0,
-      zIndex: -2,
     },
     pdfSection: {
       display: "grid",
@@ -365,7 +352,6 @@ export const useResumeStyles = makeStyles(
       flexGrow: 1,
     },
     backdrop: {
-      // zIndex: 100,
       zIndex: theme.zIndex.drawer + 1,
     },
   }),

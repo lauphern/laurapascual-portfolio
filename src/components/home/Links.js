@@ -51,7 +51,7 @@ const Links = props => {
                   <Tooltip title={project.framework} arrow>
                     <Button
                       variant="text"
-                      className={`${linkClasses.btn} ${appClasses.pointer}`}
+                      className={`${linkClasses.btn}`}
                       href={project.url}
                       target="_blank"
                     >

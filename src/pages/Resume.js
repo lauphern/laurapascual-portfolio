@@ -58,7 +58,7 @@ const Resume = props => {
                   <Header />
                   <Button
                     variant="outlined"
-                    className={`${appClasses.routerBtn} ${appClasses.pointer}`}
+                    className={`${appClasses.routerBtn}`}
                     component={RouterLink}
                     to="/"
                     size="small"
@@ -89,7 +89,6 @@ const Resume = props => {
               </animated.div>
             )
         )} */}
-        <Box className={resumeClasses.resumeContainerBg} />
       </Container>
     </>
   );

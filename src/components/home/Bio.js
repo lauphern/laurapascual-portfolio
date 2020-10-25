@@ -61,7 +61,7 @@ const Bio = props => {
                   <Tooltip title={t("cvTooltip")} arrow>
                     <Button
                       variant="outlined"
-                      className={`${appClasses.pointer} ${appClasses.routerBtn}`}
+                      className={`${appClasses.routerBtn}`}
                       component={RouterLink}
                       to="/resume"
                       size="small"
@@ -73,7 +73,7 @@ const Bio = props => {
                   <Divider orientation="vertical" flexItem className={bioClasses.verticalDivider} />
                   <Typography variant="body1">
                     <Link
-                      className={`${appClasses.pointer} ${appClasses.link}`}
+                      className={`${appClasses.link}`}
                       href="mailto:laura.pascual.h@hotmail.com"
                     >
                       Email
@@ -82,7 +82,7 @@ const Bio = props => {
                   <Divider orientation="vertical" flexItem className={bioClasses.verticalDivider} />
                   <Typography variant="body1">
                     <Link
-                      className={`${appClasses.pointer} ${appClasses.link}`}
+                      className={`${appClasses.link}`}
                       href="https://github.com/lauphern"
                       target="_blank"
                       rel="noopener"
@@ -93,7 +93,7 @@ const Bio = props => {
                   <Divider orientation="vertical" flexItem className={bioClasses.verticalDivider} />
                   <Typography variant="body1">
                     <Link
-                      className={`${appClasses.pointer} ${appClasses.link}`}
+                      className={`${appClasses.link}`}
                       href={t("linkedin")}
                       target="_blank"
                       rel="noopener"
@@ -110,7 +110,7 @@ const Bio = props => {
                       <Chip
                         label={skillName}
                         size="small"
-                        className={`${bioClasses.hardSkill} ${appClasses.pointer}`}
+                        className={`${bioClasses.hardSkill}`}
                       />
                     ))}
                   </Box>
