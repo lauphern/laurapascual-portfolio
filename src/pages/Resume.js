@@ -86,16 +86,16 @@ const Resume = props => {
         }`}
         disableGutters
       >
-        {resumeTransition.map(
+        {/* {resumeTransition.map(
           ({ item, props, key }) =>
             item && (
               <animated.div key={key} style={props}>
-                <>
+                <> */}
                   <Docs />
-                </>
+                {/* </>
               </animated.div>
             )
-        )}
+        )} */}
       </Container>
     </>
   );
