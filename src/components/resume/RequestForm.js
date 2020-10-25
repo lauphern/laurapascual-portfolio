@@ -1,13 +1,15 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { InputLabel, Select, MenuItem, TextField, Button } from "@material-ui/core";
+import { Typography, InputLabel, Select, MenuItem, TextField, Button } from "@material-ui/core";
 
 const CustomInput = props => {
   const { param, formValues, setFormValues } = props;
 
+  const { t, i18n } = useTranslation();
+
   return (
     <>
-      <p>In: {param.in}</p>
+      <Typography variant="body1">{t("requestTable.in")}: {param.in}</Typography>
       <InputLabel id={param.name} required={param.required}>
         {param.name}
       </InputLabel>
@@ -18,7 +20,7 @@ const CustomInput = props => {
           labelId={param.name}
           required={param.required}
           displayEmpty
-          renderValue={value => value || "Choose a value"}
+          renderValue={value => value || t("requestForm.select")}
           onChange={e => setFormValues({ ...formValues, [param.name]: e.target.value })}
         >
           {param.enum.map(val => (
@@ -52,8 +54,8 @@ const RequestForm = props => {
       {parameters.map(param => (
         <CustomInput formValues={formValues} setFormValues={setFormValues} param={param} />
       ))}
-      <Button type="submit">{t("tryBtn")}</Button>
-      <Button onClick={() => clearPanelState({})}>{t("clearBtn")}</Button>
+      <Button type="submit">{t("requestForm.tryBtn")}</Button>
+      <Button onClick={() => clearPanelState({})}>{t("requestForm.clearBtn")}</Button>
     </form>
   );
 };

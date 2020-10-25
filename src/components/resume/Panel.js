@@ -97,7 +97,7 @@ const Panel = props => {
       {value === index && (
         <Box p={3}>
           <Typography variant="h5">
-            {endpoint.title} <Chip size="small" label={endpoint.method} />
+            {endpoint.title} <Chip className={resumeClasses.getChip} size="medium" label={endpoint.method} />
           </Typography>
           <Typography variant="subtitle1">{endpoint.description}</Typography>
           <RequestForm
@@ -112,7 +112,7 @@ const Panel = props => {
               <CircularProgress color="inherit" />
             </Backdrop>
           ) : null}
-          {apiError ? <p>{apiError}</p> : null}
+          {apiError ? <Typography variant="body1">{apiError}</Typography> : null}
           {Object.keys(apiResponse).length > 0 ? (
             <TableContainer component={Paper}>
               <Table aria-label="spanning table">

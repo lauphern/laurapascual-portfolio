@@ -393,6 +393,10 @@ export const useResumeStyles = makeStyles(
     backdrop: {
       zIndex: theme.zIndex.drawer + 1,
     },
+    getChip: {
+      backgroundColor: "var(--primary)",
+      color: "white",
+    }
   }),
   { index: 1 }
 );

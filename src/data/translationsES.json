@@ -13,8 +13,11 @@
     "especificación de OpenAPI 3.0",
     "."
   ],
-  "tryBtn": "Pruébalo",
-  "clearBtn": "Borrar",
+  "requestForm": {
+    "select": "Elige un valor",
+    "tryBtn": "Probar",
+    "clearBtn": "Borrar"
+  },
   "requestTable": {
     "mediaType": "Tipo:",
     "value": "Valor:",
