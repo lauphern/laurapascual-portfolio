@@ -272,6 +272,12 @@ export const useResumeStyles = makeStyles(
       top: 0,
       marginBottom: "2.5rem",
     },
+    headerContainerLandscape: {
+      minHeight: "90vh",
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
     headerText: {
       color: "white",
       display: "flex",

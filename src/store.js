@@ -11,7 +11,7 @@ export const StoreProvider = props => {
     hardSkills,
     projects,
     mediaQueries: {
-      isItSmallDevice: useMediaQuery("(max-width:400px)"),
+      isItSmallDevice: useMediaQuery("(max-width:430px)"),
       isItSmallTablet: useMediaQuery("(max-width:834px)"),
       isItTablet: useMediaQuery("(max-width:1100px)"),
       isItSmallThanLaptop: useMediaQuery("(max-width:1199px)"),

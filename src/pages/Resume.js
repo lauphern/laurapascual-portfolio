@@ -50,7 +50,7 @@ const Resume = props => {
   return (
     <>
       <Box className={`${resumeClasses.headerPlaceholder} ${isItShortHeight && resumeClasses.headerPlaceholderLandscape}`}></Box>
-      <Container className={resumeClasses.headerContainer} disableGutters>
+      <Container className={`${resumeClasses.headerContainer} ${isItShortHeight && resumeClasses.headerContainerLandscape}`} disableGutters>
         {headerTransition.map(
           ({ item, props, key }) =>
             item && (
