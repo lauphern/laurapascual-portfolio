@@ -39,127 +39,32 @@ const Panel = props => {
   const [open, setOpen] = useState(false);
 
   const handleSubmit = e => {
-    setOpen(true);
-    clearPanelState({ clearForm: false });
     e.preventDefault();
-    let params = { ...formValues };
-    for (const key in params) {
-      if (key === "Accept-Language") delete params[key];
-      else if (params[key].length === 0) delete params[key];
-    }
-    import("../../utils/apiRequest").then(({ defaultServer, backupServer }) => {
-      defaultServer
-        .get(endpoint.path, {
-          headers: { "Accept-Language": formValues["Accept-Language"] || getLanguage() },
-          params,
-        })
-        .then(res => {
-          // let test = response.value.match(/\n\s*\n/)
-          import("../../utils/parseResponse").then(({ parseResponse }) => {
-            const response = parseResponse({ res, endpoint });
-            setApiResponse(response);
-            setOpen(false);
-          });
-        })
-        .catch(err => {
-          return backupServer
-            .get(endpoint.path, {
-              headers: { "Accept-Language": formValues["Accept-Language"] || getLanguage() },
-              params,
-            })
-            .then(res => {
-              import("../../utils/parseResponse").then(({ parseResponse }) => {
-                const response = parseResponse({ res, endpoint });
-                setApiResponse(response);
-                setOpen(false);
-              });
-            })
-            .catch(err => {
-              const errorObject = {
-                code: err.response && err.response.status,
-                description: err.response && err.response.statusText,
-                mediaType: "application/json",
-                value: `{\n  "code": "${err.response && err.response.status}",\n  "message": "${
-                  err.message
-                }"\n}`,
-              };
-              if (
-                err.response &&
-                typeof err.response.data == "string" &&
-                err.response.data.length > 0 &&
-                err.response.data.indexOf("DOCTYPE") < 0
-              )
-                setApiError(err.response.data);
-              else setApiError(err.message);
-              setApiResponse(errorObject);
-              setOpen(false);
-            });
-        });
+    import("../../utils/panelMethods").then(({ handleSubmit }) => {
+      handleSubmit({
+        setOpen,
+        clearPanelState,
+        formValues,
+        endpoint,
+        getLanguage,
+        setApiResponse,
+        setApiError,
+      });
     });
   };
 
   const handlePdfDownload = e => {
-    setOpen(true);
-    clearPanelState({ clearForm: false });
     e.preventDefault();
-    import("../../utils/apiRequest").then(({ defaultServer, backupServer }) => {
-      defaultServer
-        .get(endpoint.path, {
-          headers: {
-            "Accept-Language": formValues["Accept-Language"] || getLanguage(),
-            "Content-Type": "application/pdf",
-          },
-          responseType: "arraybuffer",
-          timeout: 10000,
-        })
-        .then(res => {
-          const url = window.URL.createObjectURL(new Blob([res.data], { type: "application/pdf" }));
-          let response = endpoint.responses.find(el => parseInt(el.code[0]) === res.status / 100);
-          response.url = url;
-          setApiResponse(response);
-          setOpen(false);
-        })
-        .catch(err => {
-          return backupServer
-            .get(endpoint.path, {
-              headers: {
-                "Accept-Language": formValues["Accept-Language"] || getLanguage(),
-                "Content-Type": "application/pdf",
-              },
-              responseType: "arraybuffer",
-            })
-            .then(res => {
-              const url = window.URL.createObjectURL(
-                new Blob([res.data], { type: "application/pdf" })
-              );
-              let response = endpoint.responses.find(
-                el => parseInt(el.code[0]) === res.status / 100
-              );
-              response.url = url;
-              setApiResponse(response);
-              setOpen(false);
-            })
-            .catch(err => {
-              const errorObject = {
-                code: err.response && err.response.status,
-                description: err.response && err.response.statusText,
-                mediaType: "application/json",
-                value: `{\n  "code": "${err.response && err.response.status}",\n  "message": "${
-                  err.message
-                }"\n}`,
-              };
-              if (
-                err.response &&
-                typeof err.response.data == "string" &&
-                err.response.data.length > 0 &&
-                err.response.data.indexOf("DOCTYPE") < 0
-              )
-                setApiError(err.response.data);
-              else setApiError(err.message);
-              setApiResponse(errorObject);
-              setOpen(false);
-            });
-        });
+    import("../../utils/panelMethods").then(({ handlePdfDownload }) => {
+      handlePdfDownload({
+        setOpen,
+        clearPanelState,
+        endpoint,
+        formValues,
+        getLanguage,
+        setApiResponse,
+        setApiError,
+      });
     });
   };
 

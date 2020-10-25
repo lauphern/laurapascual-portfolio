@@ -8,7 +8,6 @@ const CustomInput = props => {
     <>
       <p>In: {param.in}</p>
       <InputLabel id={param.name} required={param.required}>{param.name}</InputLabel>
-      {/* value should point to state */}
       {param.enum.length > 0 ? (
         <Select
           name={param.name}
