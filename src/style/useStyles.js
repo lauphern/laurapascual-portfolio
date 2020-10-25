@@ -5,6 +5,8 @@ import { makeStyles } from "@material-ui/core/styles";
 // https://stackoverflow.com/questions/62473898/material-ui-rendering-bugs-in-production-build
 // https://github.com/mui-org/material-ui/issues/16609
 
+//TODO remove classes from old files - when I remove those files
+
 //TODO test in other browsers
 export const useAppStyles = makeStyles(
   {
@@ -149,8 +151,8 @@ export const useAppStyles = makeStyles(
       "& > h3:nth-of-type(1)": {
         fontSize: "5rem",
         display: "inline-flex",
-      }
-    }
+      },
+    },
   },
   { index: 1 }
 );
@@ -314,7 +316,7 @@ export const useResumeStyles = makeStyles(
       backgroundColor: "white",
       display: "flex",
       flexDirection: "column",
-      padding: "2rem",
+      padding: "2rem 5vw",
       minWidth: "100vw",
       minHeight: "100vh",
       margin: "0",
@@ -347,10 +349,13 @@ export const useResumeStyles = makeStyles(
       color: "var(--primary)",
     },
     document: {
-      boxShadow: "2px 2px 3px 0px rgba(0, 0, 0, 0.2)",
       display: "flex",
       flexDirection: "column-reverse",
       alignItems: "center",
+      
+      "& canvas": {
+        boxShadow: "2px 2px 3px 0px rgba(0, 0, 0, 0.2)",
+      }
     },
     textIcon: {
       verticalAlign: "middle",
@@ -363,16 +368,32 @@ export const useResumeStyles = makeStyles(
       marginBottom: "2rem",
     },
     docsContainer: {
-      display: "flex",
+      display: "grid",
+      gridTemplateColumns: "1fr 3fr",
+    },
+    docsContainerMobile: {
+      gridTemplateRows: "1fr auto",
+      gridTemplateColumns: "1fr",
+    },
+    resumeText: {
+      padding: "2rem 10vw 4rem",
+
+      "& > *": {
+        margin: "1rem 0",
+      }
     },
     resumeTitle: {
       display: "inline-flex",
-      alignItems: "flex-end",
+      alignItems: "center",
     },
     drawerContainer: {
       [theme.breakpoints.up("sm")]: {
         width: "25vw",
         flexShrink: 0,
+      },
+
+      "& > div": {
+        height: "100%",
       },
     },
     drawerPaper: {
@@ -380,23 +401,65 @@ export const useResumeStyles = makeStyles(
       width: "25vw",
     },
     drawerPaperMobile: {
-      width: "50vw",
+      minWidth: "50vw",
+      justifyContent: "center",
     },
     showDrawerBtn: {
       [theme.breakpoints.up("sm")]: {
         display: "none",
       },
+      justifySelf: "start",
+      paddingLeft: "2vw",
+      marginLeft: 0,
+      color: "var(--primary)",
+    },
+    tabs: {
+      alignItems: "center",
+    },
+    panelBox: {
+      paddingLeft: "2.5vw",
+    },
+    panelBoxMobile: {
+      padding: "0 2vw",
     },
     endpointsContainer: {
       flexGrow: 1,
     },
     backdrop: {
       zIndex: theme.zIndex.drawer + 1,
+      position: "fixed",
+      left: "0",
+      top: "0",
+      height: "100vh",
+      width: "100vw",
     },
     getChip: {
       backgroundColor: "var(--primary)",
       color: "white",
-    }
+    },
+    requestForm: {
+      margin: "1.5rem 0",
+      display: "flex",
+      flexDirection: "column",
+
+      "& .MuiInput-underline": {
+        "& *:before": {
+          borderBottom: "2px solid var(--accent)",
+        },
+        "&:after": {
+          borderBottom: "2px solid var(--accent)",
+        },
+      },
+
+
+      "& > *": {
+        margin: "0.5rem 0",
+      },
+    },
+    inputField: {
+      minWidth: "200px",
+      width: "fit-content",
+    },
   }),
   { index: 1 }
 );

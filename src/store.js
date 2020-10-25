@@ -16,6 +16,7 @@ export const StoreProvider = props => {
       isItTablet: useMediaQuery("(max-width:1100px)"),
       isItSmallThanLaptop: useMediaQuery("(max-width:1199px)"),
       isItShortHeight: useMediaQuery("(max-height:600px)"),
+      drawerHidden: useMediaQuery("(max-width:599px)"),
     },
     servers: {
       production: "https://resume-api-server.azurewebsites.net/api/v1",

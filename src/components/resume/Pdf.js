@@ -41,13 +41,13 @@ const Pdf = props => {
   };
 
   return (
-    <>
+    <Box className={resumeClasses.pdfContainer}>
       {documentError ? (
         <Box>
           <ErrorMsg />
         </Box>
       ) : (
-        <>
+        <div>
           <Document
             className={numPages && resumeClasses.document}
             file={{ url: url }}
@@ -74,15 +74,15 @@ const Pdf = props => {
                 <NavigateNextIcon />
               </Button>
             </ButtonGroup>
+            {numPages && (
+              <Typography variant="overline">{t("pdf.key", { pageNumber, numPages })}</Typography>
+            )}
             <Page
               pageNumber={pageNumber}
               scale={isItSmallTablet ? (isItSmallDevice ? 0.25 : 0.5) : 0.7}
             />
           </Document>
-          {numPages && (
-            <Typography variant="overline">{t("pdf.key", { pageNumber, numPages })}</Typography>
-          )}
-        </>
+        </div>
       )}
       {url && (
         <ButtonGroup variant="contained" orientation="vertical">
@@ -107,7 +107,7 @@ const Pdf = props => {
           </Button>
         </ButtonGroup>
       )}
-    </>
+    </Box>
   );
 };
 

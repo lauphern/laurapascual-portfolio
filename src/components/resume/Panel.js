@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { useTranslation } from "react-i18next";
+import { Store } from "../../store";
 import {
   Box,
   Typography,
@@ -20,6 +21,10 @@ import { useResumeStyles } from "../../style/useStyles";
 
 const Panel = props => {
   const { endpoint, value, index, ...other } = props;
+
+  const {
+    mediaQueries: { drawerHidden },
+  } = useContext(Store);
 
   const resumeClasses = useResumeStyles();
 
@@ -95,9 +100,10 @@ const Panel = props => {
       {...other}
     >
       {value === index && (
-        <Box p={3}>
+        <Box className={`${resumeClasses.panelBox} ${drawerHidden && resumeClasses.panelBoxMobile}`}>
           <Typography variant="h5">
-            {endpoint.title} <Chip className={resumeClasses.getChip} size="medium" label={endpoint.method} />
+            {endpoint.title}{" "}
+            <Chip className={resumeClasses.getChip} size="medium" label={endpoint.method} />
           </Typography>
           <Typography variant="subtitle1">{endpoint.description}</Typography>
           <RequestForm

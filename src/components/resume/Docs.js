@@ -25,7 +25,10 @@ const Badge = props => {
 const Docs = props => {
   const { t } = useTranslation();
 
-  const { endpoints } = useContext(Store);
+  const {
+    endpoints,
+    mediaQueries: { drawerHidden },
+  } = useContext(Store);
 
   const resumeClasses = useResumeStyles();
 
@@ -43,33 +46,47 @@ const Docs = props => {
 
   return (
     <>
-      <Box className={resumeClasses.resumeTitle}>
-        <Typography variant="h3">Résumé API</Typography>
-        <Chip size="small" label="v1.0" />
-        <Chip size="small" label="OAS3" />
-        <Badge />
+      <Box className={resumeClasses.resumeText}>
+        <Box className={resumeClasses.resumeTitle}>
+          <Typography variant="h3">Résumé API</Typography>
+          &nbsp;&nbsp;
+          <Chip size="small" label="v1.0" />
+          &nbsp;&nbsp;
+          <Chip size="small" label="OAS3" />
+          &nbsp;&nbsp;
+          <Badge />
+        </Box>
+        <Typography variant="h4">{t("docsSubtitle")}</Typography>
+        <Typography variant="body1">
+          {t("docsDescription", { returnObjects: true }).map(el => {
+            if (el.indexOf("OpenAPI") > 0)
+              return (
+                <a
+                  href="https://resume-api.vercel.app/definition.yaml"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  {el}
+                </a>
+              );
+            else return el;
+          })}
+        </Typography>
       </Box>
-      <Typography variant="h4">{t("docsSubtitle")}</Typography>
-      <Typography variant="body1">
-        {t("docsDescription", { returnObjects: true }).map(el => {
-          if (el.indexOf("OpenAPI") > 0)
-            return (
-              <a href="https://resume-api.vercel.app/definition.yaml" target="_blank" rel="noopener noreferrer">
-                {el}
-              </a>
-            );
-          else return el;
-        })}
-      </Typography>
-      <Box className={resumeClasses.docsContainer}>
+      <Box
+        className={`${resumeClasses.docsContainer} ${
+          drawerHidden && resumeClasses.docsContainerMobile
+        }`}
+      >
         <IconButton
           color="inherit"
+          size
           aria-label="open drawer"
           edge="start"
           onClick={handleDrawerToggle}
           className={resumeClasses.showDrawerBtn}
         >
-          <MenuIcon />
+          <MenuIcon fontSize="large" />
         </IconButton>
         <nav className={resumeClasses.drawerContainer}>
           <Hidden smUp>
