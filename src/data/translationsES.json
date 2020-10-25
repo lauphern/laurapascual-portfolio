@@ -2,6 +2,7 @@
   "subtitle": "Desarrolladora Full-stack",
   "cvTooltip": "Consulta mi currículum en mi REST API",
   "linkedin": "https://www.linkedin.com/in/laura-pascual-hernandez/?locale=es_ES",
+  "showHardSkills": "Ver hard skills",
   "home": "Inicio",
   "pdf": {
     "nodata": "¡Algo salió mal! No se encontró ningún archivo pdf",

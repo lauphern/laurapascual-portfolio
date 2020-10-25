@@ -134,7 +134,7 @@ export const useAppStyles = makeStyles(
 );
 
 export const useBioStyles = makeStyles(
-  {
+  theme => ({
     leftPanel: {
       minWidth: "50vw",
       alignItems: "flex-start",
@@ -189,7 +189,19 @@ export const useBioStyles = makeStyles(
       margin: "0 1rem",
       height: "2rem",
     },
-  },
+    skillsModal: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+    },
+    skillsContainerMobile: {
+      backgroundColor: "var(--primary)",
+      maxWidth: "80vw",
+      maxHeight: "90vh",
+      padding: "1rem",
+      borderRadius: "0.25rem",
+    },
+  }),
   { index: 1 }
 );
 

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Store } from "../../store";
 import { Link as RouterLink } from "react-router-dom";
 import {
@@ -11,6 +11,7 @@ import {
   Box,
   Tooltip,
   Divider,
+  Modal,
 } from "@material-ui/core";
 import DescriptionSharpIcon from "@material-ui/icons/DescriptionSharp";
 import { useTranslation } from "react-i18next";
@@ -21,6 +22,8 @@ import Header from "../Header";
 import { useBioStyles, useAppStyles } from "../../style/useStyles";
 
 const Bio = props => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const {
     hardSkills,
     mediaQueries: { isItSmallTablet, isItShortHeight },
@@ -103,16 +106,40 @@ const Bio = props => {
                 </Container>
                 {/* TODO do a "show more" or "show hard skills" button + modal
                 for short devices */}
-                {!isItShortHeight && (
+                {!isItShortHeight ? (
                   <Box className={bioClasses.skillsContainer}>
                     {hardSkills.map(skillName => (
-                      <Chip
-                        label={skillName}
-                        size="small"
-                        className={`${bioClasses.hardSkill}`}
-                      />
+                      <Chip label={skillName} size="small" className={`${bioClasses.hardSkill}`} />
                     ))}
                   </Box>
+                ) : (
+                  <>
+                    <Button
+                      variant="outlined"
+                      className={`${appClasses.routerBtn}`}
+                      size="small"
+                      onClick={() => setIsModalOpen(true)}
+                    >
+                      {t("showHardSkills")}
+                    </Button>
+                    {/* TODO do transition in modal, check out official docs */}
+                    <Modal
+                      open={isModalOpen}
+                      onClose={() => setIsModalOpen(false)}
+                      aria-labelledby="hard-skills-modal"
+                      className={bioClasses.skillsModal}
+                    >
+                      <Box className={`${bioClasses.skillsContainer} ${bioClasses.skillsContainerMobile}`}>
+                        {hardSkills.map(skillName => (
+                          <Chip
+                            label={skillName}
+                            size="small"
+                            className={`${bioClasses.hardSkill}`}
+                          />
+                        ))}
+                      </Box>
+                    </Modal>
+                  </>
                 )}
               </>
             </animated.div>
