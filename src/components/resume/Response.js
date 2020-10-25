@@ -1,7 +1,12 @@
 import React, { Suspense } from "react";
-import { TableRow, TableCell } from "@material-ui/core";
+import { TableRow, TableCell, CircularProgress } from "@material-ui/core";
 
-const Pdf = React.lazy(() => import("./Pdf"));
+// const Pdf = React.lazy(() => import("./Pdf"));
+const Pdf = React.lazy(() => {
+  return new Promise(resolve => {
+    setTimeout(() => resolve(import("./Pdf")), 3000);
+  });
+});
 
 const Response = props => {
   const { response } = props;
@@ -20,9 +25,8 @@ const Response = props => {
       </TableRow>
       <TableRow>
         <TableCell>
-          {/* TODO proper fallback */}
           {response.url ? (
-            <Suspense fallback={<div>Pdf loading</div>}>
+            <Suspense fallback={<CircularProgress />}>
               <Pdf url={response.url} />
             </Suspense>
           ) : (

@@ -1,11 +1,10 @@
 import React, { useState, useContext } from "react";
 import { Store } from "../../store";
 import { useTranslation } from "react-i18next";
-import { Box, ButtonGroup, Button, Typography } from "@material-ui/core";
+import { Box, ButtonGroup, Button, Typography, CircularProgress } from "@material-ui/core";
 import CloudDownloadSharpIcon from "@material-ui/icons/CloudDownloadSharp";
 import FullscreenSharpIcon from "@material-ui/icons/FullscreenSharp";
 import ErrorSharpIcon from "@material-ui/icons/ErrorSharp";
-import CachedSharpIcon from "@material-ui/icons/CachedSharp";
 import NavigateBeforeIcon from "@material-ui/icons/NavigateBefore";
 import NavigateNextIcon from "@material-ui/icons/NavigateNext";
 import { Document, Page, pdfjs } from "react-pdf";
@@ -54,7 +53,7 @@ const Pdf = props => {
             file={{ url: url }}
             onLoadSuccess={onDocumentLoadSuccess}
             onLoadError={() => setDocumentError(true)}
-            loading={<CachedSharpIcon className={resumeClasses.loader} />}
+            loading={<CircularProgress />}
             noData={<ErrorMsg />}
           >
             <ButtonGroup variant="contained" className={resumeClasses.pdfNav}>

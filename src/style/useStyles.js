@@ -328,10 +328,6 @@ export const useResumeStyles = makeStyles(
     pdfTitle: {
       color: "var(--primary)",
     },
-    loader: {
-      animation: "loader 1s linear infinite",
-      color: "var(--accent)",
-    },
     document: {
       boxShadow: "2px 2px 3px 0px rgba(0, 0, 0, 0.2)",
       display: "flex",
