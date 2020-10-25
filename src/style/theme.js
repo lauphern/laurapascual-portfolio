@@ -15,9 +15,8 @@ export const theme = createMuiTheme({
     }
   },
   typography: {
-    fontFamily: ["Source Code Pro", "monospace"].join(","),
+    fontFamily: ["Heebo", "Roboto", "Helvetica", "Arial", "sans-serif"].join(","),
     h1: {
-      fontFamily: ["Heebo", "Roboto", "Helvetica", "Arial", "sans-serif"].join(","),
       fontWeight: 400,
       fontSize: "6rem",
       letterSpacing: "-0.265rem",
@@ -28,12 +27,10 @@ export const theme = createMuiTheme({
       fontWeight: 400,
     },
     h3: {
-      fontFamily: ["Heebo", "Roboto", "Helvetica", "Arial", "sans-serif"].join(","),
       fontSize: "1.5rem",
     },
     h4: {
-      fontFamily: ["Heebo", "Roboto", "Helvetica", "Arial", "sans-serif"].join(","),
       fontSize: "1.25rem",
-    }
+    },
   },
 });
