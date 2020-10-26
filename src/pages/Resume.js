@@ -11,8 +11,6 @@ import Docs from "../components/resume/Docs";
 
 import { useAppStyles, useResumeStyles } from "../style/useStyles";
 
-//TODO style children
-
 const Resume = props => {
   const { t } = useTranslation();
 

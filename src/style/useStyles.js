@@ -327,26 +327,10 @@ export const useResumeStyles = makeStyles(
     resumeContainerMobile: {
       padding: "5rem 1rem",
     },
-    pdfSection: {
-      display: "grid",
-      gridTemplateColumns: "1fr 1fr",
-    },
-    pdfSectionMobile: {
-      display: "grid",
-      gridTemplateRows: "auto auto",
-    },
-    pdfTextContainer: {
-      "& > *": {
-        marginBottom: "1rem",
-      },
-    },
     pdfContainer: {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-    },
-    pdfTitle: {
-      color: "var(--primary)",
     },
     document: {
       display: "flex",
