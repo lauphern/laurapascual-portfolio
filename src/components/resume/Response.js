@@ -2,12 +2,16 @@ import React, { Suspense } from "react";
 import { useTranslation } from "react-i18next";
 import { TableRow, TableCell, CircularProgress } from "@material-ui/core";
 
+import { useResumeStyles } from "../../style/useStyles";
+
 const Pdf = React.lazy(() => import("./Pdf"));
 
 const Response = props => {
   const { response } = props;
 
   const { t } = useTranslation();
+
+  const resumeClasses = useResumeStyles();
 
   return (
     <>
@@ -22,7 +26,7 @@ const Response = props => {
         <TableCell>{t("requestTable.value")}</TableCell>
       </TableRow>
       <TableRow>
-        <TableCell>
+        <TableCell className={resumeClasses.responseCell}>
           {response.url ? (
             <Suspense fallback={<CircularProgress />}>
               <Pdf url={response.url} />

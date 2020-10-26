@@ -445,6 +445,10 @@ export const useResumeStyles = makeStyles(
       minWidth: "200px",
       width: "fit-content",
     },
+    responseCell: {
+      overflowX: "scroll",
+      maxWidth: "50vw",
+    }
   }),
   { index: 1 }
 );
