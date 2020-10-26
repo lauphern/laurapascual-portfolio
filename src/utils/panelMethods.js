@@ -85,7 +85,7 @@ export const handlePdfDownload = ({
           "Content-Type": "application/pdf",
         },
         responseType: "arraybuffer",
-        timeout: 10000,
+        timeout: 20000,
       })
       .then(res => {
         const url = window.URL.createObjectURL(new Blob([res.data], { type: "application/pdf" }));
@@ -102,6 +102,7 @@ export const handlePdfDownload = ({
               "Content-Type": "application/pdf",
             },
             responseType: "arraybuffer",
+            timeout: 20000,
           })
           .then(res => {
             const url = window.URL.createObjectURL(

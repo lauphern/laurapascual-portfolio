@@ -385,6 +385,7 @@ export const useResumeStyles = makeStyles(
     resumeTitle: {
       display: "inline-flex",
       alignItems: "center",
+      flexWrap: "wrap",
     },
     drawerContainer: {
       [theme.breakpoints.up("sm")]: {
