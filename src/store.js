@@ -70,7 +70,7 @@ export const StoreProvider = props => {
             code: "200",
             description: "Successful operation",
             mediaType: "application/json",
-            value: `{\n  "name": "string",\n  "job_title": "string",\n  "location": "string",\n  "contact_info": {\n    "email": "string",\n    "linkedin": "string",\n    "github": "string",\n    "personal_website": "string"\n  },\n  "bio": "string"\n}`,
+            value: `{\n  "name": "string",\n  "job_title": "string",\n  "location": "string",\n  "contact_info": {\n    "linkedin": "string",\n    "github": "string",\n    "personal_website": "string"\n  },\n  "bio": "string"\n}`,
           },
           {
             code: "400",

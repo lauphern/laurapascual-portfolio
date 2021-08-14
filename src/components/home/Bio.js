@@ -76,15 +76,6 @@ const Bio = props => {
                   <Typography variant="body1">
                     <Link
                       className={`${appClasses.link}`}
-                      href="mailto:laura.pascual.h@hotmail.com"
-                    >
-                      Email
-                    </Link>{" "}
-                  </Typography>
-                  <Divider orientation="vertical" flexItem className={bioClasses.verticalDivider} />
-                  <Typography variant="body1">
-                    <Link
-                      className={`${appClasses.link}`}
                       href="https://github.com/lauphern"
                       target="_blank"
                       rel="noopener"
