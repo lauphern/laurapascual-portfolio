@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import { Store } from "../../store";
-import { Link as RouterLink } from "react-router-dom";
 import {
   Container,
   Typography,
@@ -9,11 +8,9 @@ import {
   Grid,
   Chip,
   Box,
-  Tooltip,
   Divider,
   Modal,
 } from "@material-ui/core";
-import DescriptionSharpIcon from "@material-ui/icons/DescriptionSharp";
 import { useTranslation } from "react-i18next";
 import { useTransition, animated } from "react-spring";
 
@@ -60,19 +57,6 @@ const Bio = props => {
               <>
                 <Header />
                 <Container className={`${bioClasses.socialContainer} ${(isItSmallDevice || isItShortHeight) && bioClasses.socialContainerMobile}`} disableGutters>
-                  <Tooltip title={t("cvTooltip")} arrow>
-                    <Button
-                      variant="outlined"
-                      className={`${appClasses.routerBtn}`}
-                      component={RouterLink}
-                      to="/resume"
-                      size="small"
-                    >
-                      <DescriptionSharpIcon />
-                      &nbsp;Résumé API
-                    </Button>
-                  </Tooltip>
-                  <Divider orientation="vertical" flexItem className={bioClasses.verticalDivider} />
                   <Typography variant="body1">
                     <Link
                       className={`${appClasses.link}`}

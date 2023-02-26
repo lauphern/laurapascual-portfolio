@@ -14,7 +14,6 @@ import { theme } from "./style/theme";
 import { useAppStyles } from "./style/useStyles";
 
 const Home = React.lazy(() => import("./pages/Home"));
-const Resume = React.lazy(() => import("./pages/Resume"));
 const NoMatch = React.lazy(() => import("./pages/NoMatch"));
 
 
@@ -77,29 +76,10 @@ function App() {
               <Route exact path="/">
                 <Home setLoaderNumber={setLoaderNumber} counterRef={counterRef} />
               </Route>
-              <Route path="/resume">
-                <Resume setLoaderNumber={setLoaderNumber} counterRef={counterRef} />
-              </Route>
               <Route path="*">
                 <NoMatch setLoaderNumber={setLoaderNumber} counterRef={counterRef} />
               </Route>
             </Switch>
-            <Fab
-              variant="extended"
-              size="medium"
-              href="https://github.com/users/lauphern/projects/2"
-              className={`${appClasses.sourceCodeBtn} ${appClasses.routerBtn}`}
-              target="_blank"
-              rel="noopener"
-            >
-              <CodeSharpIcon fontSize="small" />
-              &nbsp;
-              <span>
-                Source
-                <br />
-                code
-              </span>
-            </Fab>
           </ThemeProvider>
         </Suspense>
       </ErrorBoundary>

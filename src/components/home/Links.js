@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Store } from "../../store";
-import { ButtonGroup, Button, Grid, Tooltip } from "@material-ui/core";
+import { ButtonGroup, Button, Grid, Tooltip, Chip } from "@material-ui/core";
 
 import { useTransition, animated } from "react-spring";
 
@@ -54,7 +54,7 @@ const Links = props => {
                       href={project.url}
                       target="_blank"
                     >
-                      {project.title}
+                      {project.title}&nbsp;<Chip label={`${project.date}${(!isItSmallDevice && project.contest) ? project.contest : ""}`} variant="outlined" size="small" />
                     </Button>
                   </Tooltip>
                 ))}
